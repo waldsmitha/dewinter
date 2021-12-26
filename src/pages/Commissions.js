@@ -21,6 +21,7 @@ const Commissions = () => {
         quae inventore velit a, culpa aperiam tempora quidem incidunt
         praesentium aspernatur, nam in!
       </p>
+
       <section className="product-gallery">
         {arrLength.map((item) => (
           <Product />
@@ -42,6 +43,12 @@ const StyledCommissions = styled(motion.div)`
 
     & > * {
       margin: ${theme.spacing.sectionPaddingDesktop} 0;
+    }
+
+    @media screen and (max-width: 768px) {
+      & > * {
+        margin: ${theme.spacing.sectionPaddingMobile} 0;
+      }
     }
   `}
 `;

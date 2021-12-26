@@ -56,14 +56,17 @@ const StyledAbout = styled(motion.div)`
   ${({ theme }) => css`
     max-width: ${theme.spacing.maxWidth};
     margin: 0 auto;
+    /* overflow-x: hidden; */
+    padding: 0 2rem;
 
     header {
       display: flex;
+      flex-direction: column-reverse;
       justify-content: space-between
       width: 100%;
       
       img {
-        width: 300px;
+        width: 100%;
         height: 100%;
         object-fit: cover;
       }
@@ -74,29 +77,35 @@ const StyledAbout = styled(motion.div)`
     }
     .company-info {
       display: flex;
+      flex-wrap: wrap;
       border-top: 1px solid white;
       border-bottom: 1px solid white;
       padding: 5rem 0;
       /* margin-right: 5rem; */
 
+      & > * {
+        flex: 1 1 auto;
+      }
+
       img {
-        width: 300px;
-        height: 100%;
+        width: 100%;
+        height: auto;
         object-fit: cover;
-        margin-left: 2rem;
+        
       }
       p {
         margin: 1rem 0;
       }
 
-      .company-bio {
+      /* .company-bio {
         margin-right: 5rem;
-      }
+      } */
     }
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       grid-gap: 2rem;
+      width: 100%;
     }
   `}
 `;

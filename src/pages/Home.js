@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "../components/NavBar";
+import { Link } from "react-router-dom";
 
 //Styles
 import styled, { css } from "styled-components";
@@ -9,12 +10,21 @@ import { motion } from "framer-motion";
 import background from "../media/background.png";
 import wsb from "../media/white_small_badge.png";
 
-const Home = ({ navLinks, setNavLinks }) => {
+const Home = ({ navActive, setNavActive }) => {
+  const navLinks = ["commissions", "originals", "process", "about", "contact"];
+
   return (
     <StyledHome>
       <img className="logo" src={wsb} alt="" />
       <h1>De Winter Metalworks</h1>
-      <NavBar navLinks={navLinks} setNavLinks={setNavLinks} />
+      {/* <NavBar navLinks={navLinks} setNavLinks={setNavLinks} /> */}
+      <ul>
+        {navLinks.map((item) => (
+          <Link key={item} to={item}>
+            <li>{item}</li>
+          </Link>
+        ))}
+      </ul>
     </StyledHome>
   );
 };
@@ -32,9 +42,17 @@ const StyledHome = styled(motion.div)`
     background-size: cover;
     background-position: center;
 
+    h1 {
+      font-size: 6rem;
+      text-align: center;
+    }
+
     ul {
-      img {
-        display: none;
+      margin-top: 5rem;
+      text-transform: uppercase;
+      li {
+        margin: 1rem;
+        text-align: center;
       }
     }
     span {

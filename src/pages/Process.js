@@ -11,14 +11,13 @@ const Process = () => {
   let arr = [1, 2, 3, 4, 5];
   return (
     <StyledProcess>
-      <div>
-        <h1>Process</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis,
-          voluptatibus est. Obcaecati, facilis porro corporis doloribus
-          architecto aperiam incidunt assumenda?
-        </p>
-      </div>
+      <h1>Process</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis,
+        voluptatibus est. Obcaecati, facilis porro corporis doloribus architecto
+        aperiam incidunt assumenda?
+      </p>
+
       {arr.map((item) => (
         <VideoCard />
       ))}
@@ -38,6 +37,12 @@ const StyledProcess = styled(motion.div)`
 
     h1 {
       text-align: center;
+    }
+
+    @media screen and (max-width: 768px) {
+      & > * {
+        margin: ${theme.spacing.sectionPaddingMobile} 0;
+      }
     }
   `}
 `;

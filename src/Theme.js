@@ -20,7 +20,7 @@ const theme = {
     family: `font-family: 'Lora', serif;`,
   },
   spacing: {
-    sectionPaddingMobile: "10vh",
+    sectionPaddingMobile: "50px",
     sectionPaddingDesktop: "100px",
     maxWidth: "1200px",
   },
