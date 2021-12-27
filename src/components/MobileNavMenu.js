@@ -24,6 +24,7 @@ const MobileNavMenu = ({ navActive, setNavActive }) => {
       console.log(pathname);
     }
   }, [pathname]);
+
   const navToggle = () => {
     setNavActive(!navActive);
   };
@@ -63,9 +64,6 @@ const StyledMobileNavMenu = styled(motion.nav)`
   justify-content: center;
   align-items: center;
 
-  /* a {
-    color: ${({ color }) => (color ? "black" : "white")};
-  } */
   img,
   button {
     position: absolute;

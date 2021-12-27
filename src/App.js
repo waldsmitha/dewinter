@@ -19,27 +19,25 @@ import About from "./pages/About";
 import NavBar from "./components/NavBar";
 import GlobalStyles from "./components/GlobalStyles";
 import MobileNavMenu from "./components/MobileNavMenu";
+import MobileNavButton from "./components/MobileNavButton";
 
 function App() {
   const location = useLocation();
   const pathname = location.pathname;
   const links = ["commissions", "originals", "process", "about", "contact"];
   const [navLinks, setNavLinks] = useState([...links]);
-  const [navActive, setNavActive] = useState(false);
+  const [navActive, setNavActive] = useState(true);
 
   return (
     <StyledApp>
       <Theme>
         <div className={pathname === "/" ? "hidden" : ""}>
           <NavBar navLinks={navLinks} setNavLinks={setNavLinks} />
+          <MobileNavButton navActive={navActive} setNavActive={setNavActive} />
         </div>
         <MobileNavMenu navActive={navActive} setNavActive={setNavActive} />
         <Routes location={location} key={location.pathname}>
-          <Route
-            exact
-            path="/"
-            element={<Home navLinks={navLinks} setNavLinks={setNavLinks} />}
-          />
+          <Route exact path="/" element={<Home />} />
           <Route path="/commissions" element={<Commissions />} />
           <Route path="/originals" element={<Originals />} />
           <Route path="/process" element={<Process />} />
@@ -56,10 +54,8 @@ const StyledApp = styled(motion.div)`
   .hidden {
     display: none;
   }
-  .translate-x {
-    transform: translateX(1rem);
-    height: 100vh;
-  }
+  height: 100vh;
+  width: 100vw;
 `;
 
 const StyledContainer = styled(motion.div)``;

@@ -1,5 +1,8 @@
 import React from "react";
 
+//Prismic
+import { PrismicRichText, usePrismicDocumentsByType } from "@prismicio/react";
+
 //Components
 import Product from "../components/Product";
 
@@ -8,7 +11,12 @@ import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
 const Commissions = () => {
-  let arrLength = [1, 2, 3, 4, 5];
+  const [documents] = usePrismicDocumentsByType("comm-product");
+  // const description =
+  //   documents && documents.results[0].data.description[0].text;
+  const description = (i) =>
+    documents && documents.results[i].data.description[0].text;
+  const productInfo = documents && documents.results;
 
   return (
     <StyledCommissions>
@@ -21,10 +29,10 @@ const Commissions = () => {
         quae inventore velit a, culpa aperiam tempora quidem incidunt
         praesentium aspernatur, nam in!
       </p>
+
       <section className="product-gallery">
-        {arrLength.map((item) => (
-          <Product />
-        ))}
+        {productInfo &&
+          productInfo.map((item) => <Product key={item.id} data={item} />)}
       </section>
     </StyledCommissions>
   );
@@ -42,6 +50,12 @@ const StyledCommissions = styled(motion.div)`
 
     & > * {
       margin: ${theme.spacing.sectionPaddingDesktop} 0;
+    }
+
+    @media screen and (max-width: 768px) {
+      & > * {
+        margin: ${theme.spacing.sectionPaddingMobile} 0;
+      }
     }
   `}
 `;

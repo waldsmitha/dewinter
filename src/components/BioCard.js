@@ -23,6 +23,7 @@ const BioCard = () => {
 };
 
 const StyledBioCard = styled(motion.div)`
+  width: 100%;
   img {
     width: 100%;
   }
