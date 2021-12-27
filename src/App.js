@@ -26,7 +26,7 @@ function App() {
   const pathname = location.pathname;
   const links = ["commissions", "originals", "process", "about", "contact"];
   const [navLinks, setNavLinks] = useState([...links]);
-  const [navActive, setNavActive] = useState(false);
+  const [navActive, setNavActive] = useState(true);
 
   return (
     <StyledApp>

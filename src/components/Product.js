@@ -4,23 +4,21 @@ import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-//Media
-import background from "../media/background.png";
+const Product = ({ data }) => {
+  const description = data.data.description[0].text;
+  const img1 = data.data.img_one;
+  const img2 = data.data.img_two;
+  const designer = data.data.designer_name[0].text;
 
-const Product = () => {
   return (
     <StyledProduct>
       <div className="flex-container">
-        <img src={background} alt="" />
-        <img src={background} alt="" />
+        <img src={img1.url} alt={img1.alt} />
+        <img src={img2.url} alt={img2.alt} />
       </div>
       <div className="product-info">
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim
-          repellendus minima dolores a vitae reprehenderit expedita aliquam
-          error minus consequatur?
-        </p>
-        <p>-Designer Name</p>
+        <p>{description}</p>
+        <p>{designer}</p>
       </div>
     </StyledProduct>
   );

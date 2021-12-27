@@ -1,5 +1,8 @@
 import React from "react";
 
+//Prismic
+import { PrismicRichText, usePrismicDocumentsByType } from "@prismicio/react";
+
 //Components
 import Product from "../components/Product";
 
@@ -8,7 +11,9 @@ import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
 const Originals = () => {
-  let arrLength = [1, 2, 3, 4, 5];
+  const [documents] = usePrismicDocumentsByType("orig_product");
+  const productInfo = documents && documents.results;
+
   return (
     <StyledOriginals>
       <h1>Originals</h1>
@@ -21,9 +26,8 @@ const Originals = () => {
         praesentium aspernatur, nam in!
       </p>
       <section className="product-gallery">
-        {arrLength.map((item) => (
-          <Product />
-        ))}
+        {productInfo &&
+          productInfo.map((item) => <Product key={item.id} data={item} />)}
       </section>
     </StyledOriginals>
   );
