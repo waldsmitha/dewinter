@@ -74,12 +74,17 @@ const StyledNavBar = styled(motion.nav)`
     align-items: center;
     flex-direction: column;
 
+    ul {
+      padding: 0 2rem;
+    }
+
     .line-deco {
       margin-top: 2rem;
       display: flex;
       flex-direction: column;
       width: 100%;
       position: relative;
+      padding: 0 2rem;
 
       .first,
       .second,

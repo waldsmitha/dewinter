@@ -20,6 +20,7 @@ import NavBar from "./components/NavBar";
 import GlobalStyles from "./components/GlobalStyles";
 import MobileNavMenu from "./components/MobileNavMenu";
 import MobileNavButton from "./components/MobileNavButton";
+import MobileHeader from "./components/MobileHeader";
 
 function App() {
   const location = useLocation();
@@ -34,6 +35,7 @@ function App() {
         <div className={pathname === "/" ? "hidden" : ""}>
           <NavBar navLinks={navLinks} setNavLinks={setNavLinks} />
           <MobileNavButton navActive={navActive} setNavActive={setNavActive} />
+          <MobileHeader />
         </div>
         <MobileNavMenu navActive={navActive} setNavActive={setNavActive} />
         <Routes location={location} key={location.pathname}>

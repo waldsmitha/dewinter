@@ -7,30 +7,32 @@ import video from "../media/video.mp4";
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
-const VideoCard = () => {
+const VideoCard = ({ data }) => {
+  const {
+    process_video,
+    process_title,
+    process_description,
+    process_upload_date,
+  } = data.data;
+
   return (
     <StyledVideoCard>
       <div className="video">
         <video
-          src={video}
+          src={process_video.url}
           preload="metadata"
           controls="controls"
           type="video/mp4"
         ></video>
       </div>
       <div className="title">
-        <p>Video Title</p>
+        <p>{process_title[0].text}</p>
       </div>
       <div className="date">
-        <p>12/12/2021</p>
+        <p>{process_upload_date[0].text}</p>
       </div>
       <div className="description">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum
-          obcaecati labore tempore aliquam ab adipisci ullam magni temporibus
-          incidunt repellat, odio perferendis velit repudiandae necessitatibus
-          debitis veniam nulla earum odit.
-        </p>
+        <p>{process_description[0].text}</p>
       </div>
     </StyledVideoCard>
   );

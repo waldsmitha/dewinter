@@ -9,7 +9,13 @@ const MobileNavButton = ({ navActive, setNavActive }) => {
     setNavActive(!navActive);
   };
 
-  return <StyledMobileNavButton onClick={navToggle}>NAV</StyledMobileNavButton>;
+  return (
+    <StyledMobileNavButton onClick={navToggle}>
+      <span></span>
+      <span></span>
+      <span></span>
+    </StyledMobileNavButton>
+  );
 };
 
 const StyledMobileNavButton = styled(motion.button)`
@@ -23,5 +29,20 @@ const StyledMobileNavButton = styled(motion.button)`
   border: 2px solid white;
   color: white;
   border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+
+  span {
+    padding: 0.1rem 2rem;
+    margin: 0.5rem;
+    background: white;
+  }
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `;
 export default MobileNavButton;

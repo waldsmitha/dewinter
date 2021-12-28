@@ -1,7 +1,10 @@
 import React from "react";
 
 //Prismic
-import { PrismicRichText, usePrismicDocumentsByType } from "@prismicio/react";
+import {
+  usePrismicDocumentsByType,
+  useSinglePrismicDocument,
+} from "@prismicio/react";
 
 //Components
 import Product from "../components/Product";
@@ -12,19 +15,18 @@ import { motion } from "framer-motion";
 
 const Originals = () => {
   const [documents] = usePrismicDocumentsByType("orig_product");
+  const [origIntro] = useSinglePrismicDocument("original_designs");
+  const data = origIntro && origIntro.data;
   const productInfo = documents && documents.results;
 
   return (
     <StyledOriginals>
-      <h1>Originals</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus
-        dolores deserunt repudiandae sit dicta error incidunt inventore natus,
-        illum quasi nemo repellat cupiditate quia dolorem ipsam cumque
-        laboriosam quaerat nesciunt iusto ad! Inventore, fugit ad? Optio iste
-        quae inventore velit a, culpa aperiam tempora quidem incidunt
-        praesentium aspernatur, nam in!
-      </p>
+      {data && (
+        <div>
+          <h1>{data.title[0].text}</h1>
+          <p>{data.description[0].text}</p>
+        </div>
+      )}
       <section className="product-gallery">
         {productInfo &&
           productInfo.map((item) => <Product key={item.id} data={item} />)}
@@ -41,6 +43,7 @@ const StyledOriginals = styled(motion.div)`
 
     h1 {
       text-align: center;
+      margin-bottom: 25px;
     }
 
     & > * {

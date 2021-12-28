@@ -1,5 +1,11 @@
 import React from "react";
 
+//Prismic
+import {
+  useSinglePrismicDocument,
+  usePrismicDocumentsByType,
+} from "@prismicio/react";
+
 //Components
 import VideoCard from "../components/VideoCard";
 
@@ -8,19 +14,21 @@ import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
 const Process = () => {
-  let arr = [1, 2, 3, 4, 5];
+  const [documents] = usePrismicDocumentsByType("process_video");
+  const [processIntro] = useSinglePrismicDocument("process_intro");
+  const data = processIntro && processIntro.data;
+  const processes = documents && documents.results;
+
   return (
     <StyledProcess>
-      <h1>Process</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis,
-        voluptatibus est. Obcaecati, facilis porro corporis doloribus architecto
-        aperiam incidunt assumenda?
-      </p>
-
-      {arr.map((item) => (
-        <VideoCard />
-      ))}
+      {data && (
+        <>
+          <h1>{data.title[0].text}</h1>
+          <p>{data.description[0].text}</p>
+        </>
+      )}
+      {processes &&
+        processes.map((item) => <VideoCard key={item.id} data={item} />)}
     </StyledProcess>
   );
 };

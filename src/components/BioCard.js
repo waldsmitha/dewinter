@@ -4,26 +4,28 @@ import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-//Media
-import background from "../media/background.png";
+const BioCard = ({ data }) => {
+  const { bio_description, bio_photo, bio_title, bio_name } = data.data;
 
-const BioCard = () => {
   return (
     <StyledBioCard>
-      <img src={background} alt="" />
-      <h2>Firstname Lastname</h2>
-      <p>Person Title</p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae doloribus
-        maiores fugiat eius? Porro commodi repudiandae reprehenderit tempore
-        numquam nostrum.
-      </p>
+      <img src={bio_photo.url} alt={bio_photo.alt} />
+      <h3>{bio_name[0].text}</h3>
+      <h4>{bio_title[0].text}</h4>
+      <p>{bio_description[0].text}</p>
     </StyledBioCard>
   );
 };
 
 const StyledBioCard = styled(motion.div)`
   width: 100%;
+  h3 {
+    text-transform: uppercase;
+    margin-top: 1rem;
+  }
+  h4 {
+    margin-bottom: 1rem;
+  }
   img {
     width: 100%;
   }

@@ -1,5 +1,11 @@
 import React from "react";
 
+//Prismic
+import {
+  useSinglePrismicDocument,
+  usePrismicDocumentsByType,
+} from "@prismicio/react";
+
 //Styles
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
@@ -11,42 +17,37 @@ import BioCard from "../components/BioCard";
 import background from "../media/background.png";
 
 const About = () => {
+  const [documents] = usePrismicDocumentsByType("bio_card");
+  const [aboutIntro] = useSinglePrismicDocument("about_intro");
+  const data = aboutIntro && aboutIntro.data;
+  const bios = documents && documents.results;
+
   return (
     <StyledAbout>
-      <header>
-        <div>
-          <img src={background} alt="" />
-        </div>
-        <h1>
-          About
-          <br />
-          De Winter Metalworks
-        </h1>
-      </header>
-      <section className="company-info">
-        <div className="company-bio">
-          <h2>About the Company</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-            atque quaerat pariatur recusandae ullam facere cupiditate
-            dignissimos non nostrum tempora, magni quae autem porro voluptates
-            soluta.
-          </p>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo
-            quidem at magnam similique numquam nobis delectus modi vitae
-            deserunt ab voluptas consectetur voluptates aliquid, ratione
-            aspernatur molestias vero eos aperiam.
-          </p>
-        </div>
-        <div>
-          <img src={background} alt="" />
-        </div>
-      </section>
+      {data && (
+        <>
+          <header>
+            <div>
+              <img src={data.title_image.url} alt="" />
+            </div>
+            <h1>
+              About <br /> De Winter <br /> Metalworks
+            </h1>
+          </header>
+          <section className="company-info">
+            <div className="company-bio">
+              <h2>{data.subtitle[0].text}</h2>
+              <p>{data.description[0].text}</p>
+              <p>{data.description[1].text}</p>
+            </div>
+            <div>
+              <img src={data.subsection_image.url} alt="" />
+            </div>
+          </section>
+        </>
+      )}
       <section className="gallery">
-        <BioCard />
-        <BioCard />
-        <BioCard />
+        {bios && bios.map((item) => <BioCard key={item.id} data={item} />)}
       </section>
     </StyledAbout>
   );
@@ -59,37 +60,40 @@ const StyledAbout = styled(motion.div)`
     /* overflow-x: hidden; */
     padding: 0 2rem;
 
+    & > * {
+        /* margin: ${theme.spacing.sectionPaddingMobile} 0; */
+        margin: ${theme.spacing.sectionPaddingDesktop} 0;
+      }
+
     header {
       display: flex;
       flex-direction: column-reverse;
       justify-content: space-between
       width: 100%;
-      
+       
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
     }
-    section,
-    header {
-      margin: 10vh 0;
-    }
+    
     .company-info {
       display: flex;
       flex-wrap: wrap;
       border-top: 1px solid white;
       border-bottom: 1px solid white;
       padding: 5rem 0;
-      /* margin-right: 5rem; */
+   
 
       & > * {
-        flex: 1 1 auto;
+        flex: 1 1 350px;
       }
 
       img {
         width: 100%;
-        height: auto;
+        height: 100%;
+       
         object-fit: cover;
         
       }
@@ -104,8 +108,24 @@ const StyledAbout = styled(motion.div)`
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      grid-gap: 2rem;
+      grid-column-gap: 5rem;
+      grid-row-gap: 10rem;
       width: 100%;
+    }
+
+    @media screen and (min-width: 740px){
+      header{
+        flex-direction: row;
+        img {
+          padding-right:10rem;
+        }
+      }
+      .company-info 
+    {
+      img {
+        padding-left: 10rem;
+      }
+    }
     }
   `}
 `;

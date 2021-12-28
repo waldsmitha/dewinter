@@ -8,14 +8,14 @@ import { motion } from "framer-motion";
 
 //Media
 import background from "../media/background.png";
-import wsb from "../media/white_small_badge.png";
+import wmb from "../media/white_medium_badge.png";
 
 const Home = ({ navActive, setNavActive }) => {
   const navLinks = ["commissions", "originals", "process", "about", "contact"];
 
   return (
     <StyledHome>
-      <img className="logo" src={wsb} alt="" />
+      <img className="logo" src={wmb} alt="" />
       <h1>De Winter Metalworks</h1>
       {/* <NavBar navLinks={navLinks} setNavLinks={setNavLinks} /> */}
       <ul>
@@ -47,12 +47,17 @@ const StyledHome = styled(motion.div)`
       text-align: center;
     }
 
+    img {
+      height: 100px;
+    }
+
     ul {
       margin-top: 5rem;
       text-transform: uppercase;
       li {
         margin: 1rem;
         text-align: center;
+        font-family: "bonvoyage", serif;
       }
     }
     span {
@@ -62,6 +67,12 @@ const StyledHome = styled(motion.div)`
       position: absolute;
       top: 1rem;
       left: 1rem;
+    }
+    @media screen and (min-width: 768px) {
+      ul {
+        display: flex;
+        flex-direction: row;
+      }
     }
   `}
 `;

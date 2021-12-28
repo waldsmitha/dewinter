@@ -1,8 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 
-let h1 = `calc(5rem + .25vw)`;
-let h2 = `calc(3em + .25vw)`;
-let h3 = `calc(2rem + .25vw)`;
+let h1 = `calc(4rem + 4vw)`;
+let h2 = `calc(3rem + 5vw)`;
+let h3 = `calc(1rem + 2vw)`;
+let h4 = `calc(1rem + 1.5vw)`;
 let p = `calc(1.8rem + .25vw)`;
 let li = `calc(1.3rem + .25vw)`;
 
@@ -29,6 +30,7 @@ h1 {
     font-size: ${h1};
     /* font-size: 130px; */
     line-height: 100%;
+    font-weight: 300;
 }
 h2 {
     font-size: ${h2};
@@ -37,6 +39,9 @@ h2 {
 }
 h3 {
     font-size: ${h3};
+}
+h4 {
+    font-size: ${h4};
 }
 p {
     font-size: ${p};

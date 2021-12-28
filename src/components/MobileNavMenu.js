@@ -45,7 +45,7 @@ const MobileNavMenu = ({ navActive, setNavActive }) => {
           </Link>
         ))}
       </ul>
-      <button onClick={() => navToggle()}>Exit</button>
+      {/* <button onClick={() => navToggle()}>Exit</button> */}
     </StyledMobileNavMenu>
   );
 };
