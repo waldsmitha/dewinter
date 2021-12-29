@@ -47,6 +47,7 @@ const StyledMobileHeader = styled(motion.header)`
 
     .line-deco {
       margin-top: 1rem;
+      padding: 0 2rem;
       display: flex;
       flex-direction: column;
       width: 100%;

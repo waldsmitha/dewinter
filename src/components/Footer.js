@@ -41,7 +41,7 @@ const StyledFooter = styled(motion.footer)`
   text-align: center;
 
   & > * {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   .logo {
@@ -59,7 +59,6 @@ const StyledFooter = styled(motion.footer)`
     flex-direction: column;
     width: 100%;
     position: relative;
-    padding: 0 2rem;
 
     .first,
     .second,
