@@ -22,13 +22,13 @@ const Process = () => {
   return (
     <StyledProcess>
       {data && (
-        <>
+        <div>
           <h1>{data.title[0].text}</h1>
           <div className="description">
             <p>{data.description[0].text}</p>
             <p>{data.description[1].text}</p>
           </div>
-        </>
+        </div>
       )}
       <section className="gallery">
         {processes &&
@@ -55,6 +55,7 @@ const StyledProcess = styled(motion.div)`
 
     h1 {
       text-align: center;
+      margin-bottom: 25px;
     }
 
     .gallery {
