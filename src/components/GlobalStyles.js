@@ -64,6 +64,9 @@ button {
 
 body {
     font-family: 'Gothic A1', sans-serif;
+    
+}
+html {
     background-repeat: no-repeat;
     background: url(${background}) no-repeat center center fixed; 
     color: #FFFDF6;
