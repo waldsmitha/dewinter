@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import background from "../media/background-blurred.png";
 
 let h1 = `calc(4rem + 4vw)`;
-let h2 = `calc(3rem + 5vw)`;
+let h2 = `calc(2rem + 4vw)`;
 let h3 = `calc(1rem + 2vw)`;
 let h4 = `calc(1rem + 1.5vw)`;
 let p = `calc(1.8rem + .25vw)`;
@@ -37,6 +37,7 @@ h2 {
     font-size: ${h2};
     /* font-size: 72px; */
     line-height: 100%;
+    font-weight: 300;
 }
 h3 {
     font-size: ${h3};

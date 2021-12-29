@@ -21,6 +21,7 @@ import GlobalStyles from "./components/GlobalStyles";
 import MobileNavMenu from "./components/MobileNavMenu";
 import MobileNavButton from "./components/MobileNavButton";
 import MobileHeader from "./components/MobileHeader";
+import Footer from "./components/Footer";
 
 function App() {
   const location = useLocation();
@@ -46,6 +47,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
+        <div className={pathname === "/" ? "hidden" : ""}>
+          <Footer />
+        </div>
         <GlobalStyles />
       </Theme>
     </StyledApp>

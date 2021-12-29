@@ -41,7 +41,7 @@ const StyledHome = styled(motion.div)`
     background-position: center;
 
     h1 {
-      font-size: 6rem;
+      /* font-size: 6rem; */
       text-align: center;
     }
 
@@ -70,6 +70,7 @@ const StyledHome = styled(motion.div)`
       ul {
         display: flex;
         flex-direction: row;
+        margin-top: 2rem;
       }
     }
   `}

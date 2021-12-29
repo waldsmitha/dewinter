@@ -24,8 +24,6 @@ const VideoCard = ({ data }) => {
       </div>
       <div className="title">
         <p>{process_title[0].text}</p>
-      </div>
-      <div className="date">
         <p>{process_upload_date[0].text}</p>
       </div>
       <div className="description">
@@ -38,8 +36,15 @@ const VideoCard = ({ data }) => {
 const StyledVideoCard = styled(motion.div)`
   ${({ theme }) => css``}
 
-  p {
+  .title {
     margin: 1rem 0;
+
+    p:first-child {
+      font-family: "bonvoyage", serif;
+    }
+    p:last-child {
+      font-size: 1.25rem;
+    }
   }
 
   video {

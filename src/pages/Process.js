@@ -24,11 +24,16 @@ const Process = () => {
       {data && (
         <>
           <h1>{data.title[0].text}</h1>
-          <p>{data.description[0].text}</p>
+          <div className="description">
+            <p>{data.description[0].text}</p>
+            <p>{data.description[1].text}</p>
+          </div>
         </>
       )}
-      {processes &&
-        processes.map((item) => <VideoCard key={item.id} data={item} />)}
+      <section className="gallery">
+        {processes &&
+          processes.map((item) => <VideoCard key={item.id} data={item} />)}
+      </section>
     </StyledProcess>
   );
 };
@@ -42,14 +47,37 @@ const StyledProcess = styled(motion.div)`
     & > * {
       margin: ${theme.spacing.sectionPaddingDesktop} 0;
     }
+    .description {
+      p:first-child {
+        margin-bottom: 1rem;
+      }
+    }
 
     h1 {
       text-align: center;
     }
 
+    .gallery {
+      display: grid;
+      grid-row-gap: 5rem;
+    }
+
     @media screen and (max-width: 768px) {
       & > * {
         margin: ${theme.spacing.sectionPaddingMobile} 0;
+      }
+    }
+    @media screen and (min-width: 768px) {
+      .gallery {
+        grid-template-columns: repeat(2, minmax(350px, 1fr));
+        grid-column-gap: 2rem;
+        grid-row-gap: 10rem;
+        width: 100%;
+      }
+    }
+    @media screen and (min-width: 1000px) {
+      .gallery {
+        grid-column-gap: 5rem;
       }
     }
   `}

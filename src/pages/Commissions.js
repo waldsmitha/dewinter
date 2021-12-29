@@ -43,9 +43,6 @@ const StyledCommissions = styled(motion.div)`
     max-width: ${theme.spacing.maxWidth};
     margin: 0 auto;
     padding: 0 2rem;
-    /* background-image: url(${background});
-    background-size: cover;
-    background-position: center; */
 
     h1 {
       text-align: center;

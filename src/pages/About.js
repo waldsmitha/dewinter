@@ -37,7 +37,7 @@ const About = () => {
               <p>{data.description[0].text}</p>
               <p>{data.description[1].text}</p>
             </div>
-            <div>
+            <div className="bio-image">
               <img src={data.subsection_image.url} alt="" />
             </div>
           </section>
@@ -54,7 +54,6 @@ const StyledAbout = styled(motion.div)`
   ${({ theme }) => css`
     max-width: ${theme.spacing.maxWidth};
     margin: 0 auto;
-    /* overflow-x: hidden; */
     padding: 0 2rem;
 
     & > * {
@@ -69,6 +68,7 @@ const StyledAbout = styled(motion.div)`
       width: 100%;
        
       img {
+        margin-top: 2rem;
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -84,13 +84,17 @@ const StyledAbout = styled(motion.div)`
    
 
       & > * {
-        flex: 1 1 350px;
+        flex: 3 1 350px;
+      
+      }
+      .bio-image {
+        flex-grow: 1;
       }
 
       img {
         width: 100%;
         height: 100%;
-       
+        margin-top: 1rem;
         object-fit: cover;
         
       }
@@ -98,9 +102,7 @@ const StyledAbout = styled(motion.div)`
         margin: 1rem 0;
       }
 
-      /* .company-bio {
-        margin-right: 5rem;
-      } */
+    
     }
     .gallery {
       display: grid;
@@ -114,13 +116,18 @@ const StyledAbout = styled(motion.div)`
       header{
         flex-direction: row;
         img {
-          padding-right:10rem;
+          padding-right:5rem;
+          margin-top: 0;
         }
       }
       .company-info 
     {
       img {
-        padding-left: 10rem;
+        padding-left: 5rem;
+        margin-top: 0;
+      }
+      p:last-child {
+margin-bottom: 0;
       }
     }
     }
