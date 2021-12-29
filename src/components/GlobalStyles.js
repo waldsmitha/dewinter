@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import background from "../media/background-blurred.png";
 
 let h1 = `calc(4rem + 4vw)`;
 let h2 = `calc(3rem + 5vw)`;
@@ -63,7 +64,8 @@ button {
 
 body {
     font-family: 'Gothic A1', sans-serif;
-    background: #131313;
+    background-repeat: no-repeat;
+    background: url(${background}) no-repeat center center fixed; 
     color: #FFFDF6;
 }
 

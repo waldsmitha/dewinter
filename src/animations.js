@@ -5,8 +5,8 @@ export const revealNavMobile = {
     rotation: 0.02,
     zIndex: 10,
     transition: {
-      duration: 0.5,
-      ease: "easeInOut",
+      duration: 0.3,
+      ease: "linear",
     },
   },
   hidden: {
@@ -15,7 +15,7 @@ export const revealNavMobile = {
     rotation: 0.02,
     transition: {
       duration: 0.25,
-      ease: "easeInOut",
+      ease: "linear",
     },
   },
 };

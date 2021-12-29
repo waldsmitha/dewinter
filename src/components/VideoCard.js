@@ -1,8 +1,5 @@
 import React from "react";
 
-//Media
-import video from "../media/video.mp4";
-
 //Styles
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
@@ -41,8 +38,14 @@ const VideoCard = ({ data }) => {
 const StyledVideoCard = styled(motion.div)`
   ${({ theme }) => css``}
 
+  p {
+    margin: 1rem 0;
+  }
+
   video {
     width: 100%;
+    min-height: 300px;
+    object-fit: cover;
   }
 `;
 

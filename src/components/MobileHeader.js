@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 //Styles
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
-import Theme from "../Theme";
 
 //Media
 import white_small_badge from "../media/white_small_badge.png";

@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "../components/NavBar";
 import { Link } from "react-router-dom";
 
 //Styles
@@ -17,7 +16,6 @@ const Home = ({ navActive, setNavActive }) => {
     <StyledHome>
       <img className="logo" src={wmb} alt="" />
       <h1>De Winter Metalworks</h1>
-      {/* <NavBar navLinks={navLinks} setNavLinks={setNavLinks} /> */}
       <ul>
         {navLinks.map((item) => (
           <Link key={item} to={item}>

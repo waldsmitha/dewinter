@@ -13,6 +13,9 @@ import Product from "../components/Product";
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
+//Media
+import background from "../media/background-blurred.png";
+
 const Commissions = () => {
   const [documents] = usePrismicDocumentsByType("comm-product");
   const [commIntro] = useSinglePrismicDocument("commissioned_designs");
@@ -40,6 +43,9 @@ const StyledCommissions = styled(motion.div)`
     max-width: ${theme.spacing.maxWidth};
     margin: 0 auto;
     padding: 0 2rem;
+    /* background-image: url(${background});
+    background-size: cover;
+    background-position: center; */
 
     h1 {
       text-align: center;

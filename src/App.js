@@ -60,6 +60,4 @@ const StyledApp = styled(motion.div)`
   width: 100vw;
 `;
 
-const StyledContainer = styled(motion.div)``;
-
 export default App;

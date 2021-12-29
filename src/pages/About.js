@@ -9,12 +9,9 @@ import {
 //Styles
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
-import Theme from "../Theme";
+
 //Components
 import BioCard from "../components/BioCard";
-
-//Media
-import background from "../media/background.png";
 
 const About = () => {
   const [documents] = usePrismicDocumentsByType("bio_card");
