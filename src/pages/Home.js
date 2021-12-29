@@ -20,6 +20,7 @@ const Home = ({ navActive, setNavActive }) => {
         {navLinks.map((item) => (
           <Link key={item} to={item}>
             <li>{item}</li>
+            <div className="line"></div>
           </Link>
         ))}
       </ul>
@@ -61,6 +62,20 @@ const StyledHome = styled(motion.div)`
     span {
       display: none;
     }
+    .line {
+      height: 0.5rem;
+      background: #ababab;
+      width: 0%;
+      margin: 0 1rem;
+      transition: 0.2s;
+    }
+
+    a:hover {
+      .line {
+        width: 50%;
+      }
+    }
+
     .logo {
       position: absolute;
       top: 1rem;

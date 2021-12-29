@@ -21,6 +21,7 @@ const NavLinksComponent = ({ navLinks }) => {
           {navLinks.map((item) => (
             <Link key={item} to={item === "home" ? "/" : item}>
               <li>{item}</li>
+              <div className="line"> </div>
             </Link>
           ))}
           <Link to="/">
@@ -65,7 +66,18 @@ const StyledLinks = styled(motion.div)`
     img {
       height: 10rem;
     }
+    .line {
+      height: 0.5rem;
+      background: #ababab;
+      width: 0%;
+      transition: 0.2s;
+    }
 
+    a:hover {
+      .line {
+        width: 50%;
+      }
+    }
     .not-home {
       a:nth-child(3) {
         order: 1;
