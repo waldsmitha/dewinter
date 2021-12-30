@@ -13,9 +13,6 @@ import Product from "../components/Product";
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
-//Media
-import background from "../media/background-blurred.png";
-
 const Commissions = () => {
   const [documents] = usePrismicDocumentsByType("comm-product");
   const [commIntro] = useSinglePrismicDocument("commissioned_designs");

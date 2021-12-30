@@ -65,16 +65,20 @@ button {
 
 body {
     font-family: 'Gothic A1', sans-serif;
-    height: 100%100px;
+    height: 100%;
     overflow: scroll;
+    width: 100vw;
+    overflow-x: hidden;
     
 }
 html {
     background-repeat: no-repeat;
     background: url(${background}) no-repeat center center fixed; 
+    background-size: cover;
     color: #FFFDF6;
     height: 100%; 
-    overflow: hidden;
+    /* overflow: hidden; */
+
 }
 
 `;

@@ -62,6 +62,7 @@ const StyledApp = styled(motion.div)`
   }
   height: 100vh;
   width: 100vw;
+  color: #fffdf6;
 `;
 
 export default App;
