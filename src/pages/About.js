@@ -13,6 +13,9 @@ import { motion } from "framer-motion";
 //Components
 import BioCard from "../components/BioCard";
 
+//Animations
+import { sliderContainer, slider, pageAnimation, opacity } from "../animations";
+
 const About = () => {
   const [documents] = usePrismicDocumentsByType("bio_card");
   const [aboutIntro] = useSinglePrismicDocument("about_intro");
@@ -20,32 +23,45 @@ const About = () => {
   const bios = documents && documents.results;
 
   return (
-    <StyledAbout>
-      {data && (
-        <>
-          <header>
-            <div>
-              <img src={data.title_image.url} alt="" />
-            </div>
-            <h1>
-              About <br /> De Winter <br /> Metalworks
-            </h1>
-          </header>
-          <section className="company-info">
-            <div className="company-bio">
-              <h2>{data.subtitle[0].text}</h2>
-              <p>{data.description[0].text}</p>
-              <p>{data.description[1].text}</p>
-            </div>
-            <div className="bio-image">
-              <img src={data.subsection_image.url} alt="" />
-            </div>
-          </section>
-        </>
-      )}
-      <section className="gallery">
-        {bios && bios.map((item) => <BioCard key={item.id} data={item} />)}
-      </section>
+    <StyledAbout
+      exit="exit"
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+    >
+      <motion.div variants={sliderContainer}>
+        <Frame1 variants={slider}></Frame1>
+        <Frame2 variants={slider}></Frame2>
+        <Frame3 variants={slider}></Frame3>
+        <Frame4 variants={slider}></Frame4>
+      </motion.div>
+      <motion.div variants={opacity}>
+        {data && (
+          <>
+            <header>
+              <div>
+                <img src={data.title_image.url} alt="" />
+              </div>
+              <h1>
+                About <br /> De Winter <br /> Metalworks
+              </h1>
+            </header>
+            <section className="company-info">
+              <div className="company-bio">
+                <h2>{data.subtitle[0].text}</h2>
+                <p>{data.description[0].text}</p>
+                <p>{data.description[1].text}</p>
+              </div>
+              <div className="bio-image">
+                <img src={data.subsection_image.url} alt="" />
+              </div>
+            </section>
+          </>
+        )}
+        <section className="gallery">
+          {bios && bios.map((item) => <BioCard key={item.id} data={item} />)}
+        </section>
+      </motion.div>
     </StyledAbout>
   );
 };
@@ -53,6 +69,7 @@ const About = () => {
 const StyledAbout = styled(motion.div)`
   ${({ theme }) => css`
     max-width: ${theme.spacing.maxWidth};
+    min-height: 100vh;
     margin: 0 auto;
     padding: 0 2rem;
 
@@ -120,18 +137,37 @@ const StyledAbout = styled(motion.div)`
           margin-top: 0;
         }
       }
-      .company-info 
-    {
-      img {
+      .company-info {
+        img {
         padding-left: 5rem;
         margin-top: 0;
       }
-      p:last-child {
-margin-bottom: 0;
+        p:last-child {
+          margin-bottom: 0;
+        }
       }
     }
-    }
   `}
+`;
+
+//Frame Animation
+const Frame1 = styled(motion.div)`
+  position: fixed;
+  left: 0;
+  top: 0%;
+  width: 100%;
+  height: 100vh;
+  background: #131313;
+  z-index: 2;
+`;
+const Frame2 = styled(Frame1)`
+  background: #ababab;
+`;
+const Frame3 = styled(Frame1)`
+  background: #131313;
+`;
+const Frame4 = styled(Frame1)`
+  background: #ababab;
 `;
 
 export default About;

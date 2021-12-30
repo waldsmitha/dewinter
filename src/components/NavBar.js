@@ -6,6 +6,9 @@ import NavLinksComponent from "./NavLinksComponent";
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
+//Animations
+import { revealDown } from "../animations";
+
 const NavBar = ({ navLinks, setNavLinks }) => {
   const location = useLocation();
   const { pathname } = location;
@@ -53,7 +56,11 @@ const NavBar = ({ navLinks, setNavLinks }) => {
   }, [pathname]);
 
   return (
-    <StyledNavBar>
+    <StyledNavBar
+      variants={revealDown}
+      initial="hidden"
+      animate={pathname == "/" ? "hidden" : "show"}
+    >
       <div className="container">
         <NavLinksComponent navLinks={navLinks} />
         <div className="line-deco">

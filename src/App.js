@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 //Styles
@@ -23,31 +23,46 @@ import MobileNavButton from "./components/MobileNavButton";
 import MobileHeader from "./components/MobileHeader";
 import Footer from "./components/Footer";
 
+//Animations
+import { AnimatePresence } from "framer-motion";
+import { pageAnimation } from "./animations";
+
 function App() {
   const location = useLocation();
   const pathname = location.pathname;
   const links = ["commissions", "originals", "process", "about", "contact"];
   const [navLinks, setNavLinks] = useState([...links]);
   const [navActive, setNavActive] = useState(true);
+  const [pathState, setPathState] = useState(location.pathname);
 
   return (
     <StyledApp>
       <Theme>
         <div className={pathname === "/" ? "hidden" : ""}>
-          <NavBar navLinks={navLinks} setNavLinks={setNavLinks} />
-          <MobileNavButton navActive={navActive} setNavActive={setNavActive} />
+          <NavBar
+            navLinks={navLinks}
+            setNavLinks={setNavLinks}
+            pathState={pathState}
+            exit="exit"
+            variants={pageAnimation}
+            initial="hidden"
+            animate="show"
+          />
           <MobileHeader />
         </div>
         <MobileNavMenu navActive={navActive} setNavActive={setNavActive} />
-        <Routes location={location} key={location.pathname}>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/commissions" element={<Commissions />} />
-          <Route path="/originals" element={<Originals />} />
-          <Route path="/process" element={<Process />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+        <AnimatePresence exitBeforeEnter>
+          <Routes location={location} key={location.pathname}>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/commissions" element={<Commissions />} />
+            <Route path="/originals" element={<Originals />} />
+            <Route path="/process" element={<Process />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </AnimatePresence>
         <div className={pathname === "/" ? "hidden" : ""}>
+          <MobileNavButton navActive={navActive} setNavActive={setNavActive} />
           <Footer />
         </div>
         <GlobalStyles />
@@ -57,9 +72,9 @@ function App() {
 }
 
 const StyledApp = styled(motion.div)`
-  .hidden {
+  /* .hidden {
     display: none;
-  }
+  } */
   height: 100vh;
   width: 100vw;
   color: #fffdf6;

@@ -13,6 +13,9 @@ import VideoCard from "../components/VideoCard";
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
+//Animations
+import { sliderContainer, slider, pageAnimation, opacity } from "../animations";
+
 const Process = () => {
   const [documents] = usePrismicDocumentsByType("process_video");
   const [processIntro] = useSinglePrismicDocument("process_intro");
@@ -20,20 +23,33 @@ const Process = () => {
   const processes = documents && documents.results;
 
   return (
-    <StyledProcess>
-      {data && (
-        <div>
-          <h1>{data.title[0].text}</h1>
-          <div className="description">
-            <p>{data.description[0].text}</p>
-            <p>{data.description[1].text}</p>
+    <StyledProcess
+      exit="exit"
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+    >
+      <motion.div variants={sliderContainer}>
+        <Frame1 variants={slider}></Frame1>
+        <Frame2 variants={slider}></Frame2>
+        <Frame3 variants={slider}></Frame3>
+        <Frame4 variants={slider}></Frame4>
+      </motion.div>
+      <motion.div variants={opacity}>
+        {data && (
+          <div>
+            <h1>{data.title[0].text}</h1>
+            <div className="description">
+              <p>{data.description[0].text}</p>
+              <p>{data.description[1].text}</p>
+            </div>
           </div>
-        </div>
-      )}
-      <section className="gallery">
-        {processes &&
-          processes.map((item) => <VideoCard key={item.id} data={item} />)}
-      </section>
+        )}
+        <section className="gallery">
+          {processes &&
+            processes.map((item) => <VideoCard key={item.id} data={item} />)}
+        </section>
+      </motion.div>
     </StyledProcess>
   );
 };
@@ -41,6 +57,7 @@ const Process = () => {
 const StyledProcess = styled(motion.div)`
   ${({ theme }) => css`
     max-width: ${theme.spacing.maxWidth};
+    min-height: 100vh;
     margin: 0 auto;
     padding: 0 2rem;
 
@@ -82,6 +99,26 @@ const StyledProcess = styled(motion.div)`
       }
     }
   `}
+`;
+
+//Frame Animation
+const Frame1 = styled(motion.div)`
+  position: fixed;
+  left: 0;
+  top: 0%;
+  width: 100%;
+  height: 100vh;
+  background: #131313;
+  z-index: 10;
+`;
+const Frame2 = styled(Frame1)`
+  background: #ababab;
+`;
+const Frame3 = styled(Frame1)`
+  background: #131313;
+`;
+const Frame4 = styled(Frame1)`
+  background: #ababab;
 `;
 
 export default Process;

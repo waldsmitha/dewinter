@@ -9,10 +9,24 @@ import insta from "../media/insta.svg";
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
+//Animations
+import { sliderContainer, slider, pageAnimation, opacity } from "../animations";
+
 const Contact = () => {
   return (
-    <StyledContact>
-      <div>
+    <StyledContact
+      exit="exit"
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+    >
+      <motion.div variants={sliderContainer}>
+        <Frame1 variants={slider}></Frame1>
+        <Frame2 variants={slider}></Frame2>
+        <Frame3 variants={slider}></Frame3>
+        <Frame4 variants={slider}></Frame4>
+      </motion.div>
+      <motion.div variants={opacity}>
         <h1>Contact</h1>
         <div className="contact-info">
           <div className="email">
@@ -34,7 +48,7 @@ const Contact = () => {
             <p>Instagram: @dewintermetalworks</p>
           </div>
         </div>
-      </div>
+      </motion.div>
     </StyledContact>
   );
 };
@@ -66,5 +80,25 @@ const StyledContact = styled(motion.div)`
       margin-right: 1rem;
     }
   `}
+`;
+
+//Frame Animation
+const Frame1 = styled(motion.div)`
+  position: fixed;
+  left: 0;
+  top: 0%;
+  width: 100%;
+  height: 100vh;
+  background: #131313;
+  z-index: 10;
+`;
+const Frame2 = styled(Frame1)`
+  background: #ababab;
+`;
+const Frame3 = styled(Frame1)`
+  background: #131313;
+`;
+const Frame4 = styled(Frame1)`
+  background: #ababab;
 `;
 export default Contact;

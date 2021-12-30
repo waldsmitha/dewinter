@@ -9,11 +9,19 @@ import { motion } from "framer-motion";
 import background from "../media/background.png";
 import wmb from "../media/white_medium_badge.png";
 
+//Animations
+import { sliderContainer, slider, pageAnimation } from "../animations";
+
 const Home = ({ navActive, setNavActive }) => {
   const navLinks = ["commissions", "originals", "process", "about", "contact"];
 
   return (
-    <StyledHome>
+    <StyledHome
+      exit="exit"
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+    >
       <img className="logo" src={wmb} alt="" />
       <h1>De Winter Metalworks</h1>
       <ul>
