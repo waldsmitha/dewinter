@@ -13,20 +13,18 @@ import white_small_badge from "../media/white_small_badge.png";
 const NavLinksComponent = ({ navLinks }) => {
   const location = useLocation();
   const { pathname } = location;
+  // console.log(navLinks);
 
   return (
     <div>
       <StyledLinks>
-        <ul className={pathname === "/" ? "" : "not-home"}>
+        <ul>
           {navLinks.map((item) => (
             <Link key={item} to={item === "home" ? "/" : item}>
               <li>{item}</li>
               <div className="line"> </div>
             </Link>
           ))}
-          <Link to="/">
-            <img src={white_small_badge} alt="" />
-          </Link>
         </ul>
       </StyledLinks>
     </div>
@@ -57,15 +55,10 @@ const StyledLinks = styled(motion.div)`
       }
     }
     li {
-      /* padding: 0 5rem; */
       font-weight: 200;
       text-transform: uppercase;
-      width: 100px;
     }
 
-    img {
-      height: 10rem;
-    }
     .line {
       height: 0.5rem;
       background: #ababab;

@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, Link } from "react-router-dom";
 
 //Styles
 import styled from "styled-components";
@@ -27,6 +27,9 @@ import Footer from "./components/Footer";
 import { AnimatePresence } from "framer-motion";
 import { pageAnimation } from "./animations";
 
+//Media
+import wmb from "./media/white_medium_badge.png";
+
 function App() {
   const location = useLocation();
   const pathname = location.pathname;
@@ -45,6 +48,9 @@ function App() {
         />
         <MobileHeader pathname={pathname} />
         <MobileNavMenu navActive={navActive} setNavActive={setNavActive} />
+        <Link to="/">
+          <img src={wmb} className="logo" alt="" />
+        </Link>
         <AnimatePresence exitBeforeEnter>
           <Routes location={location} key={location.pathname}>
             <Route exact path="/" element={<Home />} />
@@ -72,6 +78,20 @@ const StyledApp = styled(motion.div)`
   height: 100vh;
   width: 100vw;
   color: #fffdf6;
+
+  .logo {
+    z-index: 100;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    height: 80px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .logo {
+      display: none;
+    }
+  }
 `;
 
 export default App;

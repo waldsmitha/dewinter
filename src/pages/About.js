@@ -12,6 +12,8 @@ import { motion } from "framer-motion";
 
 //Components
 import BioCard from "../components/BioCard";
+import ScrollTop from "../components/ScrollTop";
+import { Frame1, Frame2, Frame3, Frame4 } from "../components/StyledComponents";
 
 //Animations
 import { sliderContainer, slider, pageAnimation, opacity } from "../animations";
@@ -46,22 +48,26 @@ const About = () => {
                 About <br /> De Winter <br /> Metalworks
               </h1>
             </header>
-            <section className="company-info">
-              <div className="company-bio">
-                <h2>{data.subtitle[0].text}</h2>
-                <p>{data.description[0].text}</p>
-                <p>{data.description[1].text}</p>
-              </div>
-              <div className="bio-image">
-                <img src={data.subsection_image.url} alt="" />
-              </div>
-            </section>
+            <div className="intro">
+              <section className="company-info">
+                <div className="company-bio">
+                  <h2>{data.subtitle[0].text}</h2>
+                  <p>{data.description[0].text}</p>
+                  <p>{data.description[1].text}</p>
+                </div>
+                <div className="bio-image">
+                  <img src={data.subsection_image.url} alt="" />
+                </div>
+              </section>
+              <section className="gallery">
+                {bios &&
+                  bios.map((item) => <BioCard key={item.id} data={item} />)}
+              </section>
+            </div>
           </>
         )}
-        <section className="gallery">
-          {bios && bios.map((item) => <BioCard key={item.id} data={item} />)}
-        </section>
       </motion.div>
+      <ScrollTop />
     </StyledAbout>
   );
 };
@@ -77,6 +83,10 @@ const StyledAbout = styled(motion.div)`
         /* margin: ${theme.spacing.sectionPaddingMobile} 0; */
         margin: ${theme.spacing.sectionPaddingDesktop} 0;
       }
+
+    .intro {
+      & > * {margin: ${theme.spacing.sectionPaddingDesktop} 0;}
+    }
 
     header {
       display: flex;
@@ -148,26 +158,6 @@ const StyledAbout = styled(motion.div)`
       }
     }
   `}
-`;
-
-//Frame Animation
-const Frame1 = styled(motion.div)`
-  position: fixed;
-  left: 0;
-  top: 15%;
-  width: 100%;
-  height: 100vh;
-  background: #131313;
-  z-index: 2;
-`;
-const Frame2 = styled(Frame1)`
-  background: #ababab;
-`;
-const Frame3 = styled(Frame1)`
-  background: #131313;
-`;
-const Frame4 = styled(Frame1)`
-  background: #ababab;
 `;
 
 export default About;

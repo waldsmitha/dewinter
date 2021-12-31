@@ -22,7 +22,7 @@ const Home = ({ navActive, setNavActive }) => {
       initial="hidden"
       animate="show"
     >
-      <img className="logo" src={wmb} alt="" />
+      <img className="mobile-logo" src={wmb} alt="" />
       <h1>De Winter Metalworks</h1>
       <ul>
         {navLinks.map((item) => (
@@ -58,8 +58,11 @@ const StyledHome = styled(motion.div)`
       text-align: center;
     }
 
-    img {
+    .mobile-logo {
       height: 100px;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
     }
 
     ul {
@@ -98,6 +101,9 @@ const StyledHome = styled(motion.div)`
         display: flex;
         flex-direction: row;
         margin-top: 2rem;
+      }
+      .mobile-logo {
+        display: none;
       }
     }
   `}

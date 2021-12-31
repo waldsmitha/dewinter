@@ -12,6 +12,9 @@ import { motion } from "framer-motion";
 //Animations
 import { sliderContainer, slider, pageAnimation, opacity } from "../animations";
 
+//Components
+import { Frame1, Frame2, Frame3, Frame4 } from "../components/StyledComponents";
+
 const Contact = () => {
   return (
     <StyledContact
@@ -82,23 +85,4 @@ const StyledContact = styled(motion.div)`
   `}
 `;
 
-//Frame Animation
-const Frame1 = styled(motion.div)`
-  position: fixed;
-  left: 0;
-  top: 15%;
-  width: 100%;
-  height: 100vh;
-  background: #131313;
-  z-index: 2;
-`;
-const Frame2 = styled(Frame1)`
-  background: #ababab;
-`;
-const Frame3 = styled(Frame1)`
-  background: #131313;
-`;
-const Frame4 = styled(Frame1)`
-  background: #ababab;
-`;
 export default Contact;

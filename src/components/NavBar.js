@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import NavLinksComponent from "./NavLinksComponent";
+
+//Media
+import wmb from "../media/white_medium_badge.png";
 
 //Styling
 import styled, { css } from "styled-components";
@@ -15,34 +19,34 @@ const NavBar = ({ navLinks, setNavLinks, pathname }) => {
   // const { pathname } = location;
   //   console.log(navLinks);
 
-  const updateNavLinks = () => {
-    switch (pathname) {
-      case "/":
-        setNavLinks(["commissions", "originals", "about", "contact"]);
-        break;
-      case "/commissions":
-        setNavLinks(["originals", "process", "about", "contact"]);
-        break;
-      case "/originals":
-        setNavLinks(["commissions", "process", "about", "contact"]);
-        break;
-      case "/process":
-        setNavLinks(["commissions", "originals", "about", "contact"]);
-        break;
-      case "/about":
-        setNavLinks(["commissions", "originals", "process", "contact"]);
-        break;
-      case "/contact":
-        setNavLinks(["commissions", "originals", "process", "about"]);
-        break;
-      default:
-        setNavLinks(["commissions", "originals", "process", "about"]);
-    }
-  };
+  // const updateNavLinks = () => {
+  //   switch (pathname) {
+  //     case "/":
+  //       setNavLinks(["commissions", "originals", "about", "contact"]);
+  //       break;
+  //     case "/commissions":
+  //       setNavLinks(["originals", "process", "about", "contact"]);
+  //       break;
+  //     case "/originals":
+  //       setNavLinks(["commissions", "process", "about", "contact"]);
+  //       break;
+  //     case "/process":
+  //       setNavLinks(["commissions", "originals", "about", "contact"]);
+  //       break;
+  //     case "/about":
+  //       setNavLinks(["commissions", "originals", "process", "contact"]);
+  //       break;
+  //     case "/contact":
+  //       setNavLinks(["commissions", "originals", "process", "about"]);
+  //       break;
+  //     default:
+  //       setNavLinks(["commissions", "originals", "process", "about"]);
+  //   }
+  // };
 
-  useEffect(() => {
-    updateNavLinks();
-  }, [pathname]);
+  // useEffect(() => {
+  //   updateNavLinks();
+  // }, [pathname]);
 
   return (
     <AnimatePresence>
@@ -53,6 +57,9 @@ const NavBar = ({ navLinks, setNavLinks, pathname }) => {
           animate={pathname === "/" ? "hidden" : "show"}
           exit="hidden"
         >
+          {/* <Link to="/">
+            <img src={wmb} className="logo" alt="" />
+          </Link> */}
           <div className="container">
             <NavLinksComponent navLinks={navLinks} />
             <div className="line-deco">
@@ -69,7 +76,8 @@ const NavBar = ({ navLinks, setNavLinks, pathname }) => {
 
 const StyledNavBar = styled(motion.nav)`
   ${({ theme }) => css`
-    min-height: 20rem;
+    /* min-height: 20rem; */
+    padding: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,6 +85,14 @@ const StyledNavBar = styled(motion.nav)`
 
     ul {
       padding: 0 2rem;
+      padding-left: 100px;
+    }
+
+    .logo {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      height: 100px;
     }
 
     .line-deco {
@@ -115,6 +131,12 @@ const StyledNavBar = styled(motion.nav)`
     }
     @media screen and (max-width: 768px) {
       display: none;
+    }
+
+    @media screen and (min-width: 1350px) {
+      ul {
+        padding: 0 2rem;
+      }
     }
   `}
 `;

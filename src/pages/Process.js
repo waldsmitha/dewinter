@@ -8,6 +8,8 @@ import {
 
 //Components
 import VideoCard from "../components/VideoCard";
+import ScrollTop from "../components/ScrollTop";
+import { Frame1, Frame2, Frame3, Frame4 } from "../components/StyledComponents";
 
 //Styles
 import styled, { css } from "styled-components";
@@ -37,7 +39,7 @@ const Process = () => {
       </motion.div>
       <motion.div variants={opacity}>
         {data && (
-          <div>
+          <div className="intro">
             <h1>{data.title[0].text}</h1>
             <div className="description">
               <p>{data.description[0].text}</p>
@@ -50,6 +52,7 @@ const Process = () => {
             processes.map((item) => <VideoCard key={item.id} data={item} />)}
         </section>
       </motion.div>
+      <ScrollTop />
     </StyledProcess>
   );
 };
@@ -64,6 +67,7 @@ const StyledProcess = styled(motion.div)`
     & > * {
       margin: ${theme.spacing.sectionPaddingDesktop} 0;
     }
+
     .description {
       p:first-child {
         margin-bottom: 1rem;
@@ -73,6 +77,10 @@ const StyledProcess = styled(motion.div)`
     h1 {
       text-align: center;
       margin-bottom: 25px;
+    }
+
+    .intro {
+      margin-bottom: ${theme.spacing.sectionPaddingDesktop};
     }
 
     .gallery {
@@ -99,26 +107,6 @@ const StyledProcess = styled(motion.div)`
       }
     }
   `}
-`;
-
-//Frame Animation
-const Frame1 = styled(motion.div)`
-  position: fixed;
-  left: 0;
-  top: 15%;
-  width: 100%;
-  height: 100vh;
-  background: #131313;
-  z-index: 10;
-`;
-const Frame2 = styled(Frame1)`
-  background: #ababab;
-`;
-const Frame3 = styled(Frame1)`
-  background: #131313;
-`;
-const Frame4 = styled(Frame1)`
-  background: #ababab;
 `;
 
 export default Process;
