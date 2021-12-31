@@ -73,6 +73,12 @@ const StyledLinks = styled(motion.div)`
       /* transition: 0.2s; */
     }
 
+    /* @media screen and (max-width: 768px) {
+      .line {
+        display: none;
+      }
+    } */
+
     /* a:hover {
       .line {
         width: 50%;

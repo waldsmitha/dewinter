@@ -64,6 +64,7 @@ const StyledProcess = styled(motion.div)`
     margin: 0 auto;
     padding: 0 2rem;
     position: relative;
+    /* overflow: hidden; */
 
     & > * {
       margin: ${theme.spacing.sectionPaddingDesktop} 0;

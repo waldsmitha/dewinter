@@ -66,7 +66,7 @@ button {
 body {
     font-family: 'Gothic A1', sans-serif;
     font-weight: 300;
-    /* height: 100%; */
+    height: 100%;
     overflow: scroll;
     width: 100vw;
     overflow-x: hidden;
@@ -76,8 +76,9 @@ html {
     background: url(${background}) no-repeat center center fixed; 
     background-size: cover;
     color: #FFFDF6;
-    /* height: 100%;  */
-    /* overflow: hidden; */
+    height: 100%; 
+    /* overflow-x: hidden; */
+    
 
 }
 

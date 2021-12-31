@@ -7,7 +7,7 @@ export const Frame1 = styled(motion.div)`
   position: absolute;
   left: 0;
   top: 0;
-  width: 100vw;
+  width: 100%;
   height: 110%;
   background: #131313;
   z-index: 10;

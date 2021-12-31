@@ -91,6 +91,12 @@ const StyledHome = styled(motion.div)`
       }
     }
 
+    /* @media screen and (max-width: 768px) {
+      .line {
+        display: none;
+      }
+    } */
+
     .logo {
       position: absolute;
       top: 1rem;
