@@ -4,13 +4,18 @@ import { motion } from "framer-motion";
 
 //Frame Animation
 export const Frame1 = styled(motion.div)`
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   height: 110%;
   background: #131313;
-  z-index: 10;
+  z-index: 1;
+
+  @media screen and (min-width: 768px) {
+    top: 200px;
+    /* top: 0px; */
+  }
 `;
 
 export const Frame2 = styled(Frame1)`

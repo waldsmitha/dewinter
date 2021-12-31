@@ -61,6 +61,8 @@ const StyledOriginals = styled(motion.div)`
     margin: 0 auto;
     padding: 0 2rem;
     position: relative;
+    width: 100vw;
+    /* overflow-x: hidden; */
 
     h1 {
       text-align: center;
