@@ -170,7 +170,7 @@ export const pageAnimation = {
 // };
 
 export const slider = {
-  hidden: { x: "-100%" },
+  hidden: { x: "-130%" },
   show: {
     x: "100%",
     transition: { ease: "easeOut", duration: 0.75 },

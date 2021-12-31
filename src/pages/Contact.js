@@ -29,7 +29,7 @@ const Contact = () => {
         <Frame3 variants={slider}></Frame3>
         <Frame4 variants={slider}></Frame4>
       </motion.div>
-      <motion.div variants={opacity}>
+      <motion.div variants={opacity} className="content">
         <h1>Contact</h1>
         <div className="contact-info">
           <div className="email">
@@ -62,13 +62,20 @@ const StyledContact = styled(motion.div)`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    min-height: 80vh;
+    margin: auto 0;
+    min-height: 69vh;
+    position: relative;
+    margin-top: 100px;
 
     h1 {
       border-bottom: 2px solid #ababab;
       line-height: 60%;
       padding-bottom: 2rem;
       margin-bottom: 2rem;
+    }
+
+    .content {
+      transform: translateY(-100px);
     }
 
     .email,

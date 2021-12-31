@@ -75,7 +75,7 @@ const StyledApp = styled(motion.div)`
   .hidden {
     display: none;
   }
-  height: 100vh;
+  /* height: 100vh; */
   width: 100vw;
   color: #fffdf6;
 

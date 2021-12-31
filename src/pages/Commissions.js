@@ -60,6 +60,7 @@ const StyledCommissions = styled(motion.div)`
     min-height: 100vh;
     margin: 0 auto;
     padding: 0 2rem;
+    position: relative;
 
     h1 {
       text-align: center;

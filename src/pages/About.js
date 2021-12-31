@@ -78,6 +78,7 @@ const StyledAbout = styled(motion.div)`
     min-height: 100vh;
     margin: 0 auto;
     padding: 0 2rem;
+    position: relative;
 
     & > * {
         /* margin: ${theme.spacing.sectionPaddingMobile} 0; */
