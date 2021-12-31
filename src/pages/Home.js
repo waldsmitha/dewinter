@@ -79,7 +79,7 @@ const StyledHome = styled(motion.div)`
     }
     .line {
       height: 0.5rem;
-      background: #ababab;
+      background: ${theme.color.secondary};
       width: 0%;
       margin: 0 1rem;
       transition: 0.2s;

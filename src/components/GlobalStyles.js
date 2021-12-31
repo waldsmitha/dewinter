@@ -65,11 +65,11 @@ button {
 
 body {
     font-family: 'Gothic A1', sans-serif;
+    font-weight: 300;
     height: 100%;
     overflow: scroll;
     width: 100vw;
     overflow-x: hidden;
-    
 }
 html {
     background-repeat: no-repeat;

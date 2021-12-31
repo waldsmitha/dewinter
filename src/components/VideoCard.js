@@ -39,9 +39,9 @@ const StyledVideoCard = styled(motion.div)`
   .title {
     margin: 1rem 0;
 
-    p:first-child {
+    /* p:first-child {
       font-family: "bonvoyage", serif;
-    }
+    } */
     p:last-child {
       font-size: 1.25rem;
     }
