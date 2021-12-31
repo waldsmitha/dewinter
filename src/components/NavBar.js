@@ -7,23 +7,18 @@ import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
 //Animations
+import { AnimatePresence } from "framer-motion";
 import { revealDown } from "../animations";
 
-const NavBar = ({ navLinks, setNavLinks }) => {
-  const location = useLocation();
-  const { pathname } = location;
+const NavBar = ({ navLinks, setNavLinks, pathname }) => {
+  // const location = useLocation();
+  // const { pathname } = location;
   //   console.log(navLinks);
 
   const updateNavLinks = () => {
     switch (pathname) {
       case "/":
-        setNavLinks([
-          "commissions",
-          "originals",
-          "process",
-          "about",
-          "contact",
-        ]);
+        setNavLinks(["commissions", "originals", "about", "contact"]);
         break;
       case "/commissions":
         setNavLinks(["originals", "process", "about", "contact"]);
@@ -41,13 +36,7 @@ const NavBar = ({ navLinks, setNavLinks }) => {
         setNavLinks(["commissions", "originals", "process", "about"]);
         break;
       default:
-        setNavLinks([
-          "commissions",
-          "originals",
-          "process",
-          "about",
-          "contact",
-        ]);
+        setNavLinks(["commissions", "originals", "process", "about"]);
     }
   };
 
@@ -56,20 +45,25 @@ const NavBar = ({ navLinks, setNavLinks }) => {
   }, [pathname]);
 
   return (
-    <StyledNavBar
-      variants={revealDown}
-      initial="hidden"
-      animate={pathname == "/" ? "hidden" : "show"}
-    >
-      <div className="container">
-        <NavLinksComponent navLinks={navLinks} />
-        <div className="line-deco">
-          <span className="first"></span>
-          <span className="second"></span>
-          <span className="third"></span>
-        </div>
-      </div>
-    </StyledNavBar>
+    <AnimatePresence>
+      {pathname !== "/" && (
+        <StyledNavBar
+          variants={revealDown}
+          initial="hidden"
+          animate={pathname === "/" ? "hidden" : "show"}
+          exit="hidden"
+        >
+          <div className="container">
+            <NavLinksComponent navLinks={navLinks} />
+            <div className="line-deco">
+              <span className="first"></span>
+              <span className="second"></span>
+              <span className="third"></span>
+            </div>
+          </div>
+        </StyledNavBar>
+      )}
+    </AnimatePresence>
   );
 };
 

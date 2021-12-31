@@ -42,14 +42,13 @@ const MobileNavMenu = ({ navActive, setNavActive }) => {
           </Link>
         ))}
       </ul>
-      {/* <button onClick={() => navToggle()}>Exit</button> */}
     </StyledMobileNavMenu>
   );
 };
 
 const StyledMobileNavMenu = styled(motion.nav)`
   ${({ theme }) => css`
-    z-index: 10;
+    z-index: 100;
     position: fixed;
     top: 0;
     left: 0;

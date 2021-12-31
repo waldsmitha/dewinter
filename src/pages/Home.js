@@ -48,6 +48,10 @@ const StyledHome = styled(motion.div)`
     background-image: url(${background});
     background-size: cover;
     background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
 
     h1 {
       /* font-size: 6rem; */

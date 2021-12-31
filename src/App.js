@@ -38,18 +38,12 @@ function App() {
   return (
     <StyledApp>
       <Theme>
-        <div className={pathname === "/" ? "hidden" : ""}>
-          <NavBar
-            navLinks={navLinks}
-            setNavLinks={setNavLinks}
-            pathState={pathState}
-            exit="exit"
-            variants={pageAnimation}
-            initial="hidden"
-            animate="show"
-          />
-          <MobileHeader />
-        </div>
+        <NavBar
+          navLinks={navLinks}
+          setNavLinks={setNavLinks}
+          pathname={pathname}
+        />
+        <MobileHeader pathname={pathname} />
         <MobileNavMenu navActive={navActive} setNavActive={setNavActive} />
         <AnimatePresence exitBeforeEnter>
           <Routes location={location} key={location.pathname}>
@@ -63,8 +57,8 @@ function App() {
         </AnimatePresence>
         <div className={pathname === "/" ? "hidden" : ""}>
           <MobileNavButton navActive={navActive} setNavActive={setNavActive} />
-          <Footer />
         </div>
+        {/* <Footer pathname={pathname} /> */}
         <GlobalStyles />
       </Theme>
     </StyledApp>
@@ -72,9 +66,9 @@ function App() {
 }
 
 const StyledApp = styled(motion.div)`
-  /* .hidden {
+  .hidden {
     display: none;
-  } */
+  }
   height: 100vh;
   width: 100vw;
   color: #fffdf6;

@@ -105,7 +105,7 @@ const StyledProcess = styled(motion.div)`
 const Frame1 = styled(motion.div)`
   position: fixed;
   left: 0;
-  top: 0%;
+  top: 15%;
   width: 100%;
   height: 100vh;
   background: #131313;

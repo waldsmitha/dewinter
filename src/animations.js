@@ -48,7 +48,6 @@ export const opacity = {
   show: {
     opacity: 1,
     rotation: 0.02,
-    zIndex: 10,
     transition: {
       duration: 1,
       ease: "easeInOut",
@@ -57,7 +56,6 @@ export const opacity = {
   hidden: {
     opacity: 0,
     rotation: 0.02,
-    zIndex: -1,
     transition: {
       duration: 1,
       ease: "easeInOut",

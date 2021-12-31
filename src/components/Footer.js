@@ -10,22 +10,36 @@ import email from "../media/email.svg";
 import phone from "../media/phone.svg";
 import insta from "../media/insta.svg";
 
-const Footer = () => {
+const Footer = ({ pathname }) => {
   return (
-    <StyledFooter>
-      <div className="line-deco">
-        <span className="first"></span>
-        <span className="second"></span>
-        <span className="third"></span>
-      </div>
-      <img className="logo" src={wsb} alt="" />
-      <p>(C) De Winter Metal Works 2021. All Rights Reserved.</p>
-      <div className="social-media">
-        <img src={email} alt="" />
-        <img src={phone} alt="" />
-        <img src={insta} alt="" />
-      </div>
-    </StyledFooter>
+    <>
+      {pathname !== "/" && (
+        <StyledFooter
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            transition: {
+              duration: 1,
+              ease: "easeInOut",
+            },
+          }}
+          exit={{ opacity: 0 }}
+        >
+          <div className="line-deco">
+            <span className="first"></span>
+            <span className="second"></span>
+            <span className="third"></span>
+          </div>
+          <img className="logo" src={wsb} alt="" />
+          <p>(C) De Winter Metal Works 2021. All Rights Reserved.</p>
+          <div className="social-media">
+            <img src={email} alt="" />
+            <img src={phone} alt="" />
+            <img src={insta} alt="" />
+          </div>
+        </StyledFooter>
+      )}
+    </>
   );
 };
 
@@ -42,6 +56,7 @@ const StyledFooter = styled(motion.footer)`
     font-weight: 300;
     padding: 2rem;
     text-align: center;
+    opacity: 0;
 
     & > * {
       margin-bottom: 2rem;

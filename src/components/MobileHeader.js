@@ -8,20 +8,33 @@ import { motion } from "framer-motion";
 //Media
 import white_small_badge from "../media/white_small_badge.png";
 
-const MobileHeader = () => {
+//Animations
+import { AnimatePresence } from "framer-motion";
+import { revealDown } from "../animations";
+
+const MobileHeader = ({ pathname }) => {
   return (
-    <StyledMobileHeader>
-      <div className="container">
-        <Link to="/">
-          <img src={white_small_badge} alt="" />
-        </Link>
-      </div>
-      <div className="line-deco">
-        <span className="first"></span>
-        <span className="second"></span>
-        <span className="third"></span>
-      </div>
-    </StyledMobileHeader>
+    <AnimatePresence>
+      {pathname !== "/" && (
+        <StyledMobileHeader
+          variants={revealDown}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+        >
+          <div className="container">
+            <Link to="/">
+              <img src={white_small_badge} alt="" />
+            </Link>
+          </div>
+          <div className="line-deco">
+            <span className="first"></span>
+            <span className="second"></span>
+            <span className="third"></span>
+          </div>
+        </StyledMobileHeader>
+      )}
+    </AnimatePresence>
   );
 };
 
