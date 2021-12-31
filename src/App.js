@@ -77,6 +77,7 @@ const StyledApp = styled(motion.div)`
   }
 
   width: 100vw;
+  overflow-x: hidden;
   color: #fffdf6;
 
   .logo {
