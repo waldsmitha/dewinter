@@ -14,15 +14,32 @@ import { motion } from "framer-motion";
 import BioCard from "../components/BioCard";
 import ScrollTop from "../components/ScrollTop";
 import { Frame1, Frame2, Frame3, Frame4 } from "../components/StyledComponents";
+import { useScroll } from "../components/useScroll";
 
 //Animations
-import { sliderContainer, slider, pageAnimation, opacity } from "../animations";
+import {
+  sliderContainer,
+  slider,
+  stagger,
+  pageAnimation,
+  opacity,
+  revealUp,
+} from "../animations";
 
 const About = () => {
   const [documents] = usePrismicDocumentsByType("bio_card");
   const [aboutIntro] = useSinglePrismicDocument("about_intro");
   const data = aboutIntro && aboutIntro.data;
   const bios = documents && documents.results;
+
+  const [element, controls] = useScroll();
+
+  // <motion.div
+  //     ref={element}
+  //     initial="hidden"
+  //     animate={controls}
+  //     variants={revealUp}>
+  // </motion.div>
 
   return (
     <StyledAbout
@@ -40,15 +57,24 @@ const About = () => {
       <motion.div variants={opacity}>
         {data && (
           <>
-            <header>
+            <motion.header>
               <div>
                 <img src={data.title_image.url} alt="" />
               </div>
-              <h1>
-                About <br /> De Winter <br /> Metalworks
-              </h1>
-            </header>
-            <div className="intro">
+              <motion.div variants={stagger}>
+                <div className="no-overflow">
+                  <motion.h1 variants={revealUp}>About</motion.h1>
+                </div>
+                <div className="no-overflow">
+                  <motion.h1 variants={revealUp}>De Winter</motion.h1>
+                </div>
+                <div className="no-overflow">
+                  <motion.h1 variants={revealUp}>Metalworks</motion.h1>
+                </div>
+                {/* About <br /> De Winter <br /> Metalworks */}
+              </motion.div>
+            </motion.header>
+            <motion.div className="intro">
               <section className="company-info">
                 <div className="company-bio">
                   <h2>{data.subtitle[0].text}</h2>
@@ -59,11 +85,11 @@ const About = () => {
                   <img src={data.subsection_image.url} alt="" />
                 </div>
               </section>
-              <section className="gallery">
+              <motion.section className="gallery">
                 {bios &&
                   bios.map((item) => <BioCard key={item.id} data={item} />)}
-              </section>
-            </div>
+              </motion.section>
+            </motion.div>
           </>
         )}
       </motion.div>
@@ -84,6 +110,10 @@ const StyledAbout = styled(motion.div)`
         /* margin: ${theme.spacing.sectionPaddingMobile} 0; */
         margin: ${theme.spacing.sectionPaddingDesktop} 0;
       }
+
+      .no-overflow {
+      overflow: hidden;
+    }
 
     .intro {
       & > * {margin: ${theme.spacing.sectionPaddingDesktop} 0;}
@@ -138,6 +168,8 @@ const StyledAbout = styled(motion.div)`
       grid-column-gap: 5rem;
       grid-row-gap: 10rem;
       width: 100%;
+
+      
     }
 
     @media screen and (min-width: 740px){
@@ -147,6 +179,9 @@ const StyledAbout = styled(motion.div)`
           padding-right:5rem;
           margin-top: 0;
         }
+      }
+      .gallery {
+        grid-template-columns: repeat(2, minmax(350px, 1fr));
       }
       .company-info {
         img {

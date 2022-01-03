@@ -68,7 +68,9 @@ const StyledCommissions = styled(motion.div)`
     }
 
     .intro {
+      margin: 0 auto;
       margin-top: ${theme.spacing.sectionPaddingDesktop};
+      max-width: 800px;
     }
 
     .product-gallery {
