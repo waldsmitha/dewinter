@@ -82,7 +82,7 @@ const StyledHome = styled(motion.div)`
       background: ${theme.color.secondary};
       width: 0%;
       margin: 0 1rem;
-      transition: 0.2s;
+      transition: 0.25s;
     }
 
     a:hover {
@@ -91,11 +91,11 @@ const StyledHome = styled(motion.div)`
       }
     }
 
-    /* @media screen and (max-width: 768px) {
+    @media screen and (max-width: 768px) {
       .line {
-        display: none;
+        background: none;
       }
-    } */
+    }
 
     .logo {
       position: absolute;

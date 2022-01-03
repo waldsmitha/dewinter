@@ -31,15 +31,13 @@ const About = () => {
   const [aboutIntro] = useSinglePrismicDocument("about_intro");
   const data = aboutIntro && aboutIntro.data;
   const bios = documents && documents.results;
+  const sortedBios =
+    bios &&
+    bios.sort((a, b) =>
+      a.data.bio_name[0].text > b.data.bio_name[0].text ? 1 : -1
+    );
 
   const [element, controls] = useScroll();
-
-  // <motion.div
-  //     ref={element}
-  //     initial="hidden"
-  //     animate={controls}
-  //     variants={revealUp}>
-  // </motion.div>
 
   return (
     <StyledAbout
@@ -86,8 +84,10 @@ const About = () => {
                 </div>
               </section>
               <motion.section className="gallery">
-                {bios &&
-                  bios.map((item) => <BioCard key={item.id} data={item} />)}
+                {sortedBios &&
+                  sortedBios.map((item) => (
+                    <BioCard key={item.id} data={item} />
+                  ))}
               </motion.section>
             </motion.div>
           </>

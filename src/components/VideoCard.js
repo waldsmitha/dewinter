@@ -1,8 +1,14 @@
 import React from "react";
 
+//Components
+import { useScroll } from "../components/useScroll";
+
 //Styles
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
+
+//Animations
+import { opacity } from "../animations";
 
 const VideoCard = ({ data }) => {
   const {
@@ -12,8 +18,15 @@ const VideoCard = ({ data }) => {
     process_upload_date,
   } = data.data;
 
+  const [element, controls] = useScroll();
+
   return (
-    <StyledVideoCard>
+    <StyledVideoCard
+      ref={element}
+      initial="hidden"
+      animate={controls}
+      variants={opacity}
+    >
       <div className="video">
         <video
           src={process_video.url}
