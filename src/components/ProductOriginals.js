@@ -65,7 +65,7 @@ const StyledProduct = styled(motion.div)`
       img {
         object-fit: cover;
         width: 100%;
-        flex: 1 1 300px;
+        flex: 1 1 350px;
         /* max-height: 500px; */
 
         /* &:last-child {
@@ -87,6 +87,14 @@ const StyledProduct = styled(motion.div)`
       /* p:last-child {
       text-align: right;
     } */
+    }
+
+    @media screen and (max-width: 768px) {
+      .flex-container {
+        img:nth-child(2) {
+          padding-left: 0rem;
+        }
+      }
     }
   `}
 `;

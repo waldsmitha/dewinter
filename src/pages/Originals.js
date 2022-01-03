@@ -113,7 +113,7 @@ const StyledOriginals = styled(motion.div)`
       margin: 25px;
 
       span {
-        padding: 0.1rem 5rem;
+        padding: 0.1rem 3rem;
         height: 0.25rem;
         background: ${theme.color.secondary};
       }
