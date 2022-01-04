@@ -1,10 +1,7 @@
-import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
-import NavLinksComponent from "./NavLinksComponent";
+import React from "react";
 
-//Media
-import wmb from "../media/white_medium_badge.png";
+//Components
+import NavLinksComponent from "./NavLinksComponent";
 
 //Styling
 import styled, { css } from "styled-components";
@@ -12,42 +9,9 @@ import { motion } from "framer-motion";
 
 //Animations
 import { AnimatePresence } from "framer-motion";
-import { revealDown } from "../animations";
+import { revealDown } from "../animations/animations";
 
 const NavBar = ({ navLinks, setNavLinks, pathname }) => {
-  // const location = useLocation();
-  // const { pathname } = location;
-  //   console.log(navLinks);
-
-  // const updateNavLinks = () => {
-  //   switch (pathname) {
-  //     case "/":
-  //       setNavLinks(["commissions", "originals", "about", "contact"]);
-  //       break;
-  //     case "/commissions":
-  //       setNavLinks(["originals", "process", "about", "contact"]);
-  //       break;
-  //     case "/originals":
-  //       setNavLinks(["commissions", "process", "about", "contact"]);
-  //       break;
-  //     case "/process":
-  //       setNavLinks(["commissions", "originals", "about", "contact"]);
-  //       break;
-  //     case "/about":
-  //       setNavLinks(["commissions", "originals", "process", "contact"]);
-  //       break;
-  //     case "/contact":
-  //       setNavLinks(["commissions", "originals", "process", "about"]);
-  //       break;
-  //     default:
-  //       setNavLinks(["commissions", "originals", "process", "about"]);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   updateNavLinks();
-  // }, [pathname]);
-
   return (
     <AnimatePresence>
       {pathname !== "/" && (

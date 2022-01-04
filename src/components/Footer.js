@@ -1,5 +1,5 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 //Styles
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
@@ -10,16 +10,27 @@ import email from "../media/email.svg";
 import phone from "../media/phone.svg";
 import insta from "../media/insta.svg";
 
-const Footer = ({ pathname }) => {
+const Footer = () => {
+  const location = useLocation().pathname;
+  const [footerActive, setFooterActive] = useState(true);
+
+  useEffect(() => {
+    if (location === "/" || location === "/contact") {
+      setFooterActive(false);
+    } else {
+      setFooterActive(true);
+    }
+  }, [location]);
+
   return (
     <>
-      {pathname !== "/" && (
+      {footerActive && (
         <StyledFooter
           initial={{ opacity: 0 }}
           animate={{
             opacity: 1,
             transition: {
-              duration: 1,
+              duration: 5,
               ease: "easeInOut",
             },
           }}
@@ -30,12 +41,25 @@ const Footer = ({ pathname }) => {
             <span className="second"></span>
             <span className="third"></span>
           </div>
-          <img className="logo" src={wsb} alt="" />
+          <img className="logo-footer" src={wsb} alt="" />
           <p>(C) De Winter Metal Works 2021. All Rights Reserved.</p>
           <div className="social-media">
-            <img src={email} alt="" />
-            <img src={phone} alt="" />
-            <img src={insta} alt="" />
+            <a href="mailto: info@dewintermetalworks.com" className="email">
+              <img src={email} alt="" />
+            </a>
+            <a href="tel:978-123-4567" className="phone">
+              {" "}
+              <img src={phone} alt="" />
+            </a>
+            <a
+              href="https://www.instagram.com/dewintermetalworks/"
+              target="_blank"
+              rel="noreferrer"
+              className="insta"
+            >
+              {" "}
+              <img src={insta} alt="" />
+            </a>
           </div>
         </StyledFooter>
       )}
@@ -62,7 +86,7 @@ const StyledFooter = styled(motion.footer)`
       margin-bottom: 2rem;
     }
 
-    .logo {
+    .logo-footer {
       height: 100px;
     }
     .social-media {

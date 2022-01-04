@@ -10,19 +10,28 @@ import {
 import VideoCard from "../components/VideoCard";
 import ScrollTop from "../components/ScrollTop";
 import { Frame1, Frame2, Frame3, Frame4 } from "../components/StyledComponents";
+import { NoOverflow } from "../components/StyledComponents";
 
 //Styles
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
 //Animations
-import { sliderContainer, slider, pageAnimation, opacity } from "../animations";
+import {
+  sliderContainer,
+  slider,
+  pageAnimation,
+  revealUp,
+} from "../animations/animations";
+
+import { opacity } from "../animations/processAnim";
 
 const Process = () => {
   const [documents] = usePrismicDocumentsByType("process_video");
   const [processIntro] = useSinglePrismicDocument("process_intro");
   const data = processIntro && processIntro.data;
   const processes = documents && documents.results;
+  const descriptionArr = data && data.description;
 
   return (
     <StyledProcess
@@ -42,8 +51,11 @@ const Process = () => {
           <div className="intro">
             <h1>{data.title[0].text}</h1>
             <div className="description">
-              <p>{data.description[0].text}</p>
-              <p>{data.description[1].text}</p>
+              {descriptionArr.map((item, i) => (
+                <NoOverflow key={`${item.type}${i}`}>
+                  <motion.p variants={revealUp}>{item.text}</motion.p>
+                </NoOverflow>
+              ))}
             </div>
           </div>
         )}
@@ -72,7 +84,7 @@ const StyledProcess = styled(motion.div)`
 
     .description {
       p:first-child {
-        margin-bottom: 1rem;
+        padding-bottom: 1rem;
       }
     }
 

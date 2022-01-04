@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 //Animations
-import { opacity, scaleDown } from "../animations/bioCardAnim";
+import { opacity, scaleDown } from "../animations/aboutAnim";
 
 //Components
 import { useScroll } from "../components/useScroll";

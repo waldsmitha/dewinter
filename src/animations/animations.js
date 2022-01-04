@@ -107,7 +107,7 @@ export const revealUp = {
     y: "0%",
     rotation: 0.02,
     transition: {
-      duration: 1,
+      duration: 0.75,
       ease: "easeInOut",
     },
   },
@@ -115,7 +115,7 @@ export const revealUp = {
     y: "100%",
     rotation: 0.02,
     transition: {
-      duration: 1,
+      duration: 0.75,
       ease: "easeInOut",
     },
   },
@@ -127,7 +127,6 @@ export const revealDown = {
     rotation: 0.02,
     transition: {
       duration: 1,
-      delay: 1,
       ease: "easeInOut",
     },
   },
@@ -136,7 +135,6 @@ export const revealDown = {
     rotation: 0.02,
     transition: {
       duration: 1,
-      delay: 0.5,
       ease: "easeInOut",
     },
   },

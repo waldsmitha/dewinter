@@ -10,7 +10,7 @@ import background from "../media/background.png";
 import wmb from "../media/white_medium_badge.png";
 
 //Animations
-import { sliderContainer, slider, pageAnimation } from "../animations";
+import { pageAnimation } from "../animations/animations";
 
 const Home = ({ navActive, setNavActive }) => {
   const navLinks = ["commissions", "originals", "process", "about", "contact"];
@@ -22,16 +22,18 @@ const Home = ({ navActive, setNavActive }) => {
       initial="hidden"
       animate="show"
     >
-      <img className="mobile-logo" src={wmb} alt="" />
-      <h1>De Winter Metalworks</h1>
-      <ul>
-        {navLinks.map((item) => (
-          <Link key={item} to={item}>
-            <li>{item}</li>
-            <div className="line"></div>
-          </Link>
-        ))}
-      </ul>
+      <div className="container">
+        <img className="mobile-logo" src={wmb} alt="" />
+        <h1>De Winter Metalworks</h1>
+        <ul>
+          {navLinks.map((item) => (
+            <Link key={item} to={item}>
+              <li>{item}</li>
+              <div className="line"></div>
+            </Link>
+          ))}
+        </ul>
+      </div>
     </StyledHome>
   );
 };
@@ -41,21 +43,24 @@ const StyledHome = styled(motion.div)`
     overflow: hidden;
     position: relative;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    background-image: url(${background});
-    background-size: cover;
-    background-position: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
 
     h1 {
-      /* font-size: 6rem; */
       text-align: center;
+    }
+
+    .container {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      background-image: url(${background});
+      background-size: cover;
+      background-position: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
     }
 
     .mobile-logo {

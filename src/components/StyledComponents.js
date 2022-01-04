@@ -1,5 +1,5 @@
 //Styles
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { motion } from "framer-motion";
 
 //Frame Animation
@@ -28,4 +28,8 @@ export const Frame3 = styled(Frame1)`
 
 export const Frame4 = styled(Frame1)`
   background: #ababab;
+`;
+
+export const NoOverflow = styled(motion.div)`
+  overflow: hidden;
 `;

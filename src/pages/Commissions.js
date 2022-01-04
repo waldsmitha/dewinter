@@ -16,7 +16,12 @@ import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
 //Animations
-import { sliderContainer, slider, pageAnimation, opacity } from "../animations";
+import {
+  sliderContainer,
+  slider,
+  pageAnimation,
+  opacity,
+} from "../animations/animations";
 
 const Commissions = () => {
   const [documents] = usePrismicDocumentsByType("comm-product");

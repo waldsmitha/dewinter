@@ -14,7 +14,7 @@ import { motion } from "framer-motion";
 import BioCard from "../components/BioCard";
 import ScrollTop from "../components/ScrollTop";
 import { Frame1, Frame2, Frame3, Frame4 } from "../components/StyledComponents";
-import { useScroll } from "../components/useScroll";
+import { NoOverflow } from "../components/StyledComponents";
 
 //Animations
 import {
@@ -24,7 +24,9 @@ import {
   pageAnimation,
   opacity,
   revealUp,
-} from "../animations";
+} from "../animations/animations";
+
+import { scaleDown } from "../animations/aboutAnim";
 
 const About = () => {
   const [documents] = usePrismicDocumentsByType("bio_card");
@@ -36,8 +38,6 @@ const About = () => {
     bios.sort((a, b) =>
       a.data.bio_name[0].text > b.data.bio_name[0].text ? 1 : -1
     );
-
-  const [element, controls] = useScroll();
 
   return (
     <StyledAbout
@@ -56,19 +56,23 @@ const About = () => {
         {data && (
           <>
             <motion.header>
-              <div>
-                <img src={data.title_image.url} alt="" />
-              </div>
-              <motion.div variants={stagger}>
-                <div className="no-overflow">
+              <NoOverflow>
+                <motion.img
+                  variants={scaleDown}
+                  src={data.title_image.url}
+                  alt=""
+                />
+              </NoOverflow>
+              <motion.div variants={stagger} className="about-header">
+                <NoOverflow>
                   <motion.h1 variants={revealUp}>About</motion.h1>
-                </div>
-                <div className="no-overflow">
+                </NoOverflow>
+                <NoOverflow>
                   <motion.h1 variants={revealUp}>De Winter</motion.h1>
-                </div>
-                <div className="no-overflow">
+                </NoOverflow>
+                <NoOverflow>
                   <motion.h1 variants={revealUp}>Metalworks</motion.h1>
-                </div>
+                </NoOverflow>
                 {/* About <br /> De Winter <br /> Metalworks */}
               </motion.div>
             </motion.header>
@@ -176,8 +180,10 @@ const StyledAbout = styled(motion.div)`
       header{
         flex-direction: row;
         img {
-          padding-right:5rem;
           margin-top: 0;
+        }
+        .about-header {
+          margin-left: 5rem;
         }
       }
       .gallery {

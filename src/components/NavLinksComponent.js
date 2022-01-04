@@ -7,13 +7,9 @@ import { useLocation } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
-//Media
-import white_small_badge from "../media/white_small_badge.png";
-
 const NavLinksComponent = ({ navLinks }) => {
   const location = useLocation();
   const { pathname } = location;
-  // console.log(navLinks);
 
   return (
     <div>

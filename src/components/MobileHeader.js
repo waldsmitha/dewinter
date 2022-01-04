@@ -10,7 +10,7 @@ import white_small_badge from "../media/white_small_badge.png";
 
 //Animations
 import { AnimatePresence } from "framer-motion";
-import { revealDown } from "../animations";
+import { revealDown } from "../animations/animations";
 
 const MobileHeader = ({ pathname }) => {
   return (

@@ -1,8 +1,8 @@
-import "./App.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Route, Routes, useLocation, Link } from "react-router-dom";
 
 //Styles
+import "./App.css";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import Theme from "./Theme";
@@ -25,7 +25,6 @@ import Footer from "./components/Footer";
 
 //Animations
 import { AnimatePresence } from "framer-motion";
-import { pageAnimation } from "./animations";
 
 //Media
 import wmb from "./media/white_medium_badge.png";
@@ -36,7 +35,6 @@ function App() {
   const links = ["commissions", "originals", "process", "about", "contact"];
   const [navLinks, setNavLinks] = useState([...links]);
   const [navActive, setNavActive] = useState(true);
-  const [pathState, setPathState] = useState(location.pathname);
 
   return (
     <StyledApp>
@@ -64,7 +62,7 @@ function App() {
         <div className={pathname === "/" ? "hidden" : ""}>
           <MobileNavButton navActive={navActive} setNavActive={setNavActive} />
         </div>
-        {/* <Footer pathname={pathname} /> */}
+        <Footer pathname={pathname} />
         <GlobalStyles />
       </Theme>
     </StyledApp>

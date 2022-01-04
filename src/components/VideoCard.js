@@ -8,7 +8,7 @@ import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
 //Animations
-import { opacity } from "../animations";
+import { opacity } from "../animations/animations";
 
 const VideoCard = ({ data }) => {
   const {

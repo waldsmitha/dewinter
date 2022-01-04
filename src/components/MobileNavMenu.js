@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import wsb from "../media/white_small_badge.png";
 
 //Animations
-import { revealNavMobile } from "../animations";
+import { revealNavMobile } from "../animations/animations";
 
 const MobileNavMenu = ({ navActive, setNavActive }) => {
   const links = ["commissions", "originals", "process", "about", "contact"];
