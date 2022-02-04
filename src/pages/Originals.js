@@ -10,9 +10,6 @@ import {
 import ProductGallery from "../components/ProductGallery";
 import ScrollTop from "../components/ScrollTop";
 
-//Hooks
-import useWindowDimensions from "../components/useWindowDimensions";
-
 //Styles
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
@@ -27,19 +24,12 @@ import {
   revealLeft,
   revealRight,
 } from "../animations/originalsAnim";
-import { useEffect } from "react/cjs/react.development";
 
 const Originals = () => {
   const [documents] = usePrismicDocumentsByType("orig_product");
   const [origIntro] = useSinglePrismicDocument("original_designs");
   const data = origIntro && origIntro.data;
   const productInfo = documents && documents.results;
-
-  const { height } = useWindowDimensions();
-
-  useEffect(() => {
-    console.log(height);
-  }, [height]);
 
   return (
     <>
