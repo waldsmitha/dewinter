@@ -7,21 +7,19 @@ import {
 } from "@prismicio/react";
 
 //Components
-import ProductOriginals from "../components/ProductOriginals";
+import ProductGallery from "../components/ProductGallery";
 import ScrollTop from "../components/ScrollTop";
-import { Frame1, Frame2, Frame3, Frame4 } from "../components/StyledComponents";
+
+//Hooks
+import useWindowDimensions from "../components/useWindowDimensions";
 
 //Styles
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
 //Animations
-import {
-  sliderContainer,
-  slider,
-  pageAnimation,
-  opacity,
-} from "../animations/animations";
+// import { pageAnimation, opacity } from "../animations/animations";
+import { pageAnimation } from "../animations/originalsAnim";
 
 import {
   revealUp,
@@ -29,6 +27,7 @@ import {
   revealLeft,
   revealRight,
 } from "../animations/originalsAnim";
+import { useEffect } from "react/cjs/react.development";
 
 const Originals = () => {
   const [documents] = usePrismicDocumentsByType("orig_product");
@@ -36,21 +35,21 @@ const Originals = () => {
   const data = origIntro && origIntro.data;
   const productInfo = documents && documents.results;
 
+  const { height } = useWindowDimensions();
+
+  useEffect(() => {
+    console.log(height);
+  }, [height]);
+
   return (
-    <StyledOriginals
-      exit="exit"
-      variants={pageAnimation}
-      initial="hidden"
-      animate="show"
-    >
-      <motion.div variants={sliderContainer}>
-        <Frame1 variants={slider}></Frame1>
-        <Frame2 variants={slider}></Frame2>
-        <Frame3 variants={slider}></Frame3>
-        <Frame4 variants={slider}></Frame4>
-      </motion.div>
-      <motion.div variants={opacity}>
-        {data && (
+    <>
+      {data && (
+        <StyledOriginals
+          exit="exit"
+          variants={pageAnimation}
+          initial="hidden"
+          animate="show"
+        >
           <motion.div className="intro">
             <h1>{data.title[0].text}</h1>
             <div className="sub-header">
@@ -68,16 +67,11 @@ const Originals = () => {
               </motion.p>
             </motion.div>
           </motion.div>
-        )}
-        <section className="product-gallery">
-          {productInfo &&
-            productInfo.map((item) => (
-              <ProductOriginals key={item.id} data={item} />
-            ))}
-        </section>
-      </motion.div>
-      <ScrollTop />
-    </StyledOriginals>
+          {productInfo && <ProductGallery productInfo={productInfo} />}
+          <ScrollTop />
+        </StyledOriginals>
+      )}
+    </>
   );
 };
 
@@ -85,6 +79,7 @@ const StyledOriginals = styled(motion.div)`
   ${({ theme }) => css`
     max-width: ${theme.spacing.maxWidth};
     min-height: 100vh;
+
     margin: 0 auto;
     padding: 0 2rem;
     position: relative;
@@ -118,13 +113,36 @@ const StyledOriginals = styled(motion.div)`
       margin: 25px;
 
       span {
-        padding: 0.1rem 3rem;
+        padding: 0.1rem 2rem;
         height: 0.25rem;
         background: ${theme.color.secondary};
       }
 
       h3 {
+        /* min-width: 250px; */
         margin: 0 2rem;
+      }
+    }
+    .sub-header-mobile {
+      margin-bottom: 25px;
+      margin: 25px;
+
+      & > * {
+        display: inline-block;
+      }
+
+      span {
+        padding: 0.05rem 5rem;
+        height: 0.05rem;
+        width: 100%;
+        background: ${theme.color.secondary};
+      }
+
+      h3 {
+        margin: 0 2rem;
+        padding-top: 1rem;
+        font-family: "Gothic A1", sans-serif;
+        font-weight: 300;
       }
     }
 
@@ -132,14 +150,6 @@ const StyledOriginals = styled(motion.div)`
       margin: 0 auto;
       margin-top: ${theme.spacing.sectionPaddingDesktop};
       max-width: 800px;
-    }
-
-    .product-gallery {
-      margin: ${theme.spacing.sectionPaddingDesktop} 0;
-
-      & > * {
-        margin: ${theme.spacing.sectionPaddingDesktop} 0;
-      }
     }
 
     @media screen and (max-width: 768px) {

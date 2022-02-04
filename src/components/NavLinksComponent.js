@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useLocation } from "react-router-dom";
@@ -7,9 +7,11 @@ import { useLocation } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
-const NavLinksComponent = ({ navLinks }) => {
+const NavLinksComponent = () => {
   const location = useLocation();
   const { pathname } = location;
+  const links = ["about", "projects", "originals", "process", "contact"];
+  const [navLinks] = useState([...links]);
 
   return (
     <div>

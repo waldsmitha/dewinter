@@ -32,35 +32,34 @@ import wmb from "./media/white_medium_badge.png";
 function App() {
   const location = useLocation();
   const pathname = location.pathname;
-  const links = ["commissions", "originals", "process", "about", "contact"];
-  const [navLinks, setNavLinks] = useState([...links]);
   const [navActive, setNavActive] = useState(true);
 
   return (
     <StyledApp>
       <Theme>
-        <NavBar
-          navLinks={navLinks}
-          setNavLinks={setNavLinks}
-          pathname={pathname}
-        />
-        <MobileHeader pathname={pathname} />
-        <MobileNavMenu navActive={navActive} setNavActive={setNavActive} />
-        <Link to="/">
-          <img src={wmb} className="logo" alt="" />
-        </Link>
-        <AnimatePresence exitBeforeEnter>
-          <Routes location={location} key={location.pathname}>
-            <Route exact path="/" element={<Home />} />
-            <Route path="/commissions" element={<Commissions />} />
-            <Route path="/originals" element={<Originals />} />
-            <Route path="/process" element={<Process />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </AnimatePresence>
-        <div className={pathname === "/" ? "hidden" : ""}>
-          <MobileNavButton navActive={navActive} setNavActive={setNavActive} />
+        <div className="wrapper">
+          <NavBar pathname={pathname} />
+          <MobileHeader pathname={pathname} />
+          <MobileNavMenu navActive={navActive} setNavActive={setNavActive} />
+          <Link to="/">
+            <img src={wmb} className="logo" alt="" />
+          </Link>
+          <AnimatePresence exitBeforeEnter>
+            <Routes location={location} key={location.pathname}>
+              <Route exact path="/" element={<Home />} />
+              <Route path="/projects" element={<Commissions />} />
+              <Route path="/originals" element={<Originals />} />
+              <Route path="/process" element={<Process />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+            {pathname !== "/" && (
+              <MobileNavButton
+                navActive={navActive}
+                setNavActive={setNavActive}
+              />
+            )}
+          </AnimatePresence>
         </div>
         <Footer pathname={pathname} />
         <GlobalStyles />
@@ -75,7 +74,7 @@ const StyledApp = styled(motion.div)`
   }
 
   width: 100vw;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
   color: #fffdf6;
 
   .logo {
@@ -84,6 +83,10 @@ const StyledApp = styled(motion.div)`
     top: 1rem;
     left: 1rem;
     height: 80px;
+  }
+
+  .wrapper {
+    min-height: 100vh;
   }
 
   @media screen and (max-width: 768px) {

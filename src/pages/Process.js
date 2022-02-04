@@ -9,7 +9,6 @@ import {
 //Components
 import VideoCard from "../components/VideoCard";
 import ScrollTop from "../components/ScrollTop";
-import { Frame1, Frame2, Frame3, Frame4 } from "../components/StyledComponents";
 import { NoOverflow } from "../components/StyledComponents";
 
 //Styles
@@ -17,14 +16,8 @@ import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
 //Animations
-import {
-  sliderContainer,
-  slider,
-  pageAnimation,
-  revealUp,
-} from "../animations/animations";
-
-import { opacity } from "../animations/processAnim";
+import { pageAnimation } from "../animations/animations";
+import { revealUp } from "../animations/processAnim";
 
 const Process = () => {
   const [documents] = usePrismicDocumentsByType("process_video");
@@ -34,20 +27,14 @@ const Process = () => {
   const descriptionArr = data && data.description;
 
   return (
-    <StyledProcess
-      exit="exit"
-      variants={pageAnimation}
-      initial="hidden"
-      animate="show"
-    >
-      <motion.div variants={sliderContainer}>
-        <Frame1 variants={slider}></Frame1>
-        <Frame2 variants={slider}></Frame2>
-        <Frame3 variants={slider}></Frame3>
-        <Frame4 variants={slider}></Frame4>
-      </motion.div>
-      <motion.div variants={opacity}>
-        {data && (
+    <>
+      {data && (
+        <StyledProcess
+          exit="exit"
+          variants={pageAnimation}
+          initial="hidden"
+          animate="show"
+        >
           <div className="intro">
             <h1>{data.title[0].text}</h1>
             <div className="description">
@@ -58,14 +45,16 @@ const Process = () => {
               ))}
             </div>
           </div>
-        )}
-        <section className="gallery">
-          {processes &&
-            processes.map((item) => <VideoCard key={item.id} data={item} />)}
-        </section>
-      </motion.div>
-      <ScrollTop />
-    </StyledProcess>
+
+          <section className="gallery">
+            {processes &&
+              processes.map((item) => <VideoCard key={item.id} data={item} />)}
+          </section>
+
+          <ScrollTop />
+        </StyledProcess>
+      )}
+    </>
   );
 };
 
@@ -83,6 +72,8 @@ const StyledProcess = styled(motion.div)`
     }
 
     .description {
+      max-width: 800px;
+      margin: 0 auto;
       p:first-child {
         padding-bottom: 1rem;
       }

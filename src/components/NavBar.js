@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 import { revealDown } from "../animations/animations";
 
-const NavBar = ({ navLinks, setNavLinks, pathname }) => {
+const NavBar = ({ pathname }) => {
   return (
     <AnimatePresence>
       {pathname !== "/" && (
@@ -25,7 +25,7 @@ const NavBar = ({ navLinks, setNavLinks, pathname }) => {
             <img src={wmb} className="logo" alt="" />
           </Link> */}
           <div className="container">
-            <NavLinksComponent navLinks={navLinks} />
+            <NavLinksComponent />
             <div className="line-deco">
               <span className="first"></span>
               <span className="second"></span>

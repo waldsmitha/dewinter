@@ -62,6 +62,12 @@ export const opacity = {
       ease: "easeInOut",
     },
   },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.25,
+    },
+  },
 };
 
 export const opacity2 = {
@@ -107,7 +113,7 @@ export const revealUp = {
     y: "0%",
     rotation: 0.02,
     transition: {
-      duration: 0.75,
+      duration: 0.5,
       ease: "easeInOut",
     },
   },
@@ -115,8 +121,14 @@ export const revealUp = {
     y: "100%",
     rotation: 0.02,
     transition: {
-      duration: 0.75,
+      duration: 0.5,
       ease: "easeInOut",
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.25,
     },
   },
 };
@@ -136,6 +148,12 @@ export const revealDown = {
     transition: {
       duration: 1,
       ease: "easeInOut",
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.25,
     },
   },
 };

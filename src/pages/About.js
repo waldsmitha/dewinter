@@ -13,13 +13,10 @@ import { motion } from "framer-motion";
 //Components
 import BioCard from "../components/BioCard";
 import ScrollTop from "../components/ScrollTop";
-import { Frame1, Frame2, Frame3, Frame4 } from "../components/StyledComponents";
 import { NoOverflow } from "../components/StyledComponents";
 
 //Animations
 import {
-  sliderContainer,
-  slider,
   stagger,
   pageAnimation,
   opacity,
@@ -40,21 +37,15 @@ const About = () => {
     );
 
   return (
-    <StyledAbout
-      exit="exit"
-      variants={pageAnimation}
-      initial="hidden"
-      animate="show"
-    >
-      <motion.div variants={sliderContainer}>
-        <Frame1 variants={slider}></Frame1>
-        <Frame2 variants={slider}></Frame2>
-        <Frame3 variants={slider}></Frame3>
-        <Frame4 variants={slider}></Frame4>
-      </motion.div>
-      <motion.div variants={opacity}>
-        {data && (
-          <>
+    <>
+      {data && (
+        <StyledAbout
+          exit="exit"
+          variants={pageAnimation}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.div variants={opacity}>
             <motion.header>
               <NoOverflow>
                 <motion.img
@@ -73,7 +64,6 @@ const About = () => {
                 <NoOverflow>
                   <motion.h1 variants={revealUp}>Metalworks</motion.h1>
                 </NoOverflow>
-                {/* About <br /> De Winter <br /> Metalworks */}
               </motion.div>
             </motion.header>
             <motion.div className="intro">
@@ -94,11 +84,11 @@ const About = () => {
                   ))}
               </motion.section>
             </motion.div>
-          </>
-        )}
-      </motion.div>
-      <ScrollTop />
-    </StyledAbout>
+          </motion.div>
+          <ScrollTop />
+        </StyledAbout>
+      )}
+    </>
   );
 };
 

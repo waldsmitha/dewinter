@@ -77,13 +77,26 @@ const StyledProduct = styled(motion.div)`
   .product-info {
     text-align: justify;
     margin: 0 auto;
-    max-width: 600px;
+    max-width: 800px;
     p:first-child {
       padding-bottom: 1rem;
     }
     /* p:last-child {
       text-align: right;
     } */
+  }
+
+  @media screen and (max-width: 650px) {
+    .flex-container {
+      img {
+        &:nth-child(2) {
+          padding-left: 0;
+        }
+        &:nth-child(1) {
+          padding-right: 0;
+        }
+      }
+    }
   }
 `;
 

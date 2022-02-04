@@ -4,13 +4,21 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
+import { revealUp } from "../animations/animations";
+
 const MobileNavButton = ({ navActive, setNavActive }) => {
   const navToggle = () => {
     setNavActive(!navActive);
   };
 
   return (
-    <StyledMobileNavButton onClick={navToggle}>
+    <StyledMobileNavButton
+      exit="exit"
+      variants={revealUp}
+      initial="hidden"
+      animate="show"
+      onClick={navToggle}
+    >
       <span className={navActive ? "" : "transform-1"}></span>
       <span className={navActive ? "" : "transform-2"}></span>
       <span className={navActive ? "" : "transform-3"}></span>
@@ -22,6 +30,7 @@ const StyledMobileNavButton = styled(motion.button)`
   ${({ theme }) => css`
     position: fixed;
     bottom: 1rem;
+    /* top: 85%; */
     left: 1rem;
     background: none;
     height: 7rem;

@@ -10,15 +10,7 @@ import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
 //Animations
-import {
-  sliderContainer,
-  slider,
-  pageAnimation,
-  opacity,
-} from "../animations/animations";
-
-//Components
-import { Frame1, Frame2, Frame3, Frame4 } from "../components/StyledComponents";
+import { pageAnimation, opacity } from "../animations/animations";
 
 const Contact = () => {
   return (
@@ -28,12 +20,6 @@ const Contact = () => {
       initial="hidden"
       animate="show"
     >
-      <motion.div variants={sliderContainer}>
-        <Frame1 variants={slider}></Frame1>
-        <Frame2 variants={slider}></Frame2>
-        <Frame3 variants={slider}></Frame3>
-        <Frame4 variants={slider}></Frame4>
-      </motion.div>
       <motion.div variants={opacity} className="content">
         <h1>Contact</h1>
         <div className="contact-info">

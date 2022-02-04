@@ -24,7 +24,7 @@ export const revealUp = {
     y: "0%",
     rotation: 0.02,
     transition: {
-      duration: 0.75,
+      duration: 1,
       ease: "easeInOut",
     },
   },

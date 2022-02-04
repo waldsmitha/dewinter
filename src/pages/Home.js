@@ -13,7 +13,7 @@ import wmb from "../media/white_medium_badge.png";
 import { pageAnimation } from "../animations/animations";
 
 const Home = ({ navActive, setNavActive }) => {
-  const navLinks = ["commissions", "originals", "process", "about", "contact"];
+  const navLinks = ["about", "projects", "originals", "process", "contact"];
 
   return (
     <StyledHome

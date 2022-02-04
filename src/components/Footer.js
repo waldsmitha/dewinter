@@ -42,13 +42,12 @@ const Footer = () => {
             <span className="third"></span>
           </div>
           <img className="logo-footer" src={wsb} alt="" />
-          <p>(C) De Winter Metal Works 2021. All Rights Reserved.</p>
+          <p>(C) dewintermetalworks 2021. All Rights Reserved.</p>
           <div className="social-media">
             <a href="mailto: info@dewintermetalworks.com" className="email">
               <img src={email} alt="" />
             </a>
             <a href="tel:978-123-4567" className="phone">
-              {" "}
               <img src={phone} alt="" />
             </a>
             <a
@@ -57,7 +56,6 @@ const Footer = () => {
               rel="noreferrer"
               className="insta"
             >
-              {" "}
               <img src={insta} alt="" />
             </a>
           </div>
