@@ -64,7 +64,8 @@ button {
 
 
 body {
-    font-family: 'Gothic A1', sans-serif;
+    /* font-family: 'Gothic A1', sans-serif; */
+    font-family: 'Gowun Batang', serif;
     font-weight: 300;
     height: 100%;
     overflow: scroll;

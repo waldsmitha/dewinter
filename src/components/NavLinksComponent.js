@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 const NavLinksComponent = () => {
   const location = useLocation();
   const { pathname } = location;
-  const links = ["about", "projects", "originals", "process", "contact"];
+  const links = ["about", "projects", "original pieces", "process", "contact"];
   const [navLinks] = useState([...links]);
 
   return (
@@ -18,7 +18,10 @@ const NavLinksComponent = () => {
       <StyledLinks>
         <ul>
           {navLinks.map((item) => (
-            <Link key={item} to={item === "home" ? "/" : item}>
+            <Link
+              key={item}
+              to={item === "original pieces" ? "originalpieces" : item}
+            >
               <li>{item}</li>
               <motion.div
                 className="line"

@@ -48,7 +48,7 @@ function App() {
             <Routes location={location} key={location.pathname}>
               <Route exact path="/" element={<Home />} />
               <Route path="/projects" element={<Commissions />} />
-              <Route path="/originals" element={<Originals />} />
+              <Route path="/originalpieces" element={<Originals />} />
               <Route path="/process" element={<Process />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
@@ -74,7 +74,7 @@ const StyledApp = styled(motion.div)`
   }
 
   width: 100vw;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   color: #fffdf6;
 
   .logo {

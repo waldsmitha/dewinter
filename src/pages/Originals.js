@@ -74,7 +74,7 @@ const StyledOriginals = styled(motion.div)`
     padding: 0 2rem;
     position: relative;
     width: 100vw;
-    color: ${theme.color.secondary};
+    color: ${theme.color.primary};
 
     h1,
     h3 {
@@ -105,7 +105,7 @@ const StyledOriginals = styled(motion.div)`
       span {
         padding: 0.1rem 2rem;
         height: 0.25rem;
-        background: ${theme.color.secondary};
+        background: ${theme.color.primary};
       }
 
       h3 {

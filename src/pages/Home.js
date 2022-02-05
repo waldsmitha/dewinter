@@ -13,7 +13,13 @@ import wmb from "../media/white_medium_badge.png";
 import { pageAnimation } from "../animations/animations";
 
 const Home = ({ navActive, setNavActive }) => {
-  const navLinks = ["about", "projects", "originals", "process", "contact"];
+  const navLinks = [
+    "about",
+    "projects",
+    "original pieces",
+    "process",
+    "contact",
+  ];
 
   return (
     <StyledHome
@@ -24,10 +30,13 @@ const Home = ({ navActive, setNavActive }) => {
     >
       <div className="container">
         <img className="mobile-logo" src={wmb} alt="" />
-        <h1>De Winter Metalworks</h1>
+        <h1>Dewintermetal Works</h1>
         <ul>
           {navLinks.map((item) => (
-            <Link key={item} to={item}>
+            <Link
+              key={item}
+              to={item === "original pieces" ? "originalpieces" : item}
+            >
               <li>{item}</li>
               <div className="line"></div>
             </Link>

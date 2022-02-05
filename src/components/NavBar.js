@@ -41,7 +41,7 @@ const NavBar = ({ pathname }) => {
 const StyledNavBar = styled(motion.nav)`
   ${({ theme }) => css`
     /* min-height: 20rem; */
-    padding: 5rem;
+    padding-top: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;

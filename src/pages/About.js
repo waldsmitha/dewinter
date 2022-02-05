@@ -23,8 +23,6 @@ import {
   revealUp,
 } from "../animations/animations";
 
-import { scaleDown } from "../animations/aboutAnim";
-
 const About = () => {
   const [documents] = usePrismicDocumentsByType("bio_card");
   const [aboutIntro] = useSinglePrismicDocument("about_intro");
@@ -33,8 +31,10 @@ const About = () => {
   const sortedBios =
     bios &&
     bios.sort((a, b) =>
-      a.data.bio_name[0].text > b.data.bio_name[0].text ? 1 : -1
+      a.data.bio_name[0].text < b.data.bio_name[0].text ? 1 : -1
     );
+
+  console.log(bios && bios);
 
   return (
     <>
@@ -45,45 +45,46 @@ const About = () => {
           initial="hidden"
           animate="show"
         >
-          <motion.div variants={opacity}>
-            <motion.header>
-              <NoOverflow>
+          <motion.header>
+            {/* <NoOverflow>
                 <motion.img
                   variants={scaleDown}
                   src={data.title_image.url}
                   alt=""
                 />
+              </NoOverflow> */}
+            <motion.div variants={stagger} className="about-header">
+              <NoOverflow>
+                <motion.h1 variants={revealUp}>About</motion.h1>
               </NoOverflow>
-              <motion.div variants={stagger} className="about-header">
-                <NoOverflow>
-                  <motion.h1 variants={revealUp}>About</motion.h1>
-                </NoOverflow>
-                <NoOverflow>
-                  <motion.h1 variants={revealUp}>De Winter</motion.h1>
-                </NoOverflow>
-                <NoOverflow>
-                  <motion.h1 variants={revealUp}>Metalworks</motion.h1>
-                </NoOverflow>
-              </motion.div>
-            </motion.header>
-            <motion.div className="intro">
-              <section className="company-info">
-                <div className="company-bio">
-                  <h2>{data.subtitle[0].text}</h2>
-                  <p>{data.description[0].text}</p>
-                  <p>{data.description[1].text}</p>
-                </div>
-                <div className="bio-image">
-                  <img src={data.subsection_image.url} alt="" />
-                </div>
-              </section>
-              <motion.section className="gallery">
-                {sortedBios &&
-                  sortedBios.map((item) => (
-                    <BioCard key={item.id} data={item} />
-                  ))}
-              </motion.section>
+              <NoOverflow>
+                <motion.h1 variants={revealUp}>Dewintermetal</motion.h1>
+              </NoOverflow>
+              <NoOverflow>
+                <motion.h1 variants={revealUp}>works</motion.h1>
+              </NoOverflow>
             </motion.div>
+          </motion.header>
+          <motion.div variants={opacity} className="intro">
+            <section className="company-info">
+              <div className="company-bio">
+                <h2>{data.subtitle[0].text}</h2>
+                <p>{data.description[0].text}</p>
+                <p>{data.description[1].text}</p>
+              </div>
+              {/* <div className="bio-image">
+                  <img src={data.subsection_image.url} alt="" />
+                </div> */}
+            </section>
+            <motion.section className="gallery">
+              {sortedBios &&
+                sortedBios.map((item) => <BioCard key={item.id} data={item} />)}
+            </motion.section>
+            <motion.section className="photo-gallery">
+              <img src={data.subsection_image.url} alt="" />
+              <img src={data.subsection_image.url} alt="" />
+              <img src={data.subsection_image.url} alt="" />
+            </motion.section>
           </motion.div>
           <ScrollTop />
         </StyledAbout>
@@ -130,7 +131,7 @@ const StyledAbout = styled(motion.div)`
     .company-info {
       display: flex;
       flex-wrap: wrap;
-      border-top: 1px solid white;
+      border-top: 1px solid white; 
       border-bottom: 1px solid white;
       padding: 5rem 0;
    
@@ -162,9 +163,24 @@ const StyledAbout = styled(motion.div)`
       grid-column-gap: 5rem;
       grid-row-gap: 10rem;
       width: 100%;
+       }
 
+    .photo-gallery {
+     display: flex;
+     flex-wrap: wrap;
+     max-width: ${theme.spacing.maxWidth};
+
+     & > * {
+       flex: 1 1 150px;
+     }
       
-    }
+     img {
+       height: 100%;
+       width: 100%;
+       max-height: 300px;
+       object-fit: cover;
+     }
+     }
 
     @media screen and (min-width: 740px){
       header{
@@ -172,10 +188,7 @@ const StyledAbout = styled(motion.div)`
         img {
           margin-top: 0;
         }
-        .about-header {
-          margin-left: 5rem;
-        }
-      }
+              }
       .gallery {
         grid-template-columns: repeat(2, minmax(350px, 1fr));
       }
