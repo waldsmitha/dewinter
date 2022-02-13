@@ -53,7 +53,7 @@ const About = () => {
                   alt=""
                 />
               </NoOverflow> */}
-            <motion.div variants={stagger} className="about-header">
+            <motion.div variants={stagger}>
               <NoOverflow>
                 <motion.h1 variants={revealUp}>About</motion.h1>
               </NoOverflow>
@@ -118,6 +118,8 @@ const StyledAbout = styled(motion.div)`
       flex-direction: column-reverse;
       justify-content: space-between
       width: 100%;
+      max-width: 800px;
+      margin: ${theme.spacing.sectionPaddingDesktop} auto;
        
       img {
         margin-top: 2rem;
@@ -143,6 +145,8 @@ const StyledAbout = styled(motion.div)`
       border-bottom: 1px solid white;
       padding: 5rem 0;
       text-align: center;
+      max-width: 800px;
+      margin: ${theme.spacing.sectionPaddingDesktop} auto;
    
 
       & > * {
@@ -178,6 +182,7 @@ const StyledAbout = styled(motion.div)`
      display: flex;
      flex-wrap: wrap;
      max-width: ${theme.spacing.maxWidth};
+     margin: ${theme.spacing.sectionPaddingDesktop} auto;
 
      & > * {
        flex: 1 1 150px;
