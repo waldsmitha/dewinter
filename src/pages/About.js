@@ -58,16 +58,20 @@ const About = () => {
                 <motion.h1 variants={revealUp}>About</motion.h1>
               </NoOverflow>
               <NoOverflow>
-                <motion.h1 variants={revealUp}>Dewintermetal</motion.h1>
+                <motion.h1 variants={revealUp}>DEWINTERMETALWORKS</motion.h1>
               </NoOverflow>
               <NoOverflow>
-                <motion.h1 variants={revealUp}>works</motion.h1>
+                <motion.p variants={revealUp}>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Veniam voluptatem assumenda laborum molestias. Perferendis
+                  maiores perspiciatis recusandae cupiditate, eum ut!
+                </motion.p>
               </NoOverflow>
             </motion.div>
           </motion.header>
-          <motion.div variants={opacity} className="intro">
-            <section className="company-info">
-              <div className="company-bio">
+          <motion.div variants={opacity}>
+            <motion.section className="company-info">
+              <div>
                 <h2>{data.subtitle[0].text}</h2>
                 <p>{data.description[0].text}</p>
                 <p>{data.description[1].text}</p>
@@ -75,7 +79,7 @@ const About = () => {
               {/* <div className="bio-image">
                   <img src={data.subsection_image.url} alt="" />
                 </div> */}
-            </section>
+            </motion.section>
             <motion.section className="gallery">
               {sortedBios &&
                 sortedBios.map((item) => <BioCard key={item.id} data={item} />)}
@@ -102,16 +106,11 @@ const StyledAbout = styled(motion.div)`
     position: relative;
 
     & > * {
-        /* margin: ${theme.spacing.sectionPaddingMobile} 0; */
         margin: ${theme.spacing.sectionPaddingDesktop} 0;
       }
 
-      .no-overflow {
+    .no-overflow {
       overflow: hidden;
-    }
-
-    .intro {
-      & > * {margin: ${theme.spacing.sectionPaddingDesktop} 0;}
     }
 
     header {
@@ -126,6 +125,15 @@ const StyledAbout = styled(motion.div)`
         height: 100%;
         object-fit: cover;
       }
+
+      p {
+        padding: 1rem 0;
+        text-align: center;
+      }
+      
+      h1 {
+        text-align: center;
+      }
     }
     
     .company-info {
@@ -134,6 +142,7 @@ const StyledAbout = styled(motion.div)`
       border-top: 1px solid white; 
       border-bottom: 1px solid white;
       padding: 5rem 0;
+      text-align: center;
    
 
       & > * {

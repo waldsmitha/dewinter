@@ -33,23 +33,34 @@ function App() {
   const location = useLocation();
   const pathname = location.pathname;
   const [navActive, setNavActive] = useState(true);
+  const [navLinks, setNavLinks] = useState([
+    { title: "about", link: "about" },
+    { title: "projects", link: "projects" },
+    { title: "original pieces", link: "originalpieces" },
+    { title: "our services", link: "ourservices" },
+    { title: "contact", link: "contact" },
+  ]);
 
   return (
     <StyledApp>
       <Theme>
         <div className="wrapper">
-          <NavBar pathname={pathname} />
+          <NavBar pathname={pathname} navLinks={navLinks} />
           <MobileHeader pathname={pathname} />
-          <MobileNavMenu navActive={navActive} setNavActive={setNavActive} />
+          <MobileNavMenu
+            navActive={navActive}
+            setNavActive={setNavActive}
+            navLinks={navLinks}
+          />
           <Link to="/">
             <img src={wmb} className="logo" alt="" />
           </Link>
           <AnimatePresence exitBeforeEnter>
             <Routes location={location} key={location.pathname}>
-              <Route exact path="/" element={<Home />} />
+              <Route exact path="/" element={<Home navLinks={navLinks} />} />
               <Route path="/projects" element={<Commissions />} />
               <Route path="/originalpieces" element={<Originals />} />
-              <Route path="/process" element={<Process />} />
+              <Route path="/ourservices" element={<Process />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>

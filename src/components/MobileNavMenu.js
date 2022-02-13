@@ -12,7 +12,7 @@ import wsb from "../media/white_small_badge.png";
 import { revealNavMobile } from "../animations/animations";
 
 const MobileNavMenu = ({ navActive, setNavActive }) => {
-  const links = ["about", "projects", "original pieces", "process", "contact"];
+  const links = ["about", "projects", "original pieces", "services", "contact"];
   const location = useLocation();
   const { pathname } = location;
 

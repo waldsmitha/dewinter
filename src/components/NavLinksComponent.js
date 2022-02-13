@@ -7,29 +7,24 @@ import { useLocation } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
-const NavLinksComponent = () => {
+const NavLinksComponent = ({ navLinks }) => {
   const location = useLocation();
   const { pathname } = location;
-  const links = ["about", "projects", "original pieces", "process", "contact"];
-  const [navLinks] = useState([...links]);
 
   return (
     <div>
       <StyledLinks>
         <ul>
           {navLinks.map((item) => (
-            <Link
-              key={item}
-              to={item === "original pieces" ? "originalpieces" : item}
-            >
-              <li>{item}</li>
+            <Link key={item.title} to={item.link}>
+              <li>{item.title}</li>
               <motion.div
                 className="line"
                 transition={{
                   duration: 0.5,
                   ease: "linear",
                 }}
-                animate={{ width: pathname === `/${item}` ? "50%" : "0%" }}
+                animate={{ width: pathname === `/${item.link}` ? "50%" : "0%" }}
               ></motion.div>
             </Link>
           ))}

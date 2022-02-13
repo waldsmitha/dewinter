@@ -36,7 +36,7 @@ const Process = () => {
           animate="show"
         >
           <div className="intro">
-            {/* <h1>{data.title[0].text}</h1> */}
+            <h1>{data.title[0].text}</h1>
             <div className="description">
               {descriptionArr.map((item, i) => (
                 <NoOverflow key={`${item.type}${i}`}>

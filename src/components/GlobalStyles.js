@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import background from "../media/background-blurred.png";
 
-let h1 = `calc(4rem + 4vw)`;
+let h1 = `calc(2rem + 3vw)`;
 let h2 = `calc(2rem + 4vw)`;
 let h3 = `calc(1rem + 2vw)`;
 let h4 = `calc(1rem + 1.5vw)`;
@@ -65,7 +65,10 @@ button {
 
 body {
     /* font-family: 'Gothic A1', sans-serif; */
-    font-family: 'Gowun Batang', serif;
+    /* font-family: 'Gowun Batang', serif; */
+    font-family: 'Cormorant Garamond', serif;
+
+
     font-weight: 300;
     height: 100%;
     overflow: scroll;
