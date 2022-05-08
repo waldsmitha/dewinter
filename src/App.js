@@ -22,6 +22,7 @@ import MobileNavMenu from "./components/MobileNavMenu";
 import MobileNavButton from "./components/MobileNavButton";
 import MobileHeader from "./components/MobileHeader";
 import Footer from "./components/Footer";
+import ProjectDetailed from "./components/ProjectDetailed";
 
 //Animations
 import { AnimatePresence } from "framer-motion";
@@ -37,7 +38,7 @@ function App() {
     { title: "about", link: "about" },
     { title: "projects", link: "projects" },
     { title: "original pieces", link: "originalpieces" },
-    { title: "our services", link: "ourservices" },
+    { title: "services", link: "services" },
     { title: "contact", link: "contact" },
   ]);
 
@@ -59,8 +60,16 @@ function App() {
             <Routes location={location} key={location.pathname}>
               <Route exact path="/" element={<Home navLinks={navLinks} />} />
               <Route path="/projects" element={<Commissions />} />
+              <Route
+                path="/projects/:id"
+                element={<ProjectDetailed pathname={pathname} />}
+              />
               <Route path="/originalpieces" element={<Originals />} />
-              <Route path="/ourservices" element={<Process />} />
+              <Route
+                path="/originalpieces/:id"
+                element={<ProjectDetailed pathname={pathname} />}
+              />
+              <Route path="/services" element={<Process />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
@@ -84,7 +93,7 @@ const StyledApp = styled(motion.div)`
     display: none;
   }
 
-  width: 100vw;
+  // width: 100vw;
   /* overflow-x: hidden; */
   color: #fffdf6;
 

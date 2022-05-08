@@ -22,7 +22,7 @@ const theme = {
   },
   spacing: {
     sectionPaddingMobile: "50px",
-    sectionPaddingDesktop: "100px",
+    sectionPaddingDesktop: "50px",
     maxWidth: "1200px",
   },
   breakpoint: {

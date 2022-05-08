@@ -50,7 +50,6 @@ const StyledNavBar = styled(motion.nav)`
 
     ul {
       padding: 0 2rem;
-      padding-left: 100px;
     }
 
     .logo {
@@ -94,12 +93,19 @@ const StyledNavBar = styled(motion.nav)`
         transform: translate(-50%, -50%);
       }
     }
+
+    ul,
+    .line-deco {
+      padding-left: 100px;
+    }
+
     @media screen and (max-width: 768px) {
       display: none;
     }
 
     @media screen and (min-width: 1350px) {
-      ul {
+      ul,
+      .line-deco {
         padding: 0 2rem;
       }
     }

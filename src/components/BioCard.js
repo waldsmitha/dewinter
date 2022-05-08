@@ -30,7 +30,7 @@ const BioCard = ({ data }) => {
       </div>
       <h3>{bio_name[0].text}</h3>
       <h4>{bio_title[0].text}</h4>
-      <p>{bio_description[0].text}</p>
+      {/* <p>{bio_description[0].text}</p> */}
     </StyledBioCard>
   );
 };
