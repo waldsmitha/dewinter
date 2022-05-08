@@ -68,11 +68,9 @@ body {
     /* font-family: 'Gowun Batang', serif; */
     font-family: 'Cormorant Garamond', serif;
 
-
     font-weight: 300;
     height: 100%;
     overflow: scroll;
-    width: 100vw;
     overflow-x: hidden;
 }
 html {

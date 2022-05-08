@@ -34,7 +34,7 @@ const About = () => {
       a.data.bio_name[0].text < b.data.bio_name[0].text ? 1 : -1
     );
 
-  console.log(bios && bios);
+  console.log(data && data);
 
   return (
     <>
@@ -45,50 +45,39 @@ const About = () => {
           initial="hidden"
           animate="show"
         >
-          <motion.header>
-            {/* <NoOverflow>
-                <motion.img
-                  variants={scaleDown}
-                  src={data.title_image.url}
-                  alt=""
-                />
-              </NoOverflow> */}
+          <motion.header style={{ margin: "100px auto 50px auto" }}>
             <motion.div variants={stagger}>
-              <NoOverflow>
-                <motion.h1 variants={revealUp}>About</motion.h1>
-              </NoOverflow>
               <NoOverflow>
                 <motion.h1 variants={revealUp}>DEWINTERMETALWORKS</motion.h1>
               </NoOverflow>
-              <NoOverflow>
-                <motion.p variants={revealUp}>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Veniam voluptatem assumenda laborum molestias. Perferendis
-                  maiores perspiciatis recusandae cupiditate, eum ut!
-                </motion.p>
-              </NoOverflow>
             </motion.div>
           </motion.header>
-          <motion.div variants={opacity}>
-            <motion.section className="company-info">
+          {data &&
+            data.main_description.map((paragraph) => (
+              <NoOverflow>
+                <motion.p variants={revealUp}>{paragraph.text}</motion.p>
+              </NoOverflow>
+            ))}
+          <motion.div style={{ marginTop: "50px" }} variants={opacity}>
+            {/* <motion.section className="company-info">
               <div>
                 <h2>{data.subtitle[0].text}</h2>
                 <p>{data.description[0].text}</p>
                 <p>{data.description[1].text}</p>
-              </div>
-              {/* <div className="bio-image">
+              </div> */}
+            {/* <div className="bio-image">
                   <img src={data.subsection_image.url} alt="" />
                 </div> */}
-            </motion.section>
+            {/* </motion.section> */}
             <motion.section className="gallery">
               {sortedBios &&
                 sortedBios.map((item) => <BioCard key={item.id} data={item} />)}
             </motion.section>
-            <motion.section className="photo-gallery">
+            {/* <motion.section className="photo-gallery">
               <img src={data.subsection_image.url} alt="" />
               <img src={data.subsection_image.url} alt="" />
               <img src={data.subsection_image.url} alt="" />
-            </motion.section>
+            </motion.section> */}
           </motion.div>
           <ScrollTop />
         </StyledAbout>
