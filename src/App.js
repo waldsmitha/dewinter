@@ -22,6 +22,7 @@ import MobileNavMenu from "./components/MobileNavMenu";
 import MobileNavButton from "./components/MobileNavButton";
 import MobileHeader from "./components/MobileHeader";
 import Footer from "./components/Footer";
+import ProjectDetailed from "./components/ProjectDetailed";
 
 //Animations
 import { AnimatePresence } from "framer-motion";
@@ -59,7 +60,15 @@ function App() {
             <Routes location={location} key={location.pathname}>
               <Route exact path="/" element={<Home navLinks={navLinks} />} />
               <Route path="/projects" element={<Commissions />} />
+              <Route
+                path="/projects/:id"
+                element={<ProjectDetailed pathname={pathname} />}
+              />
               <Route path="/originalpieces" element={<Originals />} />
+              <Route
+                path="/originalpieces/:id"
+                element={<ProjectDetailed pathname={pathname} />}
+              />
               <Route path="/services" element={<Process />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />

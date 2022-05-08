@@ -9,6 +9,7 @@ import {
 //Components
 import ProductGallery from "../components/ProductGallery";
 import ScrollTop from "../components/ScrollTop";
+import ProjectSelection from "../components/ProjectSelection";
 
 //Styles
 import styled, { css } from "styled-components";
@@ -26,10 +27,20 @@ import {
 } from "../animations/originalsAnim";
 
 const Originals = () => {
-  const [documents] = usePrismicDocumentsByType("orig_product");
   const [origIntro] = useSinglePrismicDocument("original_designs");
   const data = origIntro && origIntro.data;
-  const productInfo = documents && documents.results;
+  const [documents] = usePrismicDocumentsByType("products_selection");
+  const filteredData =
+    documents &&
+    documents.results.filter((item) => item.data.product_key === "original");
+
+  const sortedProductInfo =
+    filteredData &&
+    filteredData.sort((a, b) => {
+      if (a.slugs[0] < b.slugs[0]) return -1;
+      if (a.slugs[0] > b.slugs[0]) return 1;
+      return 0;
+    });
 
   return (
     <>
@@ -51,13 +62,16 @@ const Originals = () => {
               </motion.div>
               <motion.span variants={revealRight}></motion.span>
             </div>
-            <motion.div className="no-overflow">
+            {/* <motion.div className="no-overflow">
               <motion.p variants={revealUp}>
                 {data.description[0].text}
               </motion.p>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
-          {productInfo && <ProductGallery productInfo={productInfo} />}
+          {sortedProductInfo &&
+            sortedProductInfo.map((product) => (
+              <ProjectSelection key={product.id} data={product} />
+            ))}
           <ScrollTop />
         </StyledOriginals>
       )}

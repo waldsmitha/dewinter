@@ -2,6 +2,7 @@ import React from "react";
 
 //Prismic
 import {
+  usePrismicDocumentByUID,
   usePrismicDocumentsByType,
   useSinglePrismicDocument,
 } from "@prismicio/react";
@@ -9,6 +10,7 @@ import {
 //Components
 import ProductGallery from "../components/ProductGallery";
 import ScrollTop from "../components/ScrollTop";
+import ProjectSelection from "../components/ProjectSelection";
 
 //Styles
 import styled, { css } from "styled-components";
@@ -18,10 +20,23 @@ import { motion } from "framer-motion";
 import { pageAnimation, opacity } from "../animations/animations";
 
 const Commissions = () => {
-  const [documents] = usePrismicDocumentsByType("comm-product");
+  const [documents] = usePrismicDocumentsByType("products_selection");
   const [commIntro] = useSinglePrismicDocument("commissioned_designs");
   const data = commIntro && commIntro.data;
-  const productInfo = documents && documents.results;
+  const filteredData =
+    documents &&
+    documents.results.filter((item) => item.data.product_key === "project");
+
+  const sortedProductInfo =
+    filteredData &&
+    filteredData.sort((a, b) => {
+      if (a.slugs[0] < b.slugs[0]) return -1;
+      if (a.slugs[0] > b.slugs[0]) return 1;
+      return 0;
+    });
+  // console.log(sortedProductInfo && sortedProductInfo);
+
+  // console.log(sortedProductInfo && sortedProductInfo);
 
   return (
     <>
@@ -35,9 +50,11 @@ const Commissions = () => {
           <motion.div variants={opacity}>
             <motion.div className="intro">
               <h1>{data.title[0].text}</h1>
-              <p>{data.description[0].text}</p>
             </motion.div>
-            {productInfo && <ProductGallery productInfo={productInfo} />}
+            {sortedProductInfo &&
+              sortedProductInfo.map((product) => (
+                <ProjectSelection key={product.id} data={product} />
+              ))}
           </motion.div>
           <ScrollTop />
         </StyledCommissions>
