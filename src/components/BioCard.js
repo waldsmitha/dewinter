@@ -28,27 +28,35 @@ const BioCard = ({ data }) => {
           alt={bio_photo.alt}
         />
       </div>
-      <h3>{bio_name[0].text}</h3>
-      <h4>{bio_title[0].text}</h4>
+      <div style={{ flexShrink: "1" }}>
+        <h3>{bio_name[0].text}</h3>
+        <h4>{bio_title[0].text}</h4>
+      </div>
       {/* <p>{bio_description[0].text}</p> */}
     </StyledBioCard>
   );
 };
 
 const StyledBioCard = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
   width: 100%;
   .no-overflow {
     overflow: hidden;
+    flex-grow: 1;
   }
+
   h3 {
     text-transform: uppercase;
     margin-top: 1rem;
+    font-size: clamp(2.25rem, 5vw, 4rem);
   }
   h4 {
     margin-bottom: 1rem;
   }
   img {
     width: 100%;
+    height: 100%;
   }
 `;
 
