@@ -60,6 +60,8 @@ const ProjectDetailed = ({ pathname }) => {
 
 const StyledProjectDetailed = styled(motion.div)`
   ${({ theme }) => css`
+    max-width: ${theme.spacing.maxWidth};
+
     h1 {
       text-align: center;
       margin-bottom: 25px;
@@ -71,13 +73,13 @@ const StyledProjectDetailed = styled(motion.div)`
       max-width: 800px;
       text-transform: capitalize;
     }
-
+    margin: 0 auto;
     margin-bottom: 5rem;
 
     img {
       width: 100%;
       object-fit: cover;
-      padding: 2.5rem 5rem;
+      padding: 2rem;
     }
 
     h2 {
@@ -103,31 +105,10 @@ const StyledProjectDetailed = styled(motion.div)`
         border-radius: 50%;
       }
     }
-    .flex-container {
-      // display: flex;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-
-      img {
-        object-fit: cover;
-        width: 100%;
-        flex: 1 1 300px;
-      }
-    }
 
     @media screen and (max-width: 650px) {
       img {
         padding: 1rem 2rem;
-      }
-      .flex-container {
-        img {
-          &:nth-child(2) {
-            padding-left: 0;
-          }
-          &:nth-child(1) {
-            padding-right: 0;
-          }
-        }
       }
     }
   `}
