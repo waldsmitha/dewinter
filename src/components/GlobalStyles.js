@@ -29,6 +29,7 @@ a {
 
 h1 {
     font-size: ${h1};
+    font-size: clamp(2.25rem, 5vw, 6rem);
     /* font-size: 130px; */
     line-height: 100%;
     font-weight: 300;

@@ -44,7 +44,6 @@ const ProjectDetailed = ({ pathname }) => {
                 key={image.project_detailed_gallery_image.url}
                 src={image.project_detailed_gallery_image.url}
                 alt={image.project_detailed_gallery_image.alt}
-                style={{ width: "100%", objectFit: "cover" }}
               />
             ))}
         </motion.div>
@@ -74,7 +73,12 @@ const StyledProjectDetailed = styled(motion.div)`
     }
 
     margin-bottom: 5rem;
-    cursor: pointer;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+      padding: 2.5rem 5rem;
+    }
 
     h2 {
       font-size: 4rem;
@@ -112,6 +116,9 @@ const StyledProjectDetailed = styled(motion.div)`
     }
 
     @media screen and (max-width: 650px) {
+      img {
+        padding: 1rem 2rem;
+      }
       .flex-container {
         img {
           &:nth-child(2) {

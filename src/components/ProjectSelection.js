@@ -36,6 +36,7 @@ const StyledProjectSelection = styled(motion.div)`
   h2 {
     font-size: 4rem;
     text-transform: capitalize;
+    margin-bottom: 1rem;
   }
   .spacer {
     margin-top: 100px;
