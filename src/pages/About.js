@@ -45,12 +45,17 @@ const About = () => {
           initial="hidden"
           animate="show"
         >
-          <motion.header style={{ margin: "100px auto 50px auto" }}>
-            <motion.div variants={stagger}>
-              <NoOverflow>
-                <motion.h1 variants={revealUp}>DEWINTERMETALWORKS</motion.h1>
-              </NoOverflow>
-            </motion.div>
+          <motion.header
+            style={{
+              margin: "100px auto 50px auto",
+              display: "flex",
+              justifyContent: "center",
+            }}
+            variants={stagger}
+          >
+            <NoOverflow>
+              <motion.h1 variants={revealUp}>DEWINTERMETALWORKS</motion.h1>
+            </NoOverflow>
           </motion.header>
           {data &&
             data.main_description.map((paragraph) => (
@@ -95,21 +100,18 @@ const StyledAbout = styled(motion.div)`
     position: relative;
 
     & > * {
-        margin: ${theme.spacing.sectionPaddingDesktop} 0;
-      }
+      margin: ${theme.spacing.sectionPaddingDesktop} 0;
+    }
 
     .no-overflow {
       overflow: hidden;
     }
 
     header {
-      display: flex;
-      flex-direction: column-reverse;
-      justify-content: space-between
       width: 100%;
       max-width: 800px;
       margin: ${theme.spacing.sectionPaddingDesktop} auto;
-       
+
       img {
         margin-top: 2rem;
         width: 100%;
@@ -117,30 +119,24 @@ const StyledAbout = styled(motion.div)`
         object-fit: cover;
       }
 
-      p {
-        padding: 1rem 0;
-        text-align: center;
-      }
-      
       h1 {
         text-align: center;
+        font-size: clamp(2.25rem, 5vw, 6rem);
       }
     }
-    
+
     .company-info {
       display: flex;
       flex-wrap: wrap;
-      border-top: 1px solid white; 
+      border-top: 1px solid white;
       border-bottom: 1px solid white;
       padding: 5rem 0;
       text-align: center;
       max-width: 800px;
       margin: ${theme.spacing.sectionPaddingDesktop} auto;
-   
 
       & > * {
         flex: 3 1 350px;
-      
       }
       .bio-image {
         flex-grow: 1;
@@ -151,13 +147,10 @@ const StyledAbout = styled(motion.div)`
         height: 100%;
         margin-top: 1rem;
         object-fit: cover;
-        
       }
       p {
         margin: 1rem 0;
       }
-
-    
     }
     .gallery {
       display: grid;
@@ -165,41 +158,41 @@ const StyledAbout = styled(motion.div)`
       grid-column-gap: 5rem;
       grid-row-gap: 10rem;
       width: 100%;
-       }
+    }
 
     .photo-gallery {
-     display: flex;
-     flex-wrap: wrap;
-     max-width: ${theme.spacing.maxWidth};
-     margin: ${theme.spacing.sectionPaddingDesktop} auto;
+      display: flex;
+      flex-wrap: wrap;
+      max-width: ${theme.spacing.maxWidth};
+      margin: ${theme.spacing.sectionPaddingDesktop} auto;
 
-     & > * {
-       flex: 1 1 150px;
-     }
-      
-     img {
-       height: 100%;
-       width: 100%;
-       max-height: 300px;
-       object-fit: cover;
-     }
-     }
+      & > * {
+        flex: 1 1 150px;
+      }
 
-    @media screen and (min-width: 740px){
-      header{
+      img {
+        height: 100%;
+        width: 100%;
+        max-height: 300px;
+        object-fit: cover;
+      }
+    }
+
+    @media screen and (min-width: 740px) {
+      header {
         flex-direction: row;
         img {
           margin-top: 0;
         }
-              }
+      }
       .gallery {
         grid-template-columns: repeat(2, minmax(350px, 1fr));
       }
       .company-info {
         img {
-        padding-left: 5rem;
-        margin-top: 0;
-      }
+          padding-left: 5rem;
+          margin-top: 0;
+        }
         p:last-child {
           margin-bottom: 0;
         }
