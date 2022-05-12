@@ -60,29 +60,16 @@ const About = () => {
           {data &&
             data.main_description.map((paragraph) => (
               <NoOverflow>
-                <motion.p variants={revealUp}>{paragraph.text}</motion.p>
+                <motion.p className="company-info" variants={revealUp}>
+                  {paragraph.text}
+                </motion.p>
               </NoOverflow>
             ))}
           <motion.div style={{ marginTop: "50px" }} variants={opacity}>
-            {/* <motion.section className="company-info">
-              <div>
-                <h2>{data.subtitle[0].text}</h2>
-                <p>{data.description[0].text}</p>
-                <p>{data.description[1].text}</p>
-              </div> */}
-            {/* <div className="bio-image">
-                  <img src={data.subsection_image.url} alt="" />
-                </div> */}
-            {/* </motion.section> */}
             <motion.section className="gallery">
               {sortedBios &&
                 sortedBios.map((item) => <BioCard key={item.id} data={item} />)}
             </motion.section>
-            {/* <motion.section className="photo-gallery">
-              <img src={data.subsection_image.url} alt="" />
-              <img src={data.subsection_image.url} alt="" />
-              <img src={data.subsection_image.url} alt="" />
-            </motion.section> */}
           </motion.div>
           <ScrollTop />
         </StyledAbout>
@@ -126,56 +113,18 @@ const StyledAbout = styled(motion.div)`
     }
 
     .company-info {
-      display: flex;
-      flex-wrap: wrap;
-      border-top: 1px solid white;
-      border-bottom: 1px solid white;
-      padding: 5rem 0;
-      text-align: center;
       max-width: 800px;
-      margin: ${theme.spacing.sectionPaddingDesktop} auto;
-
-      & > * {
-        flex: 3 1 350px;
-      }
-      .bio-image {
-        flex-grow: 1;
-      }
-
-      img {
-        width: 100%;
-        height: 100%;
-        margin-top: 1rem;
-        object-fit: cover;
-      }
-      p {
-        margin: 1rem 0;
-      }
+      margin: 0 auto;
     }
+
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
       grid-column-gap: 5rem;
       grid-row-gap: 10rem;
       width: 100%;
-    }
-
-    .photo-gallery {
-      display: flex;
-      flex-wrap: wrap;
-      max-width: ${theme.spacing.maxWidth};
-      margin: ${theme.spacing.sectionPaddingDesktop} auto;
-
-      & > * {
-        flex: 1 1 150px;
-      }
-
-      img {
-        height: 100%;
-        width: 100%;
-        max-height: 300px;
-        object-fit: cover;
-      }
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     @media screen and (min-width: 740px) {
@@ -186,7 +135,7 @@ const StyledAbout = styled(motion.div)`
         }
       }
       .gallery {
-        grid-template-columns: repeat(2, minmax(350px, 1fr));
+        grid-template-columns: repeat(2, minmax(325px, 1fr));
       }
       .company-info {
         img {

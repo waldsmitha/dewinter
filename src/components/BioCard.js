@@ -41,6 +41,7 @@ const StyledBioCard = styled(motion.div)`
   display: flex;
   flex-direction: column;
   width: 100%;
+
   .no-overflow {
     overflow: hidden;
     flex-grow: 1;
@@ -49,14 +50,19 @@ const StyledBioCard = styled(motion.div)`
   h3 {
     text-transform: uppercase;
     margin-top: 1rem;
-    font-size: clamp(2.25rem, 5vw, 4rem);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    white-space: nowrap;
   }
+
   h4 {
     margin-bottom: 1rem;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
   }
+
   img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
   }
 `;
 
