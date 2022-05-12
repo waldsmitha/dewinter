@@ -68,10 +68,12 @@ const Originals = () => {
               </motion.p>
             </motion.div> */}
           </motion.div>
-          {sortedProductInfo &&
-            sortedProductInfo.map((product) => (
-              <ProjectSelection key={product.id} data={product} />
-            ))}
+          <div className="flex">
+            {sortedProductInfo &&
+              sortedProductInfo.map((product) => (
+                <ProjectSelection key={product.id} data={product} />
+              ))}
+          </div>
           <ScrollTop />
         </StyledOriginals>
       )}
@@ -83,7 +85,6 @@ const StyledOriginals = styled(motion.div)`
   ${({ theme }) => css`
     max-width: ${theme.spacing.maxWidth};
     min-height: 100vh;
-
     margin: 0 auto;
     padding: 0 2rem;
     position: relative;
@@ -101,7 +102,6 @@ const StyledOriginals = styled(motion.div)`
 
     h3 {
       margin-bottom: 25px;
-
       font-size: 2rem;
     }
 
@@ -109,12 +109,24 @@ const StyledOriginals = styled(motion.div)`
       overflow: hidden;
     }
 
+    .flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 50px;
+
+      & > * {
+        flex: 1 1 400px;
+        max-width: 500px;
+      }
+    }
+
     .sub-header {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 25px;
       margin: 25px;
+      margin-bottom: 50px;
 
       span {
         padding: 0.1rem 2rem;
@@ -159,6 +171,9 @@ const StyledOriginals = styled(motion.div)`
     @media screen and (max-width: 768px) {
       & > * {
         margin: ${theme.spacing.sectionPaddingMobile} 0;
+      }
+      .flex {
+        flex: 1 1 300px;
       }
     }
   `}

@@ -51,10 +51,12 @@ const Commissions = () => {
             <motion.div className="intro">
               <h1>{data.title[0].text}</h1>
             </motion.div>
-            {sortedProductInfo &&
-              sortedProductInfo.map((product) => (
-                <ProjectSelection key={product.id} data={product} />
-              ))}
+            <div className="flex">
+              {sortedProductInfo &&
+                sortedProductInfo.map((product) => (
+                  <ProjectSelection key={product.id} data={product} />
+                ))}
+            </div>
           </motion.div>
           <ScrollTop />
         </StyledCommissions>
@@ -79,12 +81,31 @@ const StyledCommissions = styled(motion.div)`
     .intro {
       margin: 0 auto;
       margin-top: ${theme.spacing.sectionPaddingDesktop};
+      margin-bottom: 50px;
       max-width: 800px;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+    }
+
+    .flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 50px;
+
+      & > * {
+        flex: 1 1 400px;
+        max-width: 500px;
+      }
     }
 
     @media screen and (max-width: 768px) {
       & > * {
         margin: ${theme.spacing.sectionPaddingMobile} 0;
+      }
+
+      .flex {
+        flex: 1 1 300px;
       }
     }
   `}

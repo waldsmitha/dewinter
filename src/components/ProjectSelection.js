@@ -12,31 +12,58 @@ const ProjectSelection = ({ data }) => {
   return (
     <Link key={data.uid} to={data.uid}>
       <StyledProjectSelection>
-        <div className="flex-container">
-          <h2>{data.data.product_type[0].text}</h2>
-          <img
-            src={data.data.product_image.url}
-            alt={data.data.product_image.alt}
-          />
-        </div>
-        <div className="spacer">
+        <h2>{data.data.product_type[0].text}</h2>
+        <img
+          src={data.data.product_image.url}
+          alt={data.data.product_image.alt}
+        />
+        <div className="gradient-bg"></div>
+
+        {/* <div className="spacer">
           <span></span>
           <span></span>
           <span></span>
-        </div>
+        </div> */}
       </StyledProjectSelection>
     </Link>
   );
 };
 
 const StyledProjectSelection = styled(motion.div)`
-  margin-bottom: 5rem;
   cursor: pointer;
+  display: flex;
+  position: relative;
+  height: 100%;
+
+  .gradient-bg {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 75px;
+    background: rgb(19, 19, 19);
+    background: linear-gradient(
+      0deg,
+      rgba(19, 19, 19, 1) 0%,
+      rgba(10, 10, 10, 1) 13%,
+      rgba(0, 0, 0, 0) 85%
+    );
+  }
+  img {
+    object-fit: cover;
+    width: 100%;
+    flex: 1 1 300px;
+    height: 100%;
+  }
 
   h2 {
-    font-size: 4rem;
-    text-transform: capitalize;
-    margin-bottom: 1rem;
+    font-size: clamp(2rem, 3vw, 3rem);
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    text-shadow: 1px 1px 1px #000, -1px -1px 1px #000;
+    z-index: 1;
+    white-space: nowrap;
   }
   .spacer {
     margin-top: 100px;
@@ -56,17 +83,6 @@ const StyledProjectSelection = styled(motion.div)`
       /* height: 5px; */
 
       border-radius: 50%;
-    }
-  }
-  .flex-container {
-    // display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-
-    img {
-      object-fit: cover;
-      width: 100%;
-      flex: 1 1 300px;
     }
   }
 
