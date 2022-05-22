@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useLocation } from "react-router-dom";
@@ -6,27 +6,69 @@ import { useLocation } from "react-router-dom";
 //Styles
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
+import background from "../media/background-blurred.png";
+import NavLink from "./NavLink";
 
-//Media
-import white_small_badge from "../media/white_small_badge.png";
+const ProjectsDropdown = () => {
+  return (
+    <StyledDropdown>
+      <Link to="/projects/architecturalelements">
+        <li>architectural elements</li>
+      </Link>
+      <Link to="/projects/furniture">
+        <li>furniture</li>
+      </Link>
+      <Link to="/projects/mirrors">
+        <li>mirrors</li>
+      </Link>
+    </StyledDropdown>
+  );
+};
+
+const OriginalsDropdown = () => {
+  return (
+    <StyledDropdown>
+      <Link to="/originalpieces/originalfurniture">
+        <li>furniture</li>
+      </Link>
+      <Link to="/originalpieces/originalhomeaccents">
+        <li>home accents</li>
+      </Link>
+      <Link to="/originalpieces/originalmirrors">
+        <li>mirrors</li>
+      </Link>
+      <Link to="/originalpieces/originalsculptures">
+        <li>sculptures</li>
+      </Link>
+    </StyledDropdown>
+  );
+};
+
+const StyledDropdown = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 100%;
+  position: absolute;
+  white-space: nowrap;
+  top: 100%;
+  left: 0;
+  background-color: #131313;
+  z-index: 999;
+  li {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+  }
+`;
 
 const NavLinksComponent = ({ navLinks }) => {
-  const location = useLocation();
-  const { pathname } = location;
-
   return (
     <div>
       <StyledLinks>
-        <ul className={pathname === "/" ? "" : "not-home"}>
+        <ul>
           {navLinks.map((item) => (
-            <Link key={item} to={item === "home" ? "/" : item}>
-              <li>{item}</li>
-              <div className="line"> </div>
-            </Link>
+            <NavLink item={item} />
           ))}
-          <Link to="/">
-            <img src={white_small_badge} alt="" />
-          </Link>
         </ul>
       </StyledLinks>
     </div>
@@ -35,6 +77,10 @@ const NavLinksComponent = ({ navLinks }) => {
 
 const StyledLinks = styled(motion.div)`
   ${({ theme }) => css`
+    .nav-element-title {
+      font-weight: 200;
+      text-transform: uppercase;
+    }
     ul {
       display: flex;
       align-items: center;
@@ -56,28 +102,26 @@ const StyledLinks = styled(motion.div)`
         }
       }
     }
-    li {
-      /* padding: 0 5rem; */
-      font-weight: 200;
-      text-transform: uppercase;
-      width: 100px;
-    }
 
-    img {
-      height: 10rem;
-    }
     .line {
       height: 0.5rem;
-      background: #ababab;
-      width: 0%;
-      transition: 0.2s;
+      background: ${theme.color.secondary};
+      /* width: 0%; */
+      /* transition: 0.2s; */
     }
 
-    a:hover {
+    /* @media screen and (max-width: 768px) {
+      .line {
+        display: none;
+      }
+    } */
+
+    /* a:hover {
       .line {
         width: 50%;
       }
-    }
+    } */
+
     .not-home {
       a:nth-child(3) {
         order: 1;

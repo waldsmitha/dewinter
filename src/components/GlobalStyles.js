@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import background from "../media/background-blurred.png";
 
-let h1 = `calc(4rem + 4vw)`;
+let h1 = `calc(2rem + 3vw)`;
 let h2 = `calc(2rem + 4vw)`;
 let h3 = `calc(1rem + 2vw)`;
 let h4 = `calc(1rem + 1.5vw)`;
@@ -26,9 +26,12 @@ a {
 }
 
 
-
+h1, h2, h3 {
+    letter-spacing: 1px;
+}
 h1 {
     font-size: ${h1};
+    font-size: clamp(2.25rem, 5vw, 6rem);
     /* font-size: 130px; */
     line-height: 100%;
     font-weight: 300;
@@ -49,6 +52,7 @@ p {
     font-size: ${p};
     font-size: 18px;
     line-height: 140%;
+    letter-spacing: 1px;
 }
 
 li {
@@ -64,17 +68,32 @@ button {
 
 
 body {
-    font-family: 'Gothic A1', sans-serif;
-    height: 100%100px;
+    /* font-family: 'Gothic A1', sans-serif; */
+    /* font-family: 'Gowun Batang', serif; */
+    // font-family: 'Cormorant Garamond', serif;
+    font-family: "bonvoyage", serif;
+
+    font-weight: 300;
+    height: 100%;
     overflow: scroll;
-    
+    overflow-x: hidden;
 }
 html {
     background-repeat: no-repeat;
     background: url(${background}) no-repeat center center fixed; 
+    background-size: cover;
     color: #FFFDF6;
     height: 100%; 
-    overflow: hidden;
+    /* overflow-x: hidden; */
+    
+
+}
+
+.grid {
+    display: grid;
+}
+.pos-relative {
+    position: relative;
 }
 
 `;

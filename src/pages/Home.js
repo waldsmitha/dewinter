@@ -9,21 +9,29 @@ import { motion } from "framer-motion";
 import background from "../media/background.png";
 import wmb from "../media/white_medium_badge.png";
 
-const Home = ({ navActive, setNavActive }) => {
-  const navLinks = ["commissions", "originals", "process", "about", "contact"];
+//Animations
+import { pageAnimation } from "../animations/animations";
 
+const Home = ({ navActive, setNavActive, navLinks }) => {
   return (
-    <StyledHome>
-      <img className="logo" src={wmb} alt="" />
-      <h1>De Winter Metalworks</h1>
-      <ul>
-        {navLinks.map((item) => (
-          <Link key={item} to={item}>
-            <li>{item}</li>
-            <div className="line"></div>
-          </Link>
-        ))}
-      </ul>
+    <StyledHome
+      exit="exit"
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+    >
+      <div className="container">
+        <img className="mobile-logo" src={wmb} alt="" />
+        <h1>dewintermetalworks</h1>
+        <ul>
+          {navLinks.map((item) => (
+            <Link key={item.title} to={item.link}>
+              <li>{item.title}</li>
+              <div className="line"></div>
+            </Link>
+          ))}
+        </ul>
+      </div>
     </StyledHome>
   );
 };
@@ -33,21 +41,32 @@ const StyledHome = styled(motion.div)`
     overflow: hidden;
     position: relative;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    background-image: url(${background});
-    background-size: cover;
-    background-position: center;
 
     h1 {
-      /* font-size: 6rem; */
       text-align: center;
+      text-transform: uppercase;
     }
 
-    img {
+    .container {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      background-image: url(${background});
+      background-size: cover;
+      background-position: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+    }
+
+    .mobile-logo {
       height: 100px;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
     }
 
     ul {
@@ -64,15 +83,21 @@ const StyledHome = styled(motion.div)`
     }
     .line {
       height: 0.5rem;
-      background: #ababab;
+      background: ${theme.color.secondary};
       width: 0%;
       margin: 0 1rem;
-      transition: 0.2s;
+      transition: 0.25s;
     }
 
     a:hover {
       .line {
         width: 50%;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .line {
+        background: none;
       }
     }
 
@@ -86,6 +111,9 @@ const StyledHome = styled(motion.div)`
         display: flex;
         flex-direction: row;
         margin-top: 2rem;
+      }
+      .mobile-logo {
+        display: none;
       }
     }
   `}

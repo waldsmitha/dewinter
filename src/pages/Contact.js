@@ -9,32 +9,45 @@ import insta from "../media/insta.svg";
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
+//Animations
+import { pageAnimation, opacity } from "../animations/animations";
+
 const Contact = () => {
   return (
-    <StyledContact>
-      <div>
+    <StyledContact
+      exit="exit"
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+    >
+      <motion.div variants={opacity} className="content">
         <h1>Contact</h1>
         <div className="contact-info">
-          <div className="email">
+          <a href="mailto: info@dewintermetalworks.com" className="email">
             <div className="fixed-width">
               <img src={email} alt="" />
             </div>
             <p>info@dewintermetalworks.com</p>
-          </div>
-          <div className="phone">
+          </a>
+          <a href="tel:978-123-4567" className="phone">
             <div className="fixed-width">
               <img src={phone} alt="" />
             </div>
             <p>(978)123-4567</p>
-          </div>
-          <div className="insta">
+          </a>
+          <a
+            href="https://www.instagram.com/dewintermetalworks/"
+            target="_blank"
+            rel="noreferrer"
+            className="insta"
+          >
             <div className="fixed-width">
               <img src={insta} alt="" />
             </div>
             <p>Instagram: @dewintermetalworks</p>
-          </div>
+          </a>
         </div>
-      </div>
+      </motion.div>
     </StyledContact>
   );
 };
@@ -45,13 +58,20 @@ const StyledContact = styled(motion.div)`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    min-height: 80vh;
+    margin: auto 0;
+    min-height: 69vh;
+    position: relative;
+    margin-top: 100px;
 
     h1 {
       border-bottom: 2px solid #ababab;
       line-height: 60%;
       padding-bottom: 2rem;
       margin-bottom: 2rem;
+    }
+
+    .content {
+      transform: translateY(-100px);
     }
 
     .email,
@@ -67,4 +87,5 @@ const StyledContact = styled(motion.div)`
     }
   `}
 `;
+
 export default Contact;

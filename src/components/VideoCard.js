@@ -1,8 +1,14 @@
 import React from "react";
 
+//Components
+import { useScroll } from "../components/useScroll";
+
 //Styles
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
+
+//Animations
+import { opacity } from "../animations/animations";
 
 const VideoCard = ({ data }) => {
   const {
@@ -12,8 +18,15 @@ const VideoCard = ({ data }) => {
     process_upload_date,
   } = data.data;
 
+  const [element, controls] = useScroll();
+
   return (
-    <StyledVideoCard>
+    <StyledVideoCard
+      ref={element}
+      initial="hidden"
+      animate={controls}
+      variants={opacity}
+    >
       <div className="video">
         <video
           src={process_video.url}
@@ -39,9 +52,9 @@ const StyledVideoCard = styled(motion.div)`
   .title {
     margin: 1rem 0;
 
-    p:first-child {
+    /* p:first-child {
       font-family: "bonvoyage", serif;
-    }
+    } */
     p:last-child {
       font-size: 1.25rem;
     }

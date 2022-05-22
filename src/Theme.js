@@ -3,8 +3,9 @@ import { ThemeProvider } from "styled-components";
 const theme = {
   color: {
     primary: "#f2f2f2",
-    secondary: "#E48383E5",
+    secondary: "#db9731",
     tertiary: "#7ED1EB",
+    text: "#FFFDF6",
     background: "#131313",
     link: "#9AB87A",
   },
@@ -21,7 +22,7 @@ const theme = {
   },
   spacing: {
     sectionPaddingMobile: "50px",
-    sectionPaddingDesktop: "100px",
+    sectionPaddingDesktop: "50px",
     maxWidth: "1200px",
   },
   breakpoint: {

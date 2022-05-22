@@ -1,81 +1,62 @@
-import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import React from "react";
+
+//Components
 import NavLinksComponent from "./NavLinksComponent";
 
 //Styling
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
-const NavBar = ({ navLinks, setNavLinks }) => {
-  const location = useLocation();
-  const { pathname } = location;
-  //   console.log(navLinks);
+//Animations
+import { AnimatePresence } from "framer-motion";
+import { revealDown } from "../animations/animations";
 
-  const updateNavLinks = () => {
-    switch (pathname) {
-      case "/":
-        setNavLinks([
-          "commissions",
-          "originals",
-          "process",
-          "about",
-          "contact",
-        ]);
-        break;
-      case "/commissions":
-        setNavLinks(["originals", "process", "about", "contact"]);
-        break;
-      case "/originals":
-        setNavLinks(["commissions", "process", "about", "contact"]);
-        break;
-      case "/process":
-        setNavLinks(["commissions", "originals", "about", "contact"]);
-        break;
-      case "/about":
-        setNavLinks(["commissions", "originals", "process", "contact"]);
-        break;
-      case "/contact":
-        setNavLinks(["commissions", "originals", "process", "about"]);
-        break;
-      default:
-        setNavLinks([
-          "commissions",
-          "originals",
-          "process",
-          "about",
-          "contact",
-        ]);
-    }
-  };
-
-  useEffect(() => {
-    updateNavLinks();
-  }, [pathname]);
-
+const NavBar = ({ pathname, navLinks }) => {
   return (
-    <StyledNavBar>
-      <div className="container">
-        <NavLinksComponent navLinks={navLinks} />
-        <div className="line-deco">
-          <span className="first"></span>
-          <span className="second"></span>
-          <span className="third"></span>
-        </div>
-      </div>
-    </StyledNavBar>
+    <AnimatePresence>
+      {pathname !== "/" && (
+        <StyledNavBar
+          variants={revealDown}
+          initial="hidden"
+          animate={pathname === "/" ? "hidden" : "show"}
+          exit="hidden"
+        >
+          {/* <Link to="/">
+            <img src={wmb} className="logo" alt="" />
+          </Link> */}
+          <div className="container">
+            <NavLinksComponent navLinks={navLinks} />
+            <div className="line-deco">
+              <span className="first"></span>
+              <span className="second"></span>
+              <span className="third"></span>
+            </div>
+          </div>
+        </StyledNavBar>
+      )}
+    </AnimatePresence>
   );
 };
 
 const StyledNavBar = styled(motion.nav)`
   ${({ theme }) => css`
-    min-height: 20rem;
+    /* min-height: 20rem; */
+    padding-top: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    z-index: 999;
 
     ul {
       padding: 0 2rem;
+    }
+
+    .logo {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      height: 100px;
     }
 
     .line-deco {
@@ -112,8 +93,21 @@ const StyledNavBar = styled(motion.nav)`
         transform: translate(-50%, -50%);
       }
     }
+
+    ul,
+    .line-deco {
+      padding-left: 100px;
+    }
+
     @media screen and (max-width: 768px) {
       display: none;
+    }
+
+    @media screen and (min-width: 1350px) {
+      ul,
+      .line-deco {
+        padding: 0 2rem;
+      }
     }
   `}
 `;

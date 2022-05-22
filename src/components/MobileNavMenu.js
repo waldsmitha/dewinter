@@ -9,10 +9,10 @@ import { motion } from "framer-motion";
 import wsb from "../media/white_small_badge.png";
 
 //Animations
-import { revealNavMobile } from "../animations";
+import { revealNavMobile } from "../animations/animations";
 
 const MobileNavMenu = ({ navActive, setNavActive }) => {
-  const links = ["commissions", "originals", "process", "about", "contact"];
+  const links = ["about", "projects", "original pieces", "services", "contact"];
   const location = useLocation();
   const { pathname } = location;
 
@@ -37,19 +37,22 @@ const MobileNavMenu = ({ navActive, setNavActive }) => {
       </Link>
       <ul>
         {links.map((link) => (
-          <Link to={link} key={link} onClick={() => navToggle()}>
+          <Link
+            to={link === "original pieces" ? "originalpieces" : link}
+            key={link}
+            onClick={() => navToggle()}
+          >
             <li>{link}</li>
           </Link>
         ))}
       </ul>
-      {/* <button onClick={() => navToggle()}>Exit</button> */}
     </StyledMobileNavMenu>
   );
 };
 
 const StyledMobileNavMenu = styled(motion.nav)`
   ${({ theme }) => css`
-    z-index: 10;
+    z-index: 100;
     position: fixed;
     top: 0;
     left: 0;

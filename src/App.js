@@ -1,8 +1,8 @@
-import "./App.css";
 import { useState } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, Link } from "react-router-dom";
 
 //Styles
+import "./App.css";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import Theme from "./Theme";
@@ -22,34 +22,66 @@ import MobileNavMenu from "./components/MobileNavMenu";
 import MobileNavButton from "./components/MobileNavButton";
 import MobileHeader from "./components/MobileHeader";
 import Footer from "./components/Footer";
+import ProjectDetailed from "./components/ProjectDetailed";
+
+//Animations
+import { AnimatePresence } from "framer-motion";
+
+//Media
+import wmb from "./media/white_medium_badge.png";
 
 function App() {
   const location = useLocation();
   const pathname = location.pathname;
-  const links = ["commissions", "originals", "process", "about", "contact"];
-  const [navLinks, setNavLinks] = useState([...links]);
   const [navActive, setNavActive] = useState(true);
+  const [navLinks, setNavLinks] = useState([
+    { title: "about", link: "about" },
+    { title: "projects", link: "projects" },
+    { title: "original pieces", link: "originalpieces" },
+    { title: "services", link: "services" },
+    { title: "contact", link: "contact" },
+  ]);
 
   return (
     <StyledApp>
       <Theme>
-        <div className={pathname === "/" ? "hidden" : ""}>
-          <NavBar navLinks={navLinks} setNavLinks={setNavLinks} />
-          <MobileNavButton navActive={navActive} setNavActive={setNavActive} />
-          <MobileHeader />
+        <div className="wrapper">
+          <NavBar pathname={pathname} navLinks={navLinks} />
+          <MobileHeader pathname={pathname} />
+          <MobileNavMenu
+            navActive={navActive}
+            setNavActive={setNavActive}
+            navLinks={navLinks}
+          />
+          <Link to="/">
+            <img src={wmb} className="logo" alt="" />
+          </Link>
+          <AnimatePresence exitBeforeEnter style={{ zIndex: "-1" }}>
+            <Routes location={location} key={location.pathname}>
+              <Route exact path="/" element={<Home navLinks={navLinks} />} />
+              <Route path="/projects" element={<Commissions />} />
+              <Route
+                path="/projects/:id"
+                element={<ProjectDetailed pathname={pathname} />}
+              />
+              <Route path="/originalpieces" element={<Originals />} />
+              <Route
+                path="/originalpieces/:id"
+                element={<ProjectDetailed pathname={pathname} />}
+              />
+              <Route path="/services" element={<Process />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+            {pathname !== "/" && (
+              <MobileNavButton
+                navActive={navActive}
+                setNavActive={setNavActive}
+              />
+            )}
+          </AnimatePresence>
         </div>
-        <MobileNavMenu navActive={navActive} setNavActive={setNavActive} />
-        <Routes location={location} key={location.pathname}>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/commissions" element={<Commissions />} />
-          <Route path="/originals" element={<Originals />} />
-          <Route path="/process" element={<Process />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-        <div className={pathname === "/" ? "hidden" : ""}>
-          <Footer />
-        </div>
+        <Footer pathname={pathname} />
         <GlobalStyles />
       </Theme>
     </StyledApp>
@@ -60,8 +92,28 @@ const StyledApp = styled(motion.div)`
   .hidden {
     display: none;
   }
-  height: 100vh;
-  width: 100vw;
+
+  // width: 100vw;
+  /* overflow-x: hidden; */
+  color: #fffdf6;
+
+  .logo {
+    z-index: 100;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    height: 80px;
+  }
+
+  .wrapper {
+    min-height: 100vh;
+  }
+
+  @media screen and (max-width: 768px) {
+    .logo {
+      display: none;
+    }
+  }
 `;
 
 export default App;

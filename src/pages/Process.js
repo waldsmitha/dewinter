@@ -8,54 +8,85 @@ import {
 
 //Components
 import VideoCard from "../components/VideoCard";
+import ScrollTop from "../components/ScrollTop";
+import { NoOverflow } from "../components/StyledComponents";
 
 //Styles
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
+
+//Animations
+import { pageAnimation } from "../animations/animations";
+import { revealUp } from "../animations/processAnim";
 
 const Process = () => {
   const [documents] = usePrismicDocumentsByType("process_video");
   const [processIntro] = useSinglePrismicDocument("process_intro");
   const data = processIntro && processIntro.data;
   const processes = documents && documents.results;
+  const descriptionArr = data && data.description;
 
   return (
-    <StyledProcess>
+    <>
       {data && (
-        <div>
-          <h1>{data.title[0].text}</h1>
-          <div className="description">
-            <p>{data.description[0].text}</p>
-            <p>{data.description[1].text}</p>
+        <StyledProcess
+          exit="exit"
+          variants={pageAnimation}
+          initial="hidden"
+          animate="show"
+        >
+          <div className="intro">
+            <h1>{data.title[0].text}</h1>
+            <div className="description">
+              {descriptionArr.map((item, i) => (
+                <NoOverflow key={`${item.type}${i}`}>
+                  <motion.p variants={revealUp}>{item.text}</motion.p>
+                </NoOverflow>
+              ))}
+            </div>
           </div>
-        </div>
+
+          <section className="gallery">
+            {processes &&
+              processes.map((item) => <VideoCard key={item.id} data={item} />)}
+          </section>
+
+          <ScrollTop />
+        </StyledProcess>
       )}
-      <section className="gallery">
-        {processes &&
-          processes.map((item) => <VideoCard key={item.id} data={item} />)}
-      </section>
-    </StyledProcess>
+    </>
   );
 };
 
 const StyledProcess = styled(motion.div)`
   ${({ theme }) => css`
     max-width: ${theme.spacing.maxWidth};
+    min-height: 100vh;
     margin: 0 auto;
     padding: 0 2rem;
+    position: relative;
+    z-index: -1;
+    /* overflow: hidden; */
 
     & > * {
       margin: ${theme.spacing.sectionPaddingDesktop} 0;
     }
+
     .description {
+      max-width: 800px;
+      margin: 0 auto;
       p:first-child {
-        margin-bottom: 1rem;
+        padding-bottom: 1rem;
       }
     }
 
     h1 {
       text-align: center;
       margin-bottom: 25px;
+    }
+
+    .intro {
+      margin-bottom: ${theme.spacing.sectionPaddingDesktop};
     }
 
     .gallery {
