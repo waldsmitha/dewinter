@@ -56,7 +56,7 @@ function App() {
           <Link to="/">
             <img src={wmb} className="logo" alt="" />
           </Link>
-          <AnimatePresence exitBeforeEnter>
+          <AnimatePresence exitBeforeEnter style={{ zIndex: "-1" }}>
             <Routes location={location} key={location.pathname}>
               <Route exact path="/" element={<Home navLinks={navLinks} />} />
               <Route path="/projects" element={<Commissions />} />

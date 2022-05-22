@@ -34,6 +34,7 @@ const StyledProjectSelection = styled(motion.div)`
   display: flex;
   position: relative;
   height: 100%;
+  z-index: -1;
 
   .gradient-bg {
     position: absolute;
