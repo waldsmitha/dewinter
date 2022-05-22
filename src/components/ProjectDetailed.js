@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import cn from "classnames";
+import { Link } from "react-router-dom";
 
 //Styles
 import styled, { css } from "styled-components";
@@ -23,8 +25,13 @@ const ProjectDetailed = ({ pathname }) => {
     `${splitPathname}`
   );
   const images = documents && documents.data.body[0].items;
-  //   console.log(documents);
-  //   console.log(pathname.split("/")[2]);
+  const [originalPathname, setOriginalPathname] = useState(false);
+
+  useEffect(() => {
+    pathname.split("/")[1] === "originalpieces"
+      ? setOriginalPathname(true)
+      : setOriginalPathname(false);
+  }, [pathname]);
 
   return (
     <StyledProjectDetailed
@@ -37,7 +44,12 @@ const ProjectDetailed = ({ pathname }) => {
         <motion.div className="intro">
           <h1>{documents && documents.data.detailed_title[0].text}</h1>
         </motion.div>
-        <motion.div variants={opacity}>
+        <motion.div
+          variants={opacity}
+          className={cn("project-detailed-grid", {
+            "project-detailed-grid-original": originalPathname,
+          })}
+        >
           {images &&
             images.map((image) => (
               <img
@@ -79,7 +91,6 @@ const StyledProjectDetailed = styled(motion.div)`
     img {
       width: 100%;
       object-fit: cover;
-      padding: 2rem;
     }
 
     h2 {
@@ -105,10 +116,18 @@ const StyledProjectDetailed = styled(motion.div)`
         border-radius: 50%;
       }
     }
+    .project-detailed-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-gap: 2rem;
+    }
+    .project-detailed-grid-original {
+      grid-template-columns: 1fr 1fr;
+    }
 
     @media screen and (max-width: 650px) {
-      img {
-        padding: 1rem 2rem;
+      .project-detailed-grid-original {
+        grid-template-columns: 1fr;
       }
     }
   `}

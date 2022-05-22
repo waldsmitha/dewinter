@@ -56,9 +56,7 @@ const Originals = () => {
             <div className="sub-header">
               <motion.span variants={revealLeft}></motion.span>
               <motion.div className="no-overflow">
-                <motion.h3 variants={revealDown}>
-                  Original Designs by Experienced Artisans
-                </motion.h3>
+                <motion.h3 variants={revealDown}>A DMW Design Studio</motion.h3>
               </motion.div>
               <motion.span variants={revealRight}></motion.span>
             </div>

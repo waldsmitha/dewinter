@@ -26,7 +26,9 @@ a {
 }
 
 
-
+h1, h2, h3 {
+    letter-spacing: 1px;
+}
 h1 {
     font-size: ${h1};
     font-size: clamp(2.25rem, 5vw, 6rem);
@@ -50,6 +52,7 @@ p {
     font-size: ${p};
     font-size: 18px;
     line-height: 140%;
+    letter-spacing: 1px;
 }
 
 li {
@@ -67,7 +70,8 @@ button {
 body {
     /* font-family: 'Gothic A1', sans-serif; */
     /* font-family: 'Gowun Batang', serif; */
-    font-family: 'Cormorant Garamond', serif;
+    // font-family: 'Cormorant Garamond', serif;
+    font-family: "bonvoyage", serif;
 
     font-weight: 300;
     height: 100%;
@@ -83,6 +87,13 @@ html {
     /* overflow-x: hidden; */
     
 
+}
+
+.grid {
+    display: grid;
+}
+.pos-relative {
+    position: relative;
 }
 
 `;

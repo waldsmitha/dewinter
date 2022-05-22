@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 const ProjectSelection = ({ data }) => {
-  //   console.log(data);
+  console.log(data);
 
   return (
     <Link key={data.uid} to={data.uid}>
