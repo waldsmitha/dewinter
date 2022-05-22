@@ -9,65 +9,13 @@ import { motion } from "framer-motion";
 import background from "../media/background-blurred.png";
 import NavLink from "./NavLink";
 
-const ProjectsDropdown = () => {
-  return (
-    <StyledDropdown>
-      <Link to="/projects/architecturalelements">
-        <li>architectural elements</li>
-      </Link>
-      <Link to="/projects/furniture">
-        <li>furniture</li>
-      </Link>
-      <Link to="/projects/mirrors">
-        <li>mirrors</li>
-      </Link>
-    </StyledDropdown>
-  );
-};
-
-const OriginalsDropdown = () => {
-  return (
-    <StyledDropdown>
-      <Link to="/originalpieces/originalfurniture">
-        <li>furniture</li>
-      </Link>
-      <Link to="/originalpieces/originalhomeaccents">
-        <li>home accents</li>
-      </Link>
-      <Link to="/originalpieces/originalmirrors">
-        <li>mirrors</li>
-      </Link>
-      <Link to="/originalpieces/originalsculptures">
-        <li>sculptures</li>
-      </Link>
-    </StyledDropdown>
-  );
-};
-
-const StyledDropdown = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  min-width: 100%;
-  position: absolute;
-  white-space: nowrap;
-  top: 100%;
-  left: 0;
-  background-color: #131313;
-  z-index: 999;
-  li {
-    font-size: 1.5rem;
-    text-transform: capitalize;
-  }
-`;
-
 const NavLinksComponent = ({ navLinks }) => {
   return (
     <div>
       <StyledLinks>
         <ul>
           {navLinks.map((item) => (
-            <NavLink item={item} />
+            <NavLink key={item.title} item={item} />
           ))}
         </ul>
       </StyledLinks>
@@ -80,6 +28,16 @@ const StyledLinks = styled(motion.div)`
     .nav-element-title {
       font-weight: 200;
       text-transform: uppercase;
+      display: flex;
+      align-items: center;
+
+      .drop-down-icon {
+        margin-left: 5px;
+        height: 10px;
+        width: 10px;
+        background: #ababab;
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      }
     }
     ul {
       display: flex;
@@ -105,6 +63,7 @@ const StyledLinks = styled(motion.div)`
 
     .line {
       height: 0.5rem;
+      margin-bottom: 1rem;
       background: ${theme.color.secondary};
       /* width: 0%; */
       /* transition: 0.2s; */

@@ -67,7 +67,6 @@ const Commissions = () => {
 
 const StyledCommissions = styled(motion.div)`
   ${({ theme }) => css`
-    z-index: -1;
     max-width: ${theme.spacing.maxWidth};
     min-height: 100vh;
     margin: 0 auto;
@@ -77,6 +76,7 @@ const StyledCommissions = styled(motion.div)`
     h1 {
       text-align: center;
       margin-bottom: 25px;
+      z-index: -1;
     }
 
     .intro {

@@ -7,6 +7,9 @@ import { useLocation } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
+//Animations
+import { AnimatePresence } from "framer-motion";
+
 const ProjectsDropdown = ({ setDropdownActive }) => {
   const data = [
     {
@@ -27,10 +30,11 @@ const ProjectsDropdown = ({ setDropdownActive }) => {
     <StyledDropdown
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
     >
       {data.map((datum) => (
-        <Link to={datum.link}>
+        <Link to={datum.link} key={datum.link}>
           <motion.li onClick={() => setDropdownActive(false)}>
             {datum.title}
           </motion.li>
@@ -64,10 +68,11 @@ const OriginalsDropdown = ({ setDropdownActive }) => {
     <StyledDropdown
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
     >
       {data.map((datum) => (
-        <Link to={datum.link}>
+        <Link to={datum.link} key={datum.link}>
           <motion.li onClick={() => setDropdownActive(false)}>
             {datum.title}
           </motion.li>
@@ -86,13 +91,19 @@ const StyledDropdown = styled(motion.div)`
   white-space: nowrap;
   top: 100%;
   left: 0;
-  background-color: #131313;
+  background-color: #252525;
   z-index: 999;
+  border-radius: 5px;
+
   li {
     font-size: 1.5rem;
     text-transform: capitalize;
     margin: 0 1rem;
     padding: 0.5rem 0;
+    transition: 0.1s;
+  }
+  li:hover {
+    color: #db9731;
   }
 `;
 
@@ -100,6 +111,7 @@ const NavLink = ({ item }) => {
   const location = useLocation();
   const { pathname } = location;
   const [dropdownActive, setDropdownActive] = useState(false);
+  console.log(item.link);
 
   return (
     <motion.div
@@ -112,7 +124,29 @@ const NavLink = ({ item }) => {
       }}
     >
       <Link key={item.title} to={item.link}>
-        <li className="nav-element-title">{item.title}</li>
+        <div className="nav-element-title">
+          <li>{item.title}</li>
+          {item.title === "projects" && (
+            <motion.div
+              className="drop-down-icon"
+              animate={{ rotate: dropdownActive ? 180 : 0 }}
+              transition={{
+                duration: 0.2,
+                ease: "easeOut",
+              }}
+            ></motion.div>
+          )}
+          {item.title === "original pieces" && (
+            <motion.div
+              className="drop-down-icon"
+              animate={{ rotate: dropdownActive ? 180 : 0 }}
+              transition={{
+                duration: 0.2,
+                ease: "easeOut",
+              }}
+            ></motion.div>
+          )}
+        </div>
         <motion.div
           className="line"
           transition={{
@@ -124,13 +158,14 @@ const NavLink = ({ item }) => {
           }}
         ></motion.div>
       </Link>
-      {item.link === "projects" && dropdownActive && (
-        <ProjectsDropdown setDropdownActive={setDropdownActive} />
-      )}
-      {/* {item.link === "projects" && <ProjectsDropdown />} */}
-      {item.link === "originalpieces" && dropdownActive && (
-        <OriginalsDropdown setDropdownActive={setDropdownActive} />
-      )}
+      <AnimatePresence exitBeforeEnter>
+        {item.link === "projects" && dropdownActive && (
+          <ProjectsDropdown setDropdownActive={setDropdownActive} />
+        )}
+        {item.link === "originalpieces" && dropdownActive && (
+          <OriginalsDropdown setDropdownActive={setDropdownActive} />
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };

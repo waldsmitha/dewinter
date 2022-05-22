@@ -53,10 +53,10 @@ function App() {
             setNavActive={setNavActive}
             navLinks={navLinks}
           />
-          <Link to="/">
-            <img src={wmb} className="logo" alt="" />
+          <Link to="/" className="logo">
+            <img src={wmb} alt="" />
           </Link>
-          <AnimatePresence exitBeforeEnter style={{ zIndex: "-1" }}>
+          <AnimatePresence exitBeforeEnter>
             <Routes location={location} key={location.pathname}>
               <Route exact path="/" element={<Home navLinks={navLinks} />} />
               <Route path="/projects" element={<Commissions />} />
@@ -102,7 +102,11 @@ const StyledApp = styled(motion.div)`
     position: fixed;
     top: 1rem;
     left: 1rem;
-    height: 80px;
+
+    img {
+      height: 80px;
+    }
+    z-index: 1000;
   }
 
   .wrapper {

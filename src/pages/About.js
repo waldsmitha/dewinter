@@ -85,7 +85,6 @@ const StyledAbout = styled(motion.div)`
     margin: 0 auto;
     padding: 0 2rem;
     position: relative;
-    z-index: -1;
 
     & > * {
       margin: ${theme.spacing.sectionPaddingDesktop} 0;

@@ -7,8 +7,6 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 const ProjectSelection = ({ data }) => {
-  console.log(data);
-
   return (
     <Link key={data.uid} to={data.uid}>
       <StyledProjectSelection>
@@ -18,12 +16,6 @@ const ProjectSelection = ({ data }) => {
           alt={data.data.product_image.alt}
         />
         <div className="gradient-bg"></div>
-
-        {/* <div className="spacer">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div> */}
       </StyledProjectSelection>
     </Link>
   );
@@ -34,7 +26,6 @@ const StyledProjectSelection = styled(motion.div)`
   display: flex;
   position: relative;
   height: 100%;
-  z-index: -1;
 
   .gradient-bg {
     position: absolute;

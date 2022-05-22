@@ -65,7 +65,6 @@ const StyledProcess = styled(motion.div)`
     margin: 0 auto;
     padding: 0 2rem;
     position: relative;
-    z-index: -1;
     /* overflow: hidden; */
 
     & > * {
