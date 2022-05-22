@@ -73,6 +73,7 @@ const ProjectDetailed = ({ pathname }) => {
 const StyledProjectDetailed = styled(motion.div)`
   ${({ theme }) => css`
     max-width: ${theme.spacing.maxWidth};
+    z-index: -1;
 
     h1 {
       text-align: center;

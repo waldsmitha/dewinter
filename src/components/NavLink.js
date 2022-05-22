@@ -7,45 +7,72 @@ import { useLocation } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
-const ProjectsDropdown = () => {
+const ProjectsDropdown = ({ setDropdownActive }) => {
+  const data = [
+    {
+      title: "architectural elements",
+      link: "/projects/architecturalelements",
+    },
+    {
+      title: "furniture",
+      link: "/projects/furniture",
+    },
+    {
+      title: "mirrors",
+      link: "/projects/mirrors",
+    },
+  ];
+
   return (
     <StyledDropdown
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2 }}
     >
-      <Link to="/projects/architecturalelements">
-        <li>architectural elements</li>
-      </Link>
-      <Link to="/projects/furniture">
-        <li>furniture</li>
-      </Link>
-      <Link to="/projects/mirrors">
-        <li>mirrors</li>
-      </Link>
+      {data.map((datum) => (
+        <Link to={datum.link}>
+          <motion.li onClick={() => setDropdownActive(false)}>
+            {datum.title}
+          </motion.li>
+        </Link>
+      ))}
     </StyledDropdown>
   );
 };
 
-const OriginalsDropdown = () => {
+const OriginalsDropdown = ({ setDropdownActive }) => {
+  const data = [
+    {
+      title: "furniture",
+      link: "/originalpieces/originalfurniture",
+    },
+    {
+      title: "home accents",
+      link: "/originalpieces/originalhomeaccents",
+    },
+    {
+      title: "mirrors",
+      link: "/originalpieces/originalmirrors",
+    },
+    {
+      title: "sculptures",
+      link: "/originalpieces/originalsculptures",
+    },
+  ];
+
   return (
     <StyledDropdown
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2 }}
     >
-      <Link to="/originalpieces/originalfurniture">
-        <li>furniture</li>
-      </Link>
-      <Link to="/originalpieces/originalhomeaccents">
-        <li>home accents</li>
-      </Link>
-      <Link to="/originalpieces/originalmirrors">
-        <li>mirrors</li>
-      </Link>
-      <Link to="/originalpieces/originalsculptures">
-        <li>sculptures</li>
-      </Link>
+      {data.map((datum) => (
+        <Link to={datum.link}>
+          <motion.li onClick={() => setDropdownActive(false)}>
+            {datum.title}
+          </motion.li>
+        </Link>
+      ))}
     </StyledDropdown>
   );
 };
@@ -53,7 +80,7 @@ const OriginalsDropdown = () => {
 const StyledDropdown = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   min-width: 100%;
   position: absolute;
   white-space: nowrap;
@@ -64,6 +91,8 @@ const StyledDropdown = styled(motion.div)`
   li {
     font-size: 1.5rem;
     text-transform: capitalize;
+    margin: 0 1rem;
+    padding: 0.5rem 0;
   }
 `;
 
@@ -95,9 +124,12 @@ const NavLink = ({ item }) => {
           }}
         ></motion.div>
       </Link>
-      {item.link === "projects" && dropdownActive && <ProjectsDropdown />}
+      {item.link === "projects" && dropdownActive && (
+        <ProjectsDropdown setDropdownActive={setDropdownActive} />
+      )}
+      {/* {item.link === "projects" && <ProjectsDropdown />} */}
       {item.link === "originalpieces" && dropdownActive && (
-        <OriginalsDropdown />
+        <OriginalsDropdown setDropdownActive={setDropdownActive} />
       )}
     </motion.div>
   );
