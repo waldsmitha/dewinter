@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { useLocation } from "react-router-dom";
@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 //Animations
 import { AnimatePresence } from "framer-motion";
 
-const ProjectsDropdown = ({ setDropdownActive }) => {
+const ProjectsDropdown = ({ setDropdownActive, pathname }) => {
   const data = [
     {
       title: "architectural elements",
@@ -32,6 +32,7 @@ const ProjectsDropdown = ({ setDropdownActive }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
+      // style={{ background: pathname == "/about" ? "#BFBFBF" : "#252525" }}
     >
       {data.map((datum) => (
         <Link to={datum.link} key={datum.link}>
@@ -44,7 +45,7 @@ const ProjectsDropdown = ({ setDropdownActive }) => {
   );
 };
 
-const OriginalsDropdown = ({ setDropdownActive }) => {
+const OriginalsDropdown = ({ setDropdownActive, pathname }) => {
   const data = [
     {
       title: "furniture",
@@ -70,6 +71,7 @@ const OriginalsDropdown = ({ setDropdownActive }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
+      // style={{ background: pathname == "/about" ? "#BFBFBF" : "#252525" }}
     >
       {data.map((datum) => (
         <Link to={datum.link} key={datum.link}>
@@ -101,6 +103,7 @@ const StyledDropdown = styled(motion.div)`
     margin: 0 1rem;
     padding: 0.5rem 0;
     transition: 0.1s;
+    text-transform: uppercase;
   }
   li:hover {
     color: #db9731;
@@ -160,10 +163,16 @@ const NavLink = ({ item }) => {
       </Link>
       <AnimatePresence exitBeforeEnter>
         {item.link === "projects" && dropdownActive && (
-          <ProjectsDropdown setDropdownActive={setDropdownActive} />
+          <ProjectsDropdown
+            setDropdownActive={setDropdownActive}
+            pathname={pathname}
+          />
         )}
         {item.link === "originalpieces" && dropdownActive && (
-          <OriginalsDropdown setDropdownActive={setDropdownActive} />
+          <OriginalsDropdown
+            setDropdownActive={setDropdownActive}
+            pathname={pathname}
+          />
         )}
       </AnimatePresence>
     </motion.div>

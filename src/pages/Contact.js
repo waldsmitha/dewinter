@@ -68,6 +68,7 @@ const StyledContact = styled(motion.div)`
       line-height: 60%;
       padding-bottom: 2rem;
       margin-bottom: 2rem;
+      text-transform: uppercase;
     }
 
     .content {

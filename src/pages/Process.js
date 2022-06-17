@@ -38,18 +38,49 @@ const Process = () => {
           <div className="intro">
             <h1>{data.title[0].text}</h1>
             <div className="description">
-              {descriptionArr.map((item, i) => (
-                <NoOverflow key={`${item.type}${i}`}>
-                  <motion.p variants={revealUp}>{item.text}</motion.p>
-                </NoOverflow>
-              ))}
+              <NoOverflow>
+                <motion.div variants={revealUp}>
+                  <motion.h2>Custom Fabrication</motion.h2>
+                  <motion.p>
+                    Our workshop offers expert custom fabrication for design
+                    professionals and individual clients. Although our expertise
+                    lies in metal fabrication, we do work with other materials
+                    and with specialized vendors to bring any project to life.
+                    In addition to fabrication, we also offer design
+                    consultation and drafting services. Our mission is to
+                    provide a full-service experience in which our clients can
+                    rely on our knowledge for the development of their projects
+                    from inception to completion.
+                  </motion.p>
+                </motion.div>
+              </NoOverflow>
+              <NoOverflow>
+                <motion.div variants={revealUp}>
+                  <motion.h2>
+                    <em>As Bold As Brass</em> Design Studio
+                  </motion.h2>
+                  <motion.p>
+                    ABAB is DeWinterMetalWorks’s very own design studio
+                    specialized in furniture design. With a unique esthetic
+                    grounded in organic shapes and raw materials, our pieces are
+                    designed to blend functionality and art. ABAB’s line of
+                    made-to-order furniture will be launched in the Fall of 2022
+                    – stay tuned.
+                  </motion.p>
+                </motion.div>
+              </NoOverflow>
+              <NoOverflow>
+                <motion.p variants={revealUp}>
+                  For all inquiries, please contact info@dewintermetalworks.com
+                </motion.p>
+              </NoOverflow>
             </div>
           </div>
-
+          {/* 
           <section className="gallery">
             {processes &&
               processes.map((item) => <VideoCard key={item.id} data={item} />)}
-          </section>
+          </section> */}
 
           <ScrollTop />
         </StyledProcess>
@@ -77,11 +108,19 @@ const StyledProcess = styled(motion.div)`
       p:first-child {
         padding-bottom: 1rem;
       }
+      & > * {
+        margin: 5rem 0;
+      }
     }
 
     h1 {
       text-align: center;
       margin-bottom: 25px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      padding-bottom: 1rem;
     }
 
     .intro {

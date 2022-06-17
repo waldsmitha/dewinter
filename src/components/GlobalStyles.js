@@ -1,8 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 import background from "../media/background-blurred.png";
+import backgroundWhite from "../media/background-blurred-white.png";
 
 let h1 = `calc(2rem + 3vw)`;
-let h2 = `calc(2rem + 4vw)`;
+let h2 = `calc(1.25rem + 1.5vw)`;
 let h3 = `calc(1rem + 2vw)`;
 let h4 = `calc(1rem + 1.5vw)`;
 let p = `calc(1.8rem + .25vw)`;
@@ -25,6 +26,10 @@ a {
     text-decoration: none;
 }
 
+.bg-white a {
+    color: #101010;
+}
+
 
 h1, h2, h3 {
     letter-spacing: 1px;
@@ -38,6 +43,7 @@ h1 {
 }
 h2 {
     font-size: ${h2};
+    font-size: clamp(2.5rem, 3vw, 4rem);
     /* font-size: 72px; */
     line-height: 100%;
     font-weight: 300;
@@ -77,11 +83,17 @@ body {
     height: 100%;
     overflow: scroll;
     overflow-x: hidden;
-}
-html {
-    background-repeat: no-repeat;
     background: url(${background}) no-repeat center center fixed; 
     background-size: cover;
+    transition: .2s;
+}
+
+.bg-white {
+    background: url(${backgroundWhite}) no-repeat center center fixed; 
+    background-size: cover;
+    color: #101010;
+}
+html {
     color: #FFFDF6;
     height: 100%; 
     /* overflow-x: hidden; */

@@ -82,8 +82,8 @@ const StyledProjectDetailed = styled(motion.div)`
     .intro {
       margin: 0 auto;
       margin-top: ${theme.spacing.sectionPaddingDesktop};
-      max-width: 800px;
-      text-transform: capitalize;
+      max-width: 1000px;
+      text-transform: uppercase;
     }
     margin: 0 auto;
     margin-bottom: 5rem;

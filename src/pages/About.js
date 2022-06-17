@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 //Prismic
 import {
@@ -34,6 +34,15 @@ const About = () => {
       a.data.bio_name[0].text < b.data.bio_name[0].text ? 1 : -1
     );
 
+  // useEffect(() => {
+  //   document.body.classList.add("bg-white");
+  //   console.log("yest");
+
+  //   return () => {
+  //     document.body.classList.remove("bg-white");
+  //   };
+  // }, []);
+
   console.log(data && data);
 
   return (
@@ -57,14 +66,16 @@ const About = () => {
               <motion.h1 variants={revealUp}>DEWINTERMETALWORKS</motion.h1>
             </NoOverflow>
           </motion.header>
-          {data &&
-            data.main_description.map((paragraph) => (
-              <NoOverflow>
-                <motion.p className="company-info" variants={revealUp}>
-                  {paragraph.text}
-                </motion.p>
-              </NoOverflow>
-            ))}
+          <div className="main-description">
+            {data &&
+              data.main_description.map((paragraph) => (
+                <NoOverflow>
+                  <motion.p className="company-info" variants={revealUp}>
+                    {paragraph.text}
+                  </motion.p>
+                </NoOverflow>
+              ))}
+          </div>
           <motion.div style={{ marginTop: "50px" }} variants={opacity}>
             <motion.section className="gallery">
               {sortedBios &&
@@ -85,6 +96,7 @@ const StyledAbout = styled(motion.div)`
     margin: 0 auto;
     padding: 0 2rem;
     position: relative;
+    // color: #101010;
 
     & > * {
       margin: ${theme.spacing.sectionPaddingDesktop} 0;
@@ -109,6 +121,12 @@ const StyledAbout = styled(motion.div)`
       h1 {
         text-align: center;
         font-size: clamp(2.25rem, 5vw, 6rem);
+      }
+    }
+
+    .main-description {
+      & > * {
+        margin: 1rem 0;
       }
     }
 

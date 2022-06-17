@@ -76,7 +76,6 @@ const StyledCommissions = styled(motion.div)`
     h1 {
       text-align: center;
       margin-bottom: 25px;
-      z-index: -1;
     }
 
     .intro {
