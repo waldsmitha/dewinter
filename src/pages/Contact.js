@@ -29,12 +29,12 @@ const Contact = () => {
             </div>
             <p>info@dewintermetalworks.com</p>
           </a>
-          <a href="tel:978-123-4567" className="phone">
+          {/* <a href="tel:978-123-4567" className="phone">
             <div className="fixed-width">
               <img src={phone} alt="" />
             </div>
             <p>(978)123-4567</p>
-          </a>
+          </a> */}
           <a
             href="https://www.instagram.com/dewintermetalworks/"
             target="_blank"
