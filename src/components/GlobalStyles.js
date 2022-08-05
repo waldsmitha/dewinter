@@ -58,7 +58,9 @@ p {
     font-size: ${p};
     font-size: 18px;
     line-height: 140%;
-    letter-spacing: 1px;
+    letter-spacing: .2px;
+    font-family: 'Lato';
+    font-weight: 300;
 }
 
 li {

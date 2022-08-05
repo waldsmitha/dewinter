@@ -34,16 +34,15 @@ const About = () => {
       a.data.bio_name[0].text < b.data.bio_name[0].text ? 1 : -1
     );
 
-  // useEffect(() => {
-  //   document.body.classList.add("bg-white");
-  //   console.log("yest");
+  useEffect(() => {
+    document.body.classList.add("bg-white");
+    console.log("yest");
 
-  //   return () => {
-  //     document.body.classList.remove("bg-white");
-  //   };
-  // }, []);
+    return () => {
+      document.body.classList.remove("bg-white");
+    };
+  }, []);
 
-  console.log(data && data);
 
   return (
     <>
@@ -96,7 +95,7 @@ const StyledAbout = styled(motion.div)`
     margin: 0 auto;
     padding: 0 2rem;
     position: relative;
-    // color: #101010;
+    color: #101010;
 
     & > * {
       margin: ${theme.spacing.sectionPaddingDesktop} 0;
