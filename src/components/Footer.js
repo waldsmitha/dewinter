@@ -35,6 +35,7 @@ const Footer = () => {
             },
           }}
           exit={{ opacity: 0 }}
+          className={location === '/about' && 'inverted'}
         >
           <div className="line-deco">
             <span className="first"></span>

@@ -53,7 +53,7 @@ function App() {
             setNavActive={setNavActive}
             navLinks={navLinks}
           />
-          <Link to="/" className="logo">
+          <Link to="/" className={pathname === '/about' ? 'inverted logo' : 'logo'}>
             <img src={wmb} alt="" />
           </Link>
           <AnimatePresence exitBeforeEnter>

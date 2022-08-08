@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link , useLocation } from "react-router-dom";
 
 //Styles
 import styled, { css } from "styled-components";
@@ -13,6 +13,8 @@ import { AnimatePresence } from "framer-motion";
 import { revealDown } from "../animations/animations";
 
 const MobileHeader = ({ pathname }) => {
+  const location = useLocation().pathname;
+
   return (
     <AnimatePresence>
       {pathname !== "/" && (
@@ -21,6 +23,7 @@ const MobileHeader = ({ pathname }) => {
           initial="hidden"
           animate="show"
           exit="hidden"
+          className={location === '/about' && 'inverted'}
         >
           <div className="container">
             <Link to="/">

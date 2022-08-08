@@ -26,7 +26,7 @@ const NavBar = ({ pathname, navLinks }) => {
           </Link> */}
           <div className="container">
             <NavLinksComponent navLinks={navLinks} />
-            <div className="line-deco">
+            <div className={pathname === '/about' ? 'inverted line-deco' : 'line-deco'}>
               <span className="first"></span>
               <span className="second"></span>
               <span className="third"></span>

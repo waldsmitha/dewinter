@@ -26,11 +26,6 @@ a {
     text-decoration: none;
 }
 
-.bg-white a {
-    color: #101010;
-}
-
-
 h1, h2, h3 {
     letter-spacing: 1px;
 }
@@ -93,8 +88,12 @@ body {
 .bg-white {
     background: url(${backgroundWhite}) no-repeat center center fixed; 
     background-size: cover;
-    color: #101010;
 }
+
+.inverted {
+    filter: invert(1);
+}
+
 html {
     color: #FFFDF6;
     height: 100%; 

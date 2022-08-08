@@ -128,7 +128,7 @@ const NavLink = ({ item }) => {
     >
       <Link key={item.title} to={item.link}>
         <div className="nav-element-title">
-          <li>{item.title}</li>
+          <li className={pathname === '/about' && 'inverted'}>{item.title}</li>
           {item.title === "projects" && (
             <motion.div
               className="drop-down-icon"
