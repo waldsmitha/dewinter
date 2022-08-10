@@ -43,14 +43,14 @@ const Footer = () => {
             <span className="third"></span>
           </div>
           <img className="logo-footer" src={wsb} alt="" />
-          <p>(C) dewintermetalworks 2021. All Rights Reserved.</p>
+          <p>(C) dewintermetalworks 2022. All Rights Reserved.</p>
           <div className="social-media">
             <a href="mailto: info@dewintermetalworks.com" className="email">
               <img src={email} alt="" />
             </a>
-            <a href="tel:978-123-4567" className="phone">
+            {/* <a href="tel:978-123-4567" className="phone">
               <img src={phone} alt="" />
-            </a>
+            </a> */}
             <a
               href="https://www.instagram.com/dewintermetalworks/"
               target="_blank"
