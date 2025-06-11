@@ -23,14 +23,15 @@ const Home = ({ navActive, setNavActive, navLinks }) => {
       <div className="container">
         <img className="mobile-logo" src={wmb} alt="" />
         <h1>dewintermetalworks</h1>
-        <ul>
+        <h2 style={{ marginTop: 16 + "px" }}>This website is currently under construction.</h2>
+        {/* <ul>
           {navLinks.map((item) => (
             <Link key={item.title} to={item.link}>
               <li>{item.title}</li>
               <div className="line"></div>
             </Link>
           ))}
-        </ul>
+        </ul> */}
       </div>
     </StyledHome>
   );
